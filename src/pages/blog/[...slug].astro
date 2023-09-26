@@ -1,0 +1,33 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro'
+import FormattedDate from '../../components/FormattedDate.astro'
+import type { GetStaticPaths } from 'astro'
+import { getCollection, type CollectionEntry } from 'astro:content'
+
+export const getStaticPaths = (async () => {
+  const blog = await getCollection('blog')
+  return blog.map((post) => ({
+    params: { slug: post.slug },
+    props: { post },
+  }))
+}) satisfies GetStaticPaths
+
+interface Props {
+  post: CollectionEntry<'blog'>
+}
+
+const { post } = Astro.props
+const { Content } = await post.render()
+---
+
+<BaseLayout title={post.data.title}>
+  <img src={post.data.mainImg} alt={post.data.description} />
+  <p><FormattedDate date={post.data.pubDate} /></p>
+  <h1>{post.data.title}</h1>
+  <Content />
+</BaseLayout>
+
+<script>
+  import { createLinksInHeaders } from '../../utils/all'
+  createLinksInHeaders('main')
+</script>

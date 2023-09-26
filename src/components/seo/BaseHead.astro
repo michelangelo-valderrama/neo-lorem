@@ -1,0 +1,18 @@
+---
+type Props = {
+  title: string
+  metaTitle?: string
+  description: string
+}
+
+const { title, metaTitle, description } = Astro.props
+---
+
+<meta charset="utf-8" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<meta name="viewport" content="width=device-width" />
+<meta name="generator" content={Astro.generator} />
+
+<title>{title}</title>
+<meta name="title" content={metaTitle ? metaTitle : title} />
+<meta name="description" content={description} />

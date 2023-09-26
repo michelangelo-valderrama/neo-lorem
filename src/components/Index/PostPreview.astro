@@ -1,0 +1,26 @@
+---
+import type { HTMLAttributes } from 'astro/types'
+import FormattedDate, {
+  type ToLocaleDateStringConfig,
+} from '../FormattedDate.astro'
+
+interface Props extends HTMLAttributes<'a'> {
+  slug: string
+  date: Date
+  title: string
+  description: string
+}
+
+const { slug, date, title, description, href } = Astro.props
+
+const dateConfig: ToLocaleDateStringConfig = {
+  month: 'short',
+  day: '2-digit',
+}
+---
+
+<a href={`/blog/${slug}`}>
+  <p><FormattedDate config={dateConfig} date={date} /></p>
+  <h3 set:html={title} />
+  <p set:html={description} />
+</a>
