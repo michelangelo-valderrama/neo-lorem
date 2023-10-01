@@ -36,7 +36,7 @@ export const createLinksInHeaders = (query: string) => {
     (_, number, others, id, text) => {
       return `
           <h${number}${others}id="${id}">
-          <a href="#${id}">${text}</a>
+          <a href="#${id}">§ ${text}</a>
           </h${number}>
         `
     }

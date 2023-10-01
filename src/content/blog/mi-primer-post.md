@@ -3,6 +3,8 @@ title: "Refraction, dispersion, and other shader light effects"
 description: "Since my very first lines of React Three Fiber and shader code, I've been obsessed with light and how to reproduce some of its physical properties to add some delight to my 3D scenes ✨."
 pubDate: "2023-06-06"
 mainImg: "img-test.webp"
+tags:
+  - post
 ---
 
 # An h1 header

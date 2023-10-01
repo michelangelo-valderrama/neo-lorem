@@ -12,10 +12,11 @@ import {} from 'tailwindcss/'
 export const colors = {
   transparent,
   current,
-  background: "#000",
+  background: '#000',
   textColor: {
     primary: neutral[50],
     secondary: neutral[400],
+    teriary: neutral[300],
     accent: {
       DEFAULT: purple[300],
       indigo: indigo[300],

@@ -11,7 +11,7 @@ interface Props extends HTMLAttributes<'a'> {
   description: string
 }
 
-const { slug, date, title, description, href } = Astro.props
+const { slug, date, title, description } = Astro.props
 
 const dateConfig: ToLocaleDateStringConfig = {
   month: 'short',
@@ -19,7 +19,7 @@ const dateConfig: ToLocaleDateStringConfig = {
 }
 ---
 
-<article class="flex gap-6 md:gap-8 py-4 transition-all group max-w-screen-md">
+<article class="flex gap-6 md:gap-8 py-4 transition-all group">
   <div>
     <p class="group-hover:translate-x-2 transition-transform w-14">
       <FormattedDate config={dateConfig} date={date} />

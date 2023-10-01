@@ -1,7 +1,8 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro'
-import FormattedDate from '../../components/FormattedDate.astro'
+import BlogPost from '../../components/Blog/BlogPost.astro'
 import { getCollection } from 'astro:content'
+import RssIcon from '../../icons/RssIcon.astro'
 
 const blog = (await getCollection('blog')).sort(
   (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
@@ -9,22 +10,56 @@ const blog = (await getCollection('blog')).sort(
 ---
 
 <BaseLayout title="Blog">
-  <section slot="header">
-    <h1>Blog Header</h1>
+  <section class="text-textColor-primary pt-12 pb-14 md:pt-16 md:pb-20">
+    <div class="relative">
+      <div
+        class="absolute w-24 h-20 gradient blur-background-effect opacity-25 top-0 left-4 blur-3xl pointer-events-none"
+      >
+      </div>
+      <h1
+        class="text-4xl md:text-5xl font-bold gradient background-gradient-effect text-transparent bg-clip-text"
+      >
+        Blog <a href="/rss.xml" target="_blank"
+          ><i><RssIcon class="inline text-textColor-accent-sky" /></i></a
+        >
+      </h1>
+    </div>
   </section>
 
   <article>
     {
       blog.map((post) => (
-        <article>
-          <p>
-            <FormattedDate date={post.data.pubDate} />
-          </p>
-          <h2>{post.data.title}</h2>
-          <p>{post.data.description}</p>
-          <a href={`/blog/${post.slug}`}>Continuar leyendo -></a>
-        </article>
+        <BlogPost
+          slug={post.slug}
+          title={post.data.title}
+          description={post.data.description}
+          date={post.data.pubDate}
+          tags={post.data.tags}
+        />
       ))
     }
   </article>
 </BaseLayout>
+
+<style>
+  .gradient {
+    background-image: linear-gradient(
+      315deg,
+      hsl(137deg 100% 75%) 0%,
+      hsl(153deg 98% 69%) 16%,
+      hsl(164deg 95% 62%) 24%,
+      hsl(172deg 93% 56%) 30%,
+      hsl(177deg 90% 53%) 35%,
+      hsl(182deg 90% 57%) 40%,
+      hsl(186deg 96% 63%) 45%,
+      hsl(191deg 100% 69%) 50%,
+      hsl(193deg 100% 66%) 55%,
+      hsl(196deg 100% 63%) 60%,
+      hsl(199deg 99% 62%) 65%,
+      hsl(202deg 97% 62%) 70%,
+      hsl(207deg 93% 63%) 76%,
+      hsl(213deg 86% 65%) 84%,
+      hsl(221deg 76% 66%) 100%
+    );
+  }
+</style>

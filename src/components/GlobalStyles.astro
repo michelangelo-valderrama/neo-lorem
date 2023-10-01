@@ -3,9 +3,69 @@
   @tailwind components;
   @tailwind utilities; */
 
+  .x-underline {
+    background: linear-gradient(theme(colors.textColor.primary) 0 0) bottom
+      no-repeat;
+    background-size: 100% 0.1rem;
+  }
+
+  .background-gradient-effect {
+    background-size: 300%;
+    animation:
+      contentShowUp 300ms ease,
+      backgroundGradientAnim 5s ease-in-out infinite;
+  }
+
+  .blur-background-effect {
+    background-size: 300%;
+    animation:
+      backgroundGradientAnim 5s ease-in-out infinite,
+      blurBackgroundAnim 5s ease-in-out infinite;
+  }
+
+  @media screen and (max-width: theme(screens.sm)) {
+    .blur-background-effect {
+      background-size: 300%;
+      animation: backgroundGradientAnim 5s ease-in-out infinite;
+    }
+  }
+
+  @keyframes contentShowUp {
+    from {
+      @apply blur-lg opacity-0 translate-y-6;
+    }
+    to {
+      @apply blur-0 opacity-100 translate-y-0;
+    }
+  }
+
+  @keyframes backgroundGradientAnim {
+    0% {
+      background-position: 0%;
+    }
+    50% {
+      background-position: 100%;
+    }
+    100% {
+      background-position: 0%;
+    }
+  }
+
+  @keyframes blurBackgroundAnim {
+    0% {
+      scale: 1;
+    }
+    50% {
+      scale: 1.4;
+    }
+    100% {
+      scale: 1;
+    }
+  }
+
   @font-face {
     font-family: 'Source Serif Pro';
-    src: url('/assets/fonts/source-serif-pro-regular.woff2'), format('woff2');
+    src: url('/fonts/source-serif-pro-regular.woff2'), format('woff2');
     font-weight: normal;
     font-style: normal;
     font-display: swap;
@@ -13,7 +73,7 @@
 
   @font-face {
     font-family: 'Source Serif Pro';
-    src: url('/assets/fonts/source-serif-pro-600.woff2'), format('woff2');
+    src: url('/fonts/source-serif-pro-600.woff2'), format('woff2');
     font-weight: 600;
     font-style: normal;
     font-display: swap;
@@ -21,7 +81,7 @@
 
   @font-face {
     font-family: 'Source Serif Pro';
-    src: url('/assets/fonts/source-serif-pro-700.woff2'), format('woff2');
+    src: url('/fonts/source-serif-pro-700.woff2'), format('woff2');
     font-weight: 700;
     font-style: normal;
     font-display: swap;
@@ -29,7 +89,7 @@
 
   @font-face {
     font-family: 'Source Serif Pro';
-    src: url('/assets/fonts/source-serif-pro-italic.woff2'), format('woff2');
+    src: url('/fonts/source-serif-pro-italic.woff2'), format('woff2');
     font-weight: normal;
     font-style: italic;
     font-display: swap;
