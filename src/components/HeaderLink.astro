@@ -13,13 +13,11 @@ const isActive = href === pathname || href === pathname.replace(/\/$/, '')
 ---
 
 <div>
-  <a href={href} {...attrs} class:list={[{ 'font-bold': isActive }, className]}>
+  <a
+    href={href}
+    {...attrs}
+    class:list={[{ 'font-bold text-textColor-accent': isActive }, className]}
+  >
     {title}
   </a>
 </div>
-
-<style>
-  .font-bold {
-    font-weight: bold;
-  }
-</style>

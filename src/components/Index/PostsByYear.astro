@@ -6,8 +6,6 @@ import { groupBy } from '../../utils/all'
 const blog = (await getCollection('blog')).sort(
   (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
 )
-
-const lastPost = blog[0]
 blog.splice(0, 1)
 
 const blogPosts = blog.map((post) => ({
@@ -26,9 +24,11 @@ const years = Array.from(new Set(blogPosts.map((post) => post.year)))
 <article>
   {
     years.map((year) => (
-      <article>
-        <p>
-          <time>{year}</time>
+      <article class="mb-12">
+        <p class="text-xl md:2xl text-textColor-accent mb-4">
+          <strong>
+            <time>{year}</time>
+          </strong>
         </p>
         <article>
           {(postsByYear[year] as typeof blogPosts).map((post) => (

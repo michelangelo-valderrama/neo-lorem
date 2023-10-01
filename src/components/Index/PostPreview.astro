@@ -19,8 +19,21 @@ const dateConfig: ToLocaleDateStringConfig = {
 }
 ---
 
-<a href={`/blog/${slug}`}>
-  <p><FormattedDate config={dateConfig} date={date} /></p>
-  <h3 set:html={title} />
-  <p set:html={description} />
-</a>
+<article class="flex gap-6 md:gap-8 py-4 transition-all group max-w-screen-md">
+  <div>
+    <p class="group-hover:translate-x-2 transition-transform w-14">
+      <FormattedDate config={dateConfig} date={date} />
+    </p>
+  </div>
+  <a
+    href={`/blog/${slug}`}
+    class="flex-1 group-hover:translate-x-[-0.5rem] transition-transform"
+  >
+    <p
+      class="text-lg md:text-xl text-textColor-primary group-hover:text-textColor-accent-indigo md:pb-2 transition-all"
+    >
+      <strong set:html={title} />
+    </p>
+    <p class="hidden md:inline-block" set:html={description} />
+  </a>
+</article>

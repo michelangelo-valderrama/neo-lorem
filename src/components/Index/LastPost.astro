@@ -12,15 +12,26 @@ const blog = (
 const lastPost = blog[0]
 ---
 
-<section>
-  <p><FormattedDate date={lastPost.data.pubDate} /></p>
-  <article>
-    <h2
-      class="font-title text-4xl bg-gradient-to-br from-brand-secondary to-brand-primary text-transparent bg-clip-text"
-    >
-      <a href={`/blog/${lastPost.slug}`}>
-        {lastPost.data.title}
-      </a>
-    </h2>
-  </article>
+<section class="mb-14 mt-12 max-w-screen-md mx-auto">
+  <p class="sm:text-center sm:mb-2">
+    <FormattedDate date={lastPost.data.pubDate} />
+  </p>
+  <div class="sm:grid sm:grid-cols-2 sm:gap-4">
+    <div class="sm:text-right group">
+      <h2
+        class="font-semibold text-4xl text-textColor-primary group-hover:text-textColor-accent-sky transition"
+      >
+        <a href={`/blog/${lastPost.slug}`}>
+          {lastPost.data.title}
+        </a>
+      </h2>
+      <div
+        class="sm:ml-auto h-[2px] w-12 group-hover:w-24 rounded-lg bg-textColor-primary group-hover:bg-textColor-accent-sky mt-2 transition-all"
+      >
+      </div>
+    </div>
+    <div class="mt-2 sm:mt-0">
+      <p class="text-lg">{lastPost.data.description}</p>
+    </div>
+  </div>
 </section>

@@ -5,12 +5,119 @@ import PostsByYear from '../components/Index/PostsByYear.astro'
 ---
 
 <BaseLayout>
-  <section slot="header">
-    <h1>Index Header</h1>
+  <section
+    class="text-textColor-primary text-center flex align-middle justify-center"
+  >
+    <div class="mt-28 md:mt-36 mb-40 md:mb-52 relative">
+      <div
+        class="absolute w-full h-36 blur-background opacity-25 top-0 left-[50%] translate-x-[-50%] blur-3xl pointer-events-none"
+      >
+      </div>
+      <h1
+        class="text-6xl md:text-7xl font-bold background-gradient text-transparent bg-clip-text"
+      >
+        Neo Lorem
+      </h1>
+      <p class="animate-[contentShowUp_500ms_ease] text-xl mt-2">
+        <em
+          >por <a
+            href="/about"
+            class="filledEffect hover:text-background transition-all"
+            >Michelangelo</a
+          ></em
+        >
+      </p>
+    </div>
   </section>
-
+  <div
+    class="bg-gradient-to-l from-textGradient-sky/10 via-textGradient-purple to-textGradient-pink/10 h-[1px] w-52 mx-auto opacity-60 rounded-full"
+  >
+  </div>
   <article>
     <LastPost />
     <PostsByYear />
   </article>
 </BaseLayout>
+
+<style>
+  .background-gradient {
+    background-size: 300%;
+    background-image: linear-gradient(
+      315deg,
+      hsl(173deg 92% 71%) 0%,
+      hsl(200deg 92% 69%) 13%,
+      hsl(228deg 91% 66%) 25%,
+      hsl(255deg 91% 64%) 37%,
+      hsl(283deg 91% 61%) 50%,
+      hsl(302deg 91% 64%) 63%,
+      hsl(321deg 91% 66%) 75%,
+      hsl(341deg 91% 68%) 87%,
+      hsl(0deg 91% 71%) 100%
+    );
+    animation:
+      contentShowUp 300ms ease,
+      backgroundGradientAnim 5s ease-in-out infinite;
+  }
+
+  .blur-background {
+    background-size: 300%;
+    background-image: linear-gradient(
+      315deg,
+      hsl(173deg 92% 71%) 0%,
+      hsl(200deg 92% 69%) 13%,
+      hsl(228deg 91% 66%) 25%,
+      hsl(255deg 91% 64%) 37%,
+      hsl(283deg 91% 61%) 50%,
+      hsl(302deg 91% 64%) 63%,
+      hsl(321deg 91% 66%) 75%,
+      hsl(341deg 91% 68%) 87%,
+      hsl(0deg 91% 71%) 100%
+    );
+    animation:
+      backgroundGradientAnim 5s ease-in-out infinite,
+      blurBackgroundAnim 5s ease-in-out infinite;
+  }
+
+  @keyframes contentShowUp {
+    from {
+      @apply blur-lg opacity-0 translate-y-6;
+    }
+    to {
+      @apply blur-0 opacity-100 translate-y-0;
+    }
+  }
+
+  @keyframes backgroundGradientAnim {
+    0% {
+      background-position: 0%;
+    }
+    50% {
+      background-position: 100%;
+    }
+    100% {
+      background-position: 0%;
+    }
+  }
+
+  @keyframes blurBackgroundAnim {
+    0% {
+      scale: 1;
+    }
+    50% {
+      scale: 1.4;
+    }
+    100% {
+      scale: 1;
+    }
+  }
+
+  .filledEffect {
+    background: linear-gradient(theme(colors.textColor.primary) 0 0) bottom
+      no-repeat;
+    background-size: 100% 0.1rem;
+  }
+
+  .filledEffect:hover {
+    background-size: 100% 100%;
+  }
+</style>

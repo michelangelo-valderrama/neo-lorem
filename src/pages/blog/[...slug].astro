@@ -21,13 +21,27 @@ const { Content } = await post.render()
 ---
 
 <BaseLayout title={post.data.title}>
-  <img src={post.data.mainImg} alt={post.data.description} />
+  <article slot="header">
+    <div class="bg-[#211920]">
+      <img
+        src={post.data.mainImg}
+        alt={post.data.description}
+        width="800"
+        height="400"
+        class="mx-auto max-h-96 max-w-screen-lg w-full object-cover"
+      />
+    </div>
+  </article>
   <p><FormattedDate date={post.data.pubDate} /></p>
   <h1>{post.data.title}</h1>
-  <Content />
+  <article class="prose prose-neutral dark:prose-invert prose-img:rounded-lg">
+    <Content />
+  </article>
 </BaseLayout>
 
 <script>
   import { createLinksInHeaders } from '../../utils/all'
-  createLinksInHeaders('main')
+  document.addEventListener('astro:page-load', () => {
+    createLinksInHeaders('main')
+  })
 </script>

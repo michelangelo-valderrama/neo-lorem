@@ -1,4 +1,6 @@
 ---
+import { ViewTransitions } from 'astro:transitions'
+
 type Props = {
   title: string
   metaTitle?: string
@@ -16,3 +18,5 @@ const { title, metaTitle, description } = Astro.props
 <title>{title}</title>
 <meta name="title" content={metaTitle ? metaTitle : title} />
 <meta name="description" content={description} />
+
+<ViewTransitions />

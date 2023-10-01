@@ -1,6 +1,8 @@
 ---
-import BaseHead from '../components/seo/BaseHead.astro'
+import HeadCommon from '../components/seo/HeadCommon.astro'
+import Header from '../components/Header/Header.astro'
 import Footer from '../components/Footer/Footer.astro'
+import BaseStyles from '../components/GlobalStyles.astro'
 import { SITE } from '../consts.ts'
 
 type Props = {
@@ -11,20 +13,40 @@ const { title } = Astro.props
 ---
 
 <!doctype html>
-<html lang="es" class="font-serif">
-  <head>
-    <BaseHead
+<html lang="es" class="dark font-serif">
+  <head class="min-h-screen">
+    <HeadCommon
       title={title ? `${SITE.TITLE} · ${title}` : SITE.TITLE}
       description={SITE.DESCRIPTION}
     />
     <slot name="meta" />
+    <BaseStyles />
   </head>
 
-  <body>
+  <body class="dark:bg-background dark:text-textColor-secondary">
+    <Header />
     <slot name="header" />
-    <main>
+    <main class="px-6 mx-auto max-w-screen-lg" transition:animate="none">
       <slot />
     </main>
     <Footer />
+    <style>
+      body::before,
+      body::after {
+        position: fixed;
+        left: 0;
+        top: 0;
+        content: '';
+        width: 100dvw;
+        height: 100dvh;
+        z-index: 1;
+        opacity: 5%;
+        pointer-events: none;
+        filter: contrast(2) saturate(2);
+      }
+      body::before {
+        background: url('/noise-texture.webp');
+      }
+    </style>
   </body>
 </html>

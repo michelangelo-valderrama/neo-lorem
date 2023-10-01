@@ -1,0 +1,30 @@
+---
+import HeaderNav from './HeaderNav.astro'
+---
+
+<div class="mb-[118px]">
+  <article
+    id="header-container"
+    class="fixed top-0 left-0 w-full bg-background/60 backdrop-blur-md border-b border-borderColor-gray z-20 transition-all"
+  >
+    <div
+      id="header-content"
+      class="max-w-screen-lg mx-auto flex justify-between py-4 px-6 transition-all"
+    >
+      <a href="/" class="active:scale-90 transition-transform">
+        <img
+          class="pointer-events-none"
+          src="/favicon.svg"
+          alt="Logo del blog"
+          height={44}
+          width={44}
+        />
+      </a>
+      <!-- <menu class="flex gap-4">
+          <ul>light</ul>
+          <ul>command</ul>
+        </menu> -->
+    </div>
+  </article>
+  <HeaderNav />
+</div>

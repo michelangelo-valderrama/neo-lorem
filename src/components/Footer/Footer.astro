@@ -1,9 +1,26 @@
 ---
-import HeaderLink from './HeaderLink.astro'
+import HeaderLink from '../HeaderLink.astro'
+import { URLS_MAP } from '../../consts.ts'
 ---
 
-<footer>
-  <HeaderLink href={'/'} title="Home" />
-  <HeaderLink href={'/blog'} title="Blog" />
-  <HeaderLink href={'/about'} title="About" />
+<footer class="max-w-screen-lg mx-auto p-6">
+  <article class="w-28">
+    {
+      URLS_MAP.map(({ href, title }) => (
+        <div class="hover:text-textColor-primary font-semibold">
+          <HeaderLink
+            href={href}
+            title={title}
+            class="active block px-4 py-1 border-l-2 border-l-borderColor-gray"
+          />
+        </div>
+      ))
+    }
+  </article>
 </footer>
+
+<style>
+  .font-bold.active {
+    @apply bg-gradient-to-l to-textColor-accent/20 from-transparent border-l-borderColor-accent;
+  }
+</style>
