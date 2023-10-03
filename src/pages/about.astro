@@ -1,9 +1,75 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro'
+import { SITE } from '../consts'
 ---
 
-<BaseLayout title="About">
-  <section slot="header">
-    <h1>About Header</h1>
+<BaseLayout title={`${SITE.TITLE} · About`}>
+  <section class="pt-12 pb-14 md:pt-16 md:pb-20">
+    <div class="relative">
+      <div
+        class="absolute w-24 h-20 gradient blur-background-effect opacity-25 top-0 left-4 blur-3xl pointer-events-none"
+      >
+      </div>
+      <h1
+        class="text-4xl md:text-5xl font-bold gradient background-gradient-effect text-transparent bg-clip-text"
+      >
+        About
+      </h1>
+    </div>
   </section>
+  <article>
+    <p class="book-line">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem beatae iure
+      ad tempore exercitationem? Reprehenderit tempore praesentium quam
+      asperiores rem molestias provident eius voluptatibus corrupti aperiam.
+      Deserunt numquam ab eos aut pariatur dolorem repudiandae inventore eveniet
+      sint tempora! Eaque ab exercitationem, ipsum vitae excepturi nemo non
+      eligendi vero. Quia fuga delectus asperiores obcaecati est, voluptatem at
+      sint praesentium culpa modi.
+    </p>
+
+    <p>
+      Lorem ipsum dolor sit amet consectetur, adipisicing elit. At nisi magnam
+      fuga explicabo quasi ad quo repellendus, unde reprehenderit sapiente cum
+      vero soluta ab ipsa pariatur harum blanditiis earum consectetur.
+    </p>
+
+    <p>
+      Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nobis ipsum illo
+      quia. Saepe tempore animi ducimus sint non magni, tempora doloremque? Quia
+      alias sunt eaque est, ex ipsam nulla modi, facere, perferendis ipsa
+      voluptatem sequi inventore enim iste aut reprehenderit provident nobis
+      asperiores tempore atque nisi. Nemo ducimus repellat, dolorum quibusdam
+      ipsum in facilis odio fugiat rem, ipsa voluptates dolor cumque eveniet?
+      Error sapiente repudiandae facilis iusto, totam, sed, dolore magni enim in
+      repellat neque! Animi aspernatur omnis odit doloribus ea, consequuntur
+      nulla nobis? Dicta voluptas perferendis officiis nulla iusto veritatis non
+      porro sequi accusantium doloremque, quidem nemo labore quasi.
+    </p>
+  </article>
 </BaseLayout>
+
+<style>
+  .gradient {
+    background-image: linear-gradient(
+      135deg,
+      hsl(269deg 97% 71%) 0%,
+      hsl(274deg 96% 70%) 15%,
+      hsl(280deg 93% 69%) 21%,
+      hsl(285deg 91% 67%) 26%,
+      hsl(290deg 88% 65%) 30%,
+      hsl(295deg 85% 63%) 34%,
+      hsl(300deg 82% 61%) 38%,
+      hsl(304deg 91% 60%) 42%,
+      hsl(308deg 100% 60%) 46%,
+      hsl(314deg 100% 61%) 50%,
+      hsl(320deg 100% 63%) 54%,
+      hsl(327deg 100% 65%) 58%,
+      hsl(334deg 100% 68%) 62%,
+      hsl(341deg 100% 70%) 67%,
+      hsl(348deg 100% 73%) 73%,
+      hsl(354deg 93% 74%) 81%,
+      hsl(0deg 80% 75%) 99%
+    );
+  }
+</style>

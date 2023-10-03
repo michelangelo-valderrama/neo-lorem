@@ -16,7 +16,7 @@ const { title } = Astro.props
 <html lang="es" class="dark font-serif">
   <head class="min-h-screen">
     <HeadCommon
-      title={title ? `${SITE.TITLE} · ${title}` : SITE.TITLE}
+      title={title ? title : SITE.TITLE}
       description={SITE.DESCRIPTION}
     />
     <slot name="meta" />
@@ -26,7 +26,10 @@ const { title } = Astro.props
   <body class="dark:bg-background dark:text-textColor-secondary">
     <Header />
     <slot name="header" />
-    <main class="px-6 mx-auto max-w-screen-md" transition:animate="none">
+    <main
+      class="px-6 mx-auto max-w-screen-md min-h-screen"
+      transition:animate="none"
+    >
       <slot />
     </main>
     <Footer />
