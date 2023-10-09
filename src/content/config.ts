@@ -6,7 +6,10 @@ const blog = defineCollection({
     subtitle: z.string().optional(),
     description: z.string().max(250),
     pubDate: z.string().transform((str) => new Date(str)),
-    mainImg: z.string().transform((str) => `/assets/blog/${str}`),
+    mainImg: z
+      .string()
+      .transform((str) => `/blog/${str}`)
+      .optional(),
     tags: z.array(z.string()),
   }),
 })

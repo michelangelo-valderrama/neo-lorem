@@ -1,55 +1,191 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro'
+import { Image } from 'astro:assets'
 import { SITE } from '../consts'
+import songs from '../data/songs.json'
+import movies from '../data/movies.json'
+import books from '../data/books.json'
+
+import lorem from '../assets/draws/lorem.jpg'
+import sssh from '../assets/draws/sssh.jpg'
+import what from '../assets/draws/what.jpg'
+
+const draws = ['lorem', 'sssh', 'what', 'lorem', 'sssh', 'what']
+const images = { lorem, sssh, what }
 ---
 
 <BaseLayout title={`${SITE.TITLE} · About`}>
   <section class="pt-12 pb-14 md:pt-16 md:pb-20">
     <div class="relative">
       <div
-        class="absolute w-24 h-20 gradient blur-background-effect opacity-25 top-0 left-4 blur-3xl pointer-events-none"
+        class="absolute w-44 h-20 gradient blur-background-effect opacity-25 top-0 left-4 blur-3xl pointer-events-none"
       >
       </div>
       <h1
         class="text-4xl md:text-5xl font-bold gradient background-gradient-effect text-transparent bg-clip-text"
       >
-        About
+        About <small set:html="<コ:彡" />
       </h1>
     </div>
   </section>
-  <article>
-    <p class="book-line">
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem beatae iure
-      ad tempore exercitationem? Reprehenderit tempore praesentium quam
-      asperiores rem molestias provident eius voluptatibus corrupti aperiam.
-      Deserunt numquam ab eos aut pariatur dolorem repudiandae inventore eveniet
-      sint tempora! Eaque ab exercitationem, ipsum vitae excepturi nemo non
-      eligendi vero. Quia fuga delectus asperiores obcaecati est, voluptatem at
-      sint praesentium culpa modi.
-    </p>
+  <article class="text-lg leading-relaxed">
+    <div>
+      <p class="book-line">
+        Llamadme Michelangelo. Aquí llama alguien con muchos intereses, y que a
+        veces se obseciona con algún tema en particular durante días o semanas
+        sin ningún motivo. Para que estas divagaciones mías no solo se queden en
+        solo eso, “mías”, pensé en crear un blog para poder escribir sobre estas
+        e inmortalizarlas, aunque sea un poco.
+      </p>
+      <p>
+        Actualmente, trabajo por horas como desarrollador en <a
+          href="https://if7sports.com/"
+          target="_blank">IF7Sports</a
+        > debido a mis estudios.
+      </p>
+    </div>
 
-    <p>
-      Lorem ipsum dolor sit amet consectetur, adipisicing elit. At nisi magnam
-      fuga explicabo quasi ad quo repellendus, unde reprehenderit sapiente cum
-      vero soluta ab ipsa pariatur harum blanditiis earum consectetur.
-    </p>
+    <section>
+      <h2>Dibujo</h2>
+      <p>
+        He estado dibujando desde que tengo uso de razón. De niño, me enseñaron
+        un poco de óleo, pero eso fue breve. Aparte de eso, no he recibido
+        ninguna formación formal. Aun así, a veces hago algún dibujo suelto en
+        uno de mis sketchbooks o libretas. Actualmente, más que el dibujo, estoy
+        centrado en el diseño web. Al principio, aprendí Adobe XD, pero ahora
+        solo uso Figma.
+      </p>
+      <p>Aquí algunos de mis dibujos (ninguno está a limpio):</p>
+      <article
+        role="list"
+        class="px-8 sm:px-4 md:px-0 columns-1 sm:columns-2 md:columns-3"
+      >
+        {
+          draws.map((title) => (
+            <article role="listitem" class="sm:max-w-xs">
+              <Image
+                src={images[title as keyof typeof images]}
+                alt={title}
+                quality="low"
+                class="rounded-lg md:opacity-70 md:hover:opacity-100 md:hover:scale-105 transition-all md:hover:shadow-textColor-primary/30 md:shadow-2xl mb-4"
+              />
+            </article>
+          ))
+        }
+      </article>
+    </section>
 
-    <p>
-      Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nobis ipsum illo
-      quia. Saepe tempore animi ducimus sint non magni, tempora doloremque? Quia
-      alias sunt eaque est, ex ipsam nulla modi, facere, perferendis ipsa
-      voluptatem sequi inventore enim iste aut reprehenderit provident nobis
-      asperiores tempore atque nisi. Nemo ducimus repellat, dolorum quibusdam
-      ipsum in facilis odio fugiat rem, ipsa voluptates dolor cumque eveniet?
-      Error sapiente repudiandae facilis iusto, totam, sed, dolore magni enim in
-      repellat neque! Animi aspernatur omnis odit doloribus ea, consequuntur
-      nulla nobis? Dicta voluptas perferendis officiis nulla iusto veritatis non
-      porro sequi accusantium doloremque, quidem nemo labore quasi.
-    </p>
+    <section>
+      <h2>Música</h2>
+      <p>
+        A los 8 o 9 años, mi padre me inscribió en clases de guitarra española,
+        y seguí tomando clases de manera intermitente durante unos años más. No
+        recibí mucha formación en teoría musical, pero al menos aprendí a tocar
+        un instrumento. Al final, mi interés por la música no se centró en la
+        guitarra, sino en la producción musical. He experimentado un poco con
+        FLStudio y GarageBand. También aprendí por mi cuenta a tocar otros
+        instrumentos como el ukelele, el bajo eléctrico, la guitarra eléctrica y
+        el piano (también tengo un par de sintetizadores Volca Korg).
+        Actualmente, no estoy muy enfocado en seguir haciendo música, pero a
+        veces me apetece tocar alguno de mis instrumentos.
+      </p>
+      <p>Aquí algunos de mis temas sueltos, y algún cover:</p>
+
+      <div role="list">
+        {
+          songs.map(({ title, src }) => (
+            <article role="listitem">
+              <p>
+                <strong>{title}</strong>
+              </p>
+              <audio controls>
+                <source src={`/music/${src}`} />
+              </audio>
+            </article>
+          ))
+        }
+      </div>
+    </section>
+
+    <section>
+      <h2>Demás cosas</h2>
+
+      <div>
+        <p>
+          Hubo un tiempo en el que me centré mucho en el cine. Aprendí a
+          apreciar no solo una buena historia, sino también la forma en que se
+          cuenta. Incluso llegué a considerar estudiar dirección de cine, pero
+          al final eso no se concretó. Fue una época intensa en la que me quemé
+          y dejé de disfrutar ver películas. Pero, ahora tengo un mejor control
+          sobre este tema y puedo disfrutar del cine como lo hacía antes :>
+        </p>
+
+        <p>Aquí algunas de mis películas favoritas:</p>
+
+        {movies.map((movie) => <p>{movie.title}</p>)}
+      </div>
+
+      <div>
+        <p>
+          La lectura fue algo que me propuse hacer hace unos años para probar
+          cosas nuevas. Al principio fue un tanto complicado, pero una vez que
+          coges ritmo, no paras. Uno de los autores que más he leído es Asimov,
+          no solo su ciencia ficción, sino también sus obras sobre ciencia.
+          Asimov me mostró la parte de la ciencia que a menudo se oculta en la
+          escuela, lo que me llevó a considerar estudiar matemáticas y/o física
+          en un momento dado. Aunque actualmente no tengo planes de estudiar
+          ninguno de los dos, todavía me interesan, aunque el instituto me hizo
+          perder parte de mi aprecio por ellas.
+        </p>
+
+        <p>Aquí algunos de mis libros favoritos:</p>
+
+        {books.map((book) => <p>{book.title}</p>)}
+      </div>
+    </section>
+
+    <section>
+      <h2>Programación</h2>
+      <p>
+        Empecé a programar por una sencilla razón: la curiosidad, algo que, por
+        cierto, tuve que redescubrir poco a poco. Durante mucho tiempo, me
+        limité a HTML, CSS, JavaScript, C y Python. En ocasiones, vi la
+        necesidad de utilizar componentes y los beneficios que conlleva usar
+        JavaScript para generar partes de la interfaz de usuario, pero estaba
+        más centrado en otros temas como para pensar: "Quizás debería aprender
+        herramientas que me ayuden con esto" o "No sé nada sobre cómo funciona
+        esto realmente, ¿por qué no lo investigo?". Pero como dicen, más vale
+        tarde que nunca. El destino (y mi estupidez también) me llevó a ayudar a
+        mi padre en su trabajo, donde pude ver cómo utilizaban las herramientas
+        que tal vez debería haber buscado mucho antes. Ahora las he aprendido y
+        sigo aprendiendo más sobre desarrollo web y otros temas de informática.
+      </p>
+      <p>Aquí algunos de mis proyectos:</p>
+    </section>
   </article>
 </BaseLayout>
 
 <style>
+  h2 {
+    @apply mt-14 mb-4 text-2xl font-bold text-textColor-primary uppercase;
+  }
+
+  strong {
+    @apply text-textColor-primary;
+  }
+
+  p {
+    @apply mb-4 text-textColor-teriary;
+  }
+
+  a {
+    @apply hover:underline hover:underline-offset-4 text-textColor-accent;
+  }
+
+  img {
+    aspect-ratio: calc(attr(width) / attr(height));
+  }
+
   .gradient {
     background-image: linear-gradient(
       135deg,

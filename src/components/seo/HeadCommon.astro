@@ -1,6 +1,4 @@
 ---
-import { ViewTransitions } from 'astro:transitions'
-
 type Props = {
   title: string
   metaTitle?: string
@@ -19,4 +17,11 @@ const { title, metaTitle, description } = Astro.props
 <meta name="title" content={metaTitle ? metaTitle : title} />
 <meta name="description" content={description} />
 
-<ViewTransitions />
+<link rel="preload" as="image" href="/noise-texture.webp" />
+<link
+  rel="preload"
+  as="font"
+  href="/fonts/source-serif-pro-regular.woff2"
+  type="font/woff2"
+  crossorigin
+/>

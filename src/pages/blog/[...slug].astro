@@ -20,28 +20,39 @@ const { post } = Astro.props
 const { Content } = await post.render()
 ---
 
-<BaseLayout title={post.data.title}>
-  <article slot="header">
-    <div class="bg-[#211920]">
-      <img
-        src={post.data.mainImg}
-        alt={post.data.description}
-        width="800"
-        height="400"
-        class="mx-auto max-h-96 max-w-screen-lg w-full object-cover"
-      />
-    </div>
+<BaseLayout title={post.data.title} class="scroll-smooth scroll-p-24">
+  <article slot="header" class="mb-20 min-h-[1px]">
+    {
+      post.data.mainImg && (
+        <picture class="block bg-[#171717]">
+          <img
+            src={post.data.mainImg}
+            alt={post.data.description}
+            width="800"
+            height="400"
+            class="mx-auto max-h-96 max-w-screen-lg w-full object-cover"
+          />
+        </picture>
+      )
+    }
   </article>
-  <p><FormattedDate date={post.data.pubDate} /></p>
-  <h1>{post.data.title}</h1>
-  <article class="prose prose-neutral dark:prose-invert prose-img:rounded-lg">
+  <section class="mb-24 md:text-center">
+    <p class="mb-2"><FormattedDate date={post.data.pubDate} /></p>
+    <h1 class="text-4xl md:text-5xl font-bold text-textColor-primary mb-2 md:mb-4">
+      {post.data.title}
+    </h1>
+    <p class="text-lg"><em>{post.data.description}</em></p>
+  </section>
+  <article
+    class="prose prose-lorem dark:prose-invert prose-img:rounded-lg prose-code:before:content-[''] prose-code:after:content-[''] prose-code:bg-preColor prose-code:p-1 prose-code:rounded-md prose-h1:text-4xl prose-h1:text-center prose-h2:border-b prose-h2:pb-1 prose-h2:border-borderColor-gray prose-h2:text-3xl prose-h3:italic max-w-none"
+  >
     <Content />
   </article>
 </BaseLayout>
 
 <script>
-  import { createLinksInHeaders } from '../../utils/all'
-  document.addEventListener('astro:page-load', () => {
+  import createLinksInHeaders from '../../scripts/blogHeaders.ts'
+  window.addEventListener('load', () => {
     createLinksInHeaders('main')
   })
 </script>

@@ -24,22 +24,3 @@ export const groupBy = (array: any[], key: string) => {
     return preValue
   }, {})
 }
-
-/**
- * Convierte los encabezados en links a sí mismos.
- * @param query - Selector para el elemento en el que aplicar la función.
- */
-export const createLinksInHeaders = (query: string) => {
-  const htmlElement = $(query) as HTMLDivElement
-  const newHtml = htmlElement.innerHTML.replace(
-    /<h([1-6])(.*?)id="(.*?)">(.*?)<\/h[1-6]>/g,
-    (_, number, others, id, text) => {
-      return `
-          <h${number}${others}id="${id}">
-          <a href="#${id}">§ ${text}</a>
-          </h${number}>
-        `
-    }
-  )
-  htmlElement.innerHTML = newHtml
-}

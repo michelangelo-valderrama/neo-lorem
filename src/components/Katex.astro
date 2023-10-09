@@ -2,16 +2,23 @@
 import katex from 'katex'
 
 interface Props {
-  q: string
+  f: string
+  inline?: boolean
+  customClasses?: string
 }
 
-const { q } = Astro.props
-const html = katex.renderToString(q, { throwOnError: false })
+const { f, inline = true, customClasses } = Astro.props
+const html = katex.renderToString(f, { throwOnError: false })
 ---
 
-<div>
-  <span set:html={html} />
-</div>
+<span
+  class:list={[
+    'text-textColor-primary',
+    { 'block text-center my-4': !inline },
+    customClasses,
+  ]}
+  set:html={html}
+/>
 
 <link
   rel="stylesheet"

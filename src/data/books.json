@@ -1,0 +1,32 @@
+[
+  {
+    "title": "Yo, Asimov",
+    "author": "Isaac Asimov",
+    "image": "https://m.media-amazon.com/images/I/61c7jl5mCrL._AC_UF1000,1000_QL80_.jpg"
+  },
+  {
+    "title": "Watchmen",
+    "author": "Alan Moore",
+    "image": "https://m.media-amazon.com/images/I/61c7jl5mCrL._AC_UF1000,1000_QL80_.jpg"
+  },
+  {
+    "title": "Matar a un ruiseñor",
+    "author": "Harper Lee",
+    "image": "https://m.media-amazon.com/images/I/61c7jl5mCrL._AC_UF1000,1000_QL80_.jpg"
+  },
+  {
+    "title": "Viaje a través de los genios: Biografías y teoremas de los grandes matemáticos",
+    "author": "William Dunham",
+    "image": "https://m.media-amazon.com/images/I/61c7jl5mCrL._AC_UF1000,1000_QL80_.jpg"
+  },
+  {
+    "title": "Nacidos de la Bruma: El Imperio Final",
+    "author": "Brandon Sanderson",
+    "image": "https://m.media-amazon.com/images/I/61c7jl5mCrL._AC_UF1000,1000_QL80_.jpg"
+  },
+  {
+    "title": "1984",
+    "author": "George Orwell",
+    "image": "https://m.media-amazon.com/images/I/61c7jl5mCrL._AC_UF1000,1000_QL80_.jpg"
+  }
+]

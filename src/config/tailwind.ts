@@ -32,6 +32,11 @@ export const colors = {
     gray: neutral[800],
     accent: purple[400],
   },
+  hrColor: neutral[800],
+  quotesColor: {
+    DEFAULT: neutral[900],
+  },
+  preColor: neutral[700],
 }
 
 export const fontFamily = {
