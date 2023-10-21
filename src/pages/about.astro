@@ -1,17 +1,10 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro'
-import { Image } from 'astro:assets'
-import { SITE } from '../consts'
-import songs from '../data/songs.json'
-import movies from '../data/movies.json'
-import books from '../data/books.json'
-
-import lorem from '../assets/draws/lorem.jpg'
-import sssh from '../assets/draws/sssh.jpg'
-import what from '../assets/draws/what.jpg'
-
-const draws = ['lorem', 'sssh', 'what', 'lorem', 'sssh', 'what']
-const images = { lorem, sssh, what }
+import BaseLayout from "../layouts/BaseLayout.astro"
+import Draws from "../components/about/Draws.astro"
+import Movies from "../components/about/Movies.astro"
+import Books from "../components/about/Books.astro"
+import { SITE } from "../consts.ts"
+import songs from "../data/songs.json"
 ---
 
 <BaseLayout title={`${SITE.TITLE} · About`}>
@@ -31,73 +24,47 @@ const images = { lorem, sssh, what }
   <article class="text-lg leading-relaxed">
     <div>
       <p class="book-line">
-        Llamadme Michelangelo. Aquí llama alguien con muchos intereses, y que a
-        veces se obseciona con algún tema en particular durante días o semanas
-        sin ningún motivo. Para que estas divagaciones mías no solo se queden en
-        solo eso, “mías”, pensé en crear un blog para poder escribir sobre estas
-        e inmortalizarlas, aunque sea un poco.
+        Llamadme Michelangelo. Soy alguien con muchos intereses, y que a veces
+        se obseciona con algún tema en particular durante días o semanas sin
+        ningún motivo. Para que estas divagaciones mías no solo se queden en
+        solo eso, <em>“mías”</em>, pensé en crear un blog para poder escribir
+        sobre estas y no queden en nada. Tal vez incluso le puedan servir a
+        alguien.
       </p>
       <p>
-        Actualmente, trabajo por horas como desarrollador en <a
+        Actualmente, trabajo por horas como desarrollador fullstack en <a
           href="https://if7sports.com/"
           target="_blank">IF7Sports</a
-        > debido a mis estudios.
+        >.
       </p>
     </div>
 
     <section>
       <h2>Dibujo</h2>
       <p>
-        He estado dibujando desde que tengo uso de razón. De niño, me enseñaron
-        un poco de óleo, pero eso fue breve. Aparte de eso, no he recibido
-        ninguna formación formal. Aun así, a veces hago algún dibujo suelto en
-        uno de mis sketchbooks o libretas. Actualmente, más que el dibujo, estoy
-        centrado en el diseño web. Al principio, aprendí Adobe XD, pero ahora
-        solo uso Figma.
+        Llevo dibujando desde que tengo uso de razón, pero hoy día solo hago
+        algún dibujo suelto en uno de mis sketchbooks cada cierto tiempo. Cada
+        vez me enfoco más en el diseño, pero hace unos años me centré bastante
+        en el dibujo anatómico.
       </p>
-      <p>Aquí algunos de mis dibujos (ninguno está a limpio):</p>
-      <article
-        role="list"
-        class="px-8 sm:px-4 md:px-0 columns-1 sm:columns-2 md:columns-3"
-      >
-        {
-          draws.map((title) => (
-            <article role="listitem" class="sm:max-w-xs">
-              <Image
-                src={images[title as keyof typeof images]}
-                alt={title}
-                quality="low"
-                class="rounded-lg md:opacity-70 md:hover:opacity-100 md:hover:scale-105 transition-all md:hover:shadow-textColor-primary/30 md:shadow-2xl mb-4"
-              />
-            </article>
-          ))
-        }
-      </article>
+      <Draws />
     </section>
 
     <section>
       <h2>Música</h2>
       <p>
-        A los 8 o 9 años, mi padre me inscribió en clases de guitarra española,
-        y seguí tomando clases de manera intermitente durante unos años más. No
-        recibí mucha formación en teoría musical, pero al menos aprendí a tocar
-        un instrumento. Al final, mi interés por la música no se centró en la
-        guitarra, sino en la producción musical. He experimentado un poco con
-        FLStudio y GarageBand. También aprendí por mi cuenta a tocar otros
-        instrumentos como el ukelele, el bajo eléctrico, la guitarra eléctrica y
-        el piano (también tengo un par de sintetizadores Volca Korg).
-        Actualmente, no estoy muy enfocado en seguir haciendo música, pero a
-        veces me apetece tocar alguno de mis instrumentos.
+        Desde los 8 años que llevo tocando la guitarra española. También aprendí
+        la guitarra eléctrica, el ukelele, el piano y el bajo. Nunca me he
+        enfocado en dominar estos instrumentos, sobre todo lo que quería era
+        hacer música en <strong>GarageBand</strong> y <strong>FLStudio</strong>.
       </p>
-      <p>Aquí algunos de mis temas sueltos, y algún cover:</p>
-
-      <div role="list">
+      <div role="list" class="grid sm:grid-cols-2 gap-y-8">
         {
           songs.map(({ title, src }) => (
             <article role="listitem">
-              <p>
-                <strong>{title}</strong>
-              </p>
+              <label>
+                <em>{title}</em>
+              </label>
               <audio controls>
                 <source src={`/music/${src}`} />
               </audio>
@@ -109,65 +76,89 @@ const images = { lorem, sssh, what }
 
     <section>
       <h2>Demás cosas</h2>
-
-      <div>
+      <section>
+        <h3>Cine</h3>
         <p>
-          Hubo un tiempo en el que me centré mucho en el cine. Aprendí a
-          apreciar no solo una buena historia, sino también la forma en que se
-          cuenta. Incluso llegué a considerar estudiar dirección de cine, pero
-          al final eso no se concretó. Fue una época intensa en la que me quemé
-          y dejé de disfrutar ver películas. Pero, ahora tengo un mejor control
-          sobre este tema y puedo disfrutar del cine como lo hacía antes :>
+          Hace pocos años me adentré con fuerza en el cine, sobretodo la
+          dirección cinematográfica con directores como <strong
+            >Stanley Kubrick</strong
+          > o <strong>Bong Joon-ho</strong>. Disfruto mucho ver películas de
+          todo tipo y también ver vídeos analizandolas.
         </p>
-
-        <p>Aquí algunas de mis películas favoritas:</p>
-
-        {movies.map((movie) => <p>{movie.title}</p>)}
-      </div>
-
-      <div>
+        <Movies />
+      </section>
+      <section>
+        <h3>Libros</h3>
         <p>
-          La lectura fue algo que me propuse hacer hace unos años para probar
-          cosas nuevas. Al principio fue un tanto complicado, pero una vez que
-          coges ritmo, no paras. Uno de los autores que más he leído es Asimov,
-          no solo su ciencia ficción, sino también sus obras sobre ciencia.
-          Asimov me mostró la parte de la ciencia que a menudo se oculta en la
-          escuela, lo que me llevó a considerar estudiar matemáticas y/o física
-          en un momento dado. Aunque actualmente no tengo planes de estudiar
-          ninguno de los dos, todavía me interesan, aunque el instituto me hizo
-          perder parte de mi aprecio por ellas.
+          Empezar a leer fue una decisión muy conciente pues consideraba que
+          sería un buen hábito. Empezé con la ciencia ficción, después empezé a
+          leer mucho sobre divulgación científica y matemática; sobre todo leía
+          a <strong>Issac Asimov</strong>. Aunque no soy mucho de fantasía, he
+          disfrutado mucho de libros de <strong>Brandon Sanderson</strong> y
+          <strong>Michael Ende</strong>.
         </p>
-
-        <p>Aquí algunos de mis libros favoritos:</p>
-
-        {books.map((book) => <p>{book.title}</p>)}
-      </div>
+        <Books />
+      </section>
     </section>
 
     <section>
       <h2>Programación</h2>
       <p>
-        Empecé a programar por una sencilla razón: la curiosidad, algo que, por
-        cierto, tuve que redescubrir poco a poco. Durante mucho tiempo, me
-        limité a HTML, CSS, JavaScript, C y Python. En ocasiones, vi la
-        necesidad de utilizar componentes y los beneficios que conlleva usar
-        JavaScript para generar partes de la interfaz de usuario, pero estaba
-        más centrado en otros temas como para pensar: "Quizás debería aprender
-        herramientas que me ayuden con esto" o "No sé nada sobre cómo funciona
-        esto realmente, ¿por qué no lo investigo?". Pero como dicen, más vale
-        tarde que nunca. El destino (y mi estupidez también) me llevó a ayudar a
-        mi padre en su trabajo, donde pude ver cómo utilizaban las herramientas
-        que tal vez debería haber buscado mucho antes. Ahora las he aprendido y
-        sigo aprendiendo más sobre desarrollo web y otros temas de informática.
+        Empezé a programar a los 14, pero no fue hastas los 17 años que me lo
+        tomé en serio. He programado en C, Python, Lua, PHP, C# y Rust; pero los
+        lenguajes que más uso actualmente son <strong>JavaScript</strong> y <strong
+          >TypeScript</strong
+        >. Trabajo en su mayoria con <strong>Angular</strong>, <strong
+          >Bootstrap</strong
+        >
+        <strong>NodeJs</strong>, <strong>Express</strong> y <strong
+          >MongoDB</strong
+        >; pero también he visto (un poco más o un poco menos) Deno, Bun, Astro,
+        TailwindCSS, Fresh React, Flask, Nestjs y MySQL. No solo quiero aprender
+        desarrollo web, así que aprendí otras cosas como
+        <strong>Docker</strong> y Rust para tocar más ramas.
       </p>
-      <p>Aquí algunos de mis proyectos:</p>
+      <ul class="my-6 space-y-4 list-disc pl-8">
+        <li>
+          <a
+            class="prog"
+            href="https://github.com/michelangelo-valderrama/game-of-life"
+            >[Conway's Game of Life]</a
+          > ~ El juego de la vida de Conway con Bun y TypeScript.
+        </li>
+        <li>
+          <a
+            class="prog"
+            href="https://github.com/michelangelo-valderrama/python-mini-projects"
+            >[Python Mini Projects]</a
+          > ~ Algunos proyectos con Python sobre matemáticas y animaciones
+          matemáticas con <a href="https://www.manim.community/" target="_blank"
+            >Manim</a
+          >.
+        </li>
+        <li>
+          🚧 <a
+            class="prog"
+            href="https://github.com/michelangelo-valderrama/neoTodoList"
+            >[Neo Todo List]</a
+          > ~ Un todo list con Angular, Nestjs y MongoDB.
+        </li>
+      </ul>
     </section>
   </article>
 </BaseLayout>
 
 <style>
   h2 {
-    @apply mt-14 mb-4 text-2xl font-bold text-textColor-primary uppercase;
+    @apply mt-14 mb-4 pb-0.5 text-2xl md:text-3xl font-bold text-textColor-primary border-b border-borderColor-gray;
+  }
+
+  h3 {
+    @apply mt-4 text-textColor-primary font-bold;
+  }
+
+  em {
+    @apply text-textColor-teriary;
   }
 
   strong {
@@ -175,11 +166,15 @@ const images = { lorem, sssh, what }
   }
 
   p {
-    @apply mb-4 text-textColor-teriary;
+    @apply mb-4 text-textColor-secondary;
   }
 
   a {
-    @apply hover:underline hover:underline-offset-4 text-textColor-accent;
+    @apply underline underline-offset-4 text-textColor-accent;
+  }
+
+  .prog {
+    @apply no-underline text-textColor-accent-indigo hover:bg-textColor-accent-indigo/20;
   }
 
   img {

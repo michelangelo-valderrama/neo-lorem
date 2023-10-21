@@ -1,0 +1,37 @@
+---
+import { Image } from "astro:assets"
+import { draws } from "../../scripts/images"
+
+const drawsArr = Object.keys(draws)
+---
+
+<div class="relative w-[100vw] left-[50%] right-[50%] mx-[-50vw]">
+  <article role="list" class="flex overflow-scroll max-w-screen-lg mx-auto">
+    {
+      drawsArr.splice(0, Math.trunc(drawsArr.length / 2)).map((title) => (
+        <article role="listitem" class="min-w-[18rem] sm:max-w-xs p-4">
+          <Image
+            src={draws[title as keyof typeof draws]}
+            alt={title}
+            quality="low"
+            class="rounded-lg opacity-70 md:hover:opacity-100 md:hover:scale-105 transition-all"
+          />
+        </article>
+      ))
+    }
+  </article>
+  <article role="list" class="flex overflow-scroll max-w-screen-lg mx-auto">
+    {
+      drawsArr.map((title) => (
+        <article role="listitem" class="min-w-[18rem] sm:max-w-xs p-4">
+          <Image
+            src={draws[title as keyof typeof draws]}
+            alt={title}
+            quality="low"
+            class="rounded-lg opacity-70 md:hover:opacity-100 md:hover:scale-105 transition-all"
+          />
+        </article>
+      ))
+    }
+  </article>
+</div>

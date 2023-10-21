@@ -1,0 +1,37 @@
+---
+import { Image } from "astro:assets"
+interface Props {
+  list: {
+    title: string
+    image: ImageMetadata
+    author?: string
+    director?: string
+  }[]
+  alt: string
+}
+
+const { list, alt } = Astro.props
+---
+
+<div class="my-10 sm:grid sm:grid-cols-2 sm:gap-x-8">
+  {
+    list.map(({ title, image, author, director }) => (
+      <article class="mb-8 flex gap-x-4 items-center p-4 border border-borderColor-gray md:hover:border-borderColor-accent rounded-lg">
+        <div>
+          <Image
+            src={image}
+            alt={`${alt} ${title}`}
+            quality="low"
+            class="max-h-44 object-contain max-w-[8rem]"
+          />
+        </div>
+        <div>
+          <p class="text-textColor-primary">
+            <strong>{title}</strong>
+          </p>
+          <p>{author ?? director}</p>
+        </div>
+      </article>
+    ))
+  }
+</div>

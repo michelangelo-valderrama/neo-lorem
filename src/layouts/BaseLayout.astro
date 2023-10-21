@@ -24,7 +24,7 @@ const { title, class: className } = Astro.props
     <BaseStyles />
   </head>
 
-  <body class="dark:bg-background dark:text-textColor-secondary break-words">
+  <body class="dark:bg-background dark:text-textColor-secondary break-words overflow-x-hidden">
     <Header />
     <slot name="header" />
     <main
@@ -44,7 +44,7 @@ const { title, class: className } = Astro.props
         width: 100dvw;
         height: 100dvh;
         z-index: -1;
-        opacity: 5%;
+        opacity: 3%;
         pointer-events: none;
         filter: contrast(2) saturate(2);
       }

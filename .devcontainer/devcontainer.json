@@ -1,14 +1,16 @@
 {
     "name": "Neo lorem",
     "build": {
-        "dockerfile": "Dockerfile"
+        "dockerfile": "../Dockerfile"
     },
     "customizations": {
         "vscode": {
             "extensions": [
-                "astro-build.astro-vscode",
-                "bradlc.vscode-tailwindcss"
-            ]
+				"astro-build.astro-vscode",
+				"bradlc.vscode-tailwindcss",
+				"esbenp.prettier-vscode",
+				"unifiedjs.vscode-mdx"
+			]
         }
     },
     "forwardPorts": [

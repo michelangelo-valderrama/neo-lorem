@@ -1,7 +1,7 @@
 ---
-import HeaderNav from './HeaderNav.tsx'
-import HeaderLink from '../HeaderLink.astro'
-import { URLS_MAP } from '../../consts'
+import HeaderNav from "./HeaderNav.astro"
+import HeaderLink from "../HeaderLink.astro"
+import { URLS_MAP } from "../../consts"
 ---
 
 <div class="mb-[118px]">
@@ -15,7 +15,7 @@ import { URLS_MAP } from '../../consts'
     >
       <a href="/" class="active:scale-90 transition-transform">
         <img
-          class="pointer-events-none"
+          class="pointer-events-none w-8 md:w-11"
           src="/favicon.svg"
           alt="Logo del blog"
           height={44}
@@ -28,14 +28,16 @@ import { URLS_MAP } from '../../consts'
         </menu> -->
     </div>
   </article>
-  <HeaderNav client:only>
+  <HeaderNav>
     {
       URLS_MAP.map(({ href, title }, index) => (
         <>
           <span class="hover:text-textColor-primary">
-            <HeaderLink href={href} title={title} />
+            <HeaderLink href={href} title={title} class="px-6 py-2" />
           </span>
-          {URLS_MAP.length !== index + 1 && <span class="select-none">|</span>}
+          {URLS_MAP.length !== index + 1 && (
+            <span class="select-none pb-2">|</span>
+          )}
         </>
       ))
     }

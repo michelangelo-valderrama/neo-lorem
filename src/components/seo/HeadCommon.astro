@@ -17,11 +17,43 @@ const { title, metaTitle, description } = Astro.props
 <meta name="title" content={metaTitle ? metaTitle : title} />
 <meta name="description" content={description} />
 
-<link rel="preload" as="image" href="/noise-texture.webp" />
+<!-- <link rel="preload" as="image" href="/noise-texture.webp" />
 <link
   rel="preload"
   as="font"
   href="/fonts/source-serif-pro-regular.woff2"
+  type="font/woff2"
+  crossorigin
+/> -->
+
+<link
+  rel="preload"
+  as="font"
+  href="/fonts/source-serif-pro-regular.woff2"
+  type="font/woff2"
+  crossorigin
+/>
+
+<link
+  rel="preload"
+  as="font"
+  href="/fonts/source-serif-pro-italic.woff2"
+  type="font/woff2"
+  crossorigin
+/>
+
+<link
+  rel="preload"
+  as="font"
+  href="/fonts/source-serif-pro-600.woff2"
+  type="font/woff2"
+  crossorigin
+/>
+
+<link
+  rel="preload"
+  as="font"
+  href="/fonts/source-serif-pro-700.woff2"
   type="font/woff2"
   crossorigin
 />

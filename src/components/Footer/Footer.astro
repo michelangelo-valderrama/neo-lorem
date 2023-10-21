@@ -4,7 +4,7 @@ import { URLS_MAP } from '../../consts.ts'
 ---
 
 <footer class="max-w-screen-md mx-auto p-6">
-  <article class="w-28">
+  <article class="w-28 mb-12 mt-14">
     {
       URLS_MAP.map(({ href, title }) => (
         <div class="hover:text-textColor-primary font-semibold">
@@ -17,6 +17,7 @@ import { URLS_MAP } from '../../consts.ts'
       ))
     }
   </article>
+  <p class="text-sm">creado con <strong>Astro</strong></p>
 </footer>
 
 <style>
