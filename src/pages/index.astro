@@ -1,42 +1,44 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro'
-import LastPost from '../components/Index/LastPost.astro'
-import PostsByYear from '../components/Index/PostsByYear.astro'
+import BaseLayout from "../layouts/BaseLayout.astro"
+import LastPost from "../components/Index/LastPost.astro"
+import PostsByYear from "../components/Index/PostsByYear.astro"
 ---
 
 <BaseLayout>
-  <section
-    class="text-textColor-primary text-center flex align-middle justify-center"
-  >
-    <div class="mt-28 md:mt-36 mb-40 md:mb-52 relative">
-      <div
-        class="absolute w-full h-36 gradient blur-background-effect opacity-25 top-0 left-0 blur-3xl pointer-events-none"
-      >
-      </div>
-      <h1
-        class="text-6xl md:text-7xl font-bold gradient background-gradient-effect text-transparent bg-clip-text"
-      >
-        Neo Lorem
-      </h1>
-      <p class="animate-[contentShowUp_500ms_ease] text-xl mt-2">
-        <em
-          >por <a
-            href="/about"
-            class="x-underline filledEffect hover:text-background transition-all"
-            >Michelangelo</a
-          ></em
+  <div class="max-w-screen-lorem mx-auto">
+    <section
+      class="text-textColor-primary text-center flex align-middle justify-center"
+    >
+      <div class="mt-28 md:mt-36 mb-40 md:mb-52 relative">
+        <div
+          class="absolute w-full h-36 gradient blur-background-effect opacity-25 top-0 left-0 blur-3xl pointer-events-none"
         >
-      </p>
+        </div>
+        <h1
+          class="text-6xl md:text-7xl font-bold gradient background-gradient-effect text-transparent bg-clip-text"
+        >
+          Neo Lorem
+        </h1>
+        <p class="animate-[contentShowUp_500ms_ease] text-xl mt-2">
+          <em
+            >por <a
+              href="/about"
+              class="x-underline filledEffect hover:text-background transition-all"
+              >Michelangelo</a
+            ></em
+          >
+        </p>
+      </div>
+    </section>
+    <div
+      class="bg-gradient-to-l from-textGradient-sky/10 via-textGradient-purple to-textGradient-pink/10 h-[1px] w-52 mx-auto opacity-60 rounded-full"
+    >
     </div>
-  </section>
-  <div
-    class="bg-gradient-to-l from-textGradient-sky/10 via-textGradient-purple to-textGradient-pink/10 h-[1px] w-52 mx-auto opacity-60 rounded-full"
-  >
+    <article>
+      <LastPost />
+      <PostsByYear />
+    </article>
   </div>
-  <article>
-    <LastPost />
-    <PostsByYear />
-  </article>
 </BaseLayout>
 
 <style>

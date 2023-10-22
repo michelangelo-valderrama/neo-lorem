@@ -107,12 +107,12 @@ export const booksInfo = [
   },
   {
     title: "Watchmen",
-    image: robinson,
+    image: watchmen,
     author: "Alan Moore & Dave Gibbons",
   },
   {
     title: "Robinson Crusoe",
-    image: watchmen,
+    image: robinson,
     author: "Daniel Defoe",
   },
   {

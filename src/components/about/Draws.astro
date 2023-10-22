@@ -5,11 +5,11 @@ import { draws } from "../../scripts/images"
 const drawsArr = Object.keys(draws)
 ---
 
-<div class="relative w-[100vw] left-[50%] right-[50%] mx-[-50vw]">
+<div class="relative w-[100vw] left-[50%] right-[50%] mx-[-50vw] mt-10 mb-16">
   <article role="list" class="flex overflow-scroll max-w-screen-lg mx-auto">
     {
       drawsArr.splice(0, Math.trunc(drawsArr.length / 2)).map((title) => (
-        <article role="listitem" class="min-w-[18rem] sm:max-w-xs p-4">
+        <article role="listitem" class="min-w-[16rem] p-4">
           <Image
             src={draws[title as keyof typeof draws]}
             alt={title}
@@ -23,7 +23,7 @@ const drawsArr = Object.keys(draws)
   <article role="list" class="flex overflow-scroll max-w-screen-lg mx-auto">
     {
       drawsArr.map((title) => (
-        <article role="listitem" class="min-w-[18rem] sm:max-w-xs p-4">
+        <article role="listitem" class="min-w-[16rem] p-4">
           <Image
             src={draws[title as keyof typeof draws]}
             alt={title}

@@ -1,45 +1,47 @@
 ---
-import BaseLayout from '../../layouts/BaseLayout.astro'
-import BlogPost from '../../components/Blog/BlogPost.astro'
-import RssIcon from '../../icons/RssIcon.astro'
-import { getCollection } from 'astro:content'
-import { SITE } from '../../consts'
+import BaseLayout from "../../layouts/BaseLayout.astro"
+import BlogPost from "../../components/Blog/BlogPost.astro"
+import RssIcon from "../../icons/RssIcon.astro"
+import { getCollection } from "astro:content"
+import { SITE } from "../../consts"
 
-const blog = (await getCollection('blog')).sort(
+const blog = (await getCollection("blog")).sort(
   (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
 )
 ---
 
 <BaseLayout title={`${SITE.TITLE} · Blog`}>
-  <section class="pt-12 pb-14 md:pt-16 md:pb-20">
-    <div class="relative">
-      <div
-        class="absolute w-24 h-20 gradient blur-background-effect opacity-25 top-0 left-4 blur-3xl pointer-events-none"
-      >
-      </div>
-      <h1
-        class="text-4xl md:text-5xl font-bold gradient background-gradient-effect text-transparent bg-clip-text"
-      >
-        Blog <a href="/rss.xml" target="_blank"
-          ><i><RssIcon class="inline text-textColor-accent-sky" /></i></a
+  <div class="max-w-screen-lorem mx-auto">
+    <section class="pt-12 pb-14 md:pt-16 md:pb-20">
+      <div class="relative">
+        <div
+          class="absolute w-24 h-20 gradient blur-background-effect opacity-25 top-0 left-4 blur-3xl pointer-events-none"
         >
-      </h1>
-    </div>
-  </section>
+        </div>
+        <h1
+          class="text-4xl md:text-5xl font-bold gradient background-gradient-effect text-transparent bg-clip-text"
+        >
+          Blog <a href="/rss.xml" target="_blank"
+            ><i><RssIcon class="inline text-textColor-accent-sky" /></i></a
+          >
+        </h1>
+      </div>
+    </section>
 
-  <article>
-    {
-      blog.map((post) => (
-        <BlogPost
-          slug={post.slug}
-          title={post.data.title}
-          description={post.data.description}
-          date={post.data.pubDate}
-          tags={post.data.tags}
-        />
-      ))
-    }
-  </article>
+    <article class="max-w-screen-md">
+      {
+        blog.map((post) => (
+          <BlogPost
+            slug={post.slug}
+            title={post.data.title}
+            description={post.data.description}
+            date={post.data.pubDate}
+            tags={post.data.tags}
+          />
+        ))
+      }
+    </article>
+  </div>
 </BaseLayout>
 
 <style>

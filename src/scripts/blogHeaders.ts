@@ -1,4 +1,4 @@
-import { $ } from '../utils/all'
+import { $ } from "../utils"
 
 /**
  * Convierte los encabezados en links a sí mismos.

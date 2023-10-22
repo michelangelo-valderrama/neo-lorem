@@ -8,144 +8,150 @@ import songs from "../data/songs.json"
 ---
 
 <BaseLayout title={`${SITE.TITLE} · About`}>
-  <section class="pt-12 pb-14 md:pt-16 md:pb-20">
-    <div class="relative">
-      <div
-        class="absolute w-44 h-20 gradient blur-background-effect opacity-25 top-0 left-4 blur-3xl pointer-events-none"
-      >
-      </div>
-      <h1
-        class="text-4xl md:text-5xl font-bold gradient background-gradient-effect text-transparent bg-clip-text"
-      >
-        About <small set:html="<コ:彡" />
-      </h1>
-    </div>
-  </section>
-  <article class="text-lg leading-relaxed">
-    <div>
-      <p class="book-line">
-        Llamadme Michelangelo. Soy alguien con muchos intereses, y que a veces
-        se obseciona con algún tema en particular durante días o semanas sin
-        ningún motivo. Para que estas divagaciones mías no solo se queden en
-        solo eso, <em>“mías”</em>, pensé en crear un blog para poder escribir
-        sobre estas y no queden en nada. Tal vez incluso le puedan servir a
-        alguien.
-      </p>
-      <p>
-        Actualmente, trabajo por horas como desarrollador fullstack en <a
-          href="https://if7sports.com/"
-          target="_blank">IF7Sports</a
-        >.
-      </p>
-    </div>
-
-    <section>
-      <h2>Dibujo</h2>
-      <p>
-        Llevo dibujando desde que tengo uso de razón, pero hoy día solo hago
-        algún dibujo suelto en uno de mis sketchbooks cada cierto tiempo. Cada
-        vez me enfoco más en el diseño, pero hace unos años me centré bastante
-        en el dibujo anatómico.
-      </p>
-      <Draws />
-    </section>
-
-    <section>
-      <h2>Música</h2>
-      <p>
-        Desde los 8 años que llevo tocando la guitarra española. También aprendí
-        la guitarra eléctrica, el ukelele, el piano y el bajo. Nunca me he
-        enfocado en dominar estos instrumentos, sobre todo lo que quería era
-        hacer música en <strong>GarageBand</strong> y <strong>FLStudio</strong>.
-      </p>
-      <div role="list" class="grid sm:grid-cols-2 gap-y-8">
-        {
-          songs.map(({ title, src }) => (
-            <article role="listitem">
-              <label>
-                <em>{title}</em>
-              </label>
-              <audio controls>
-                <source src={`/music/${src}`} />
-              </audio>
-            </article>
-          ))
-        }
-      </div>
-    </section>
-
-    <section>
-      <h2>Demás cosas</h2>
-      <section>
-        <h3>Cine</h3>
-        <p>
-          Hace pocos años me adentré con fuerza en el cine, sobretodo la
-          dirección cinematográfica con directores como <strong
-            >Stanley Kubrick</strong
-          > o <strong>Bong Joon-ho</strong>. Disfruto mucho ver películas de
-          todo tipo y también ver vídeos analizandolas.
-        </p>
-        <Movies />
-      </section>
-      <section>
-        <h3>Libros</h3>
-        <p>
-          Empezar a leer fue una decisión muy conciente pues consideraba que
-          sería un buen hábito. Empezé con la ciencia ficción, después empezé a
-          leer mucho sobre divulgación científica y matemática; sobre todo leía
-          a <strong>Issac Asimov</strong>. Aunque no soy mucho de fantasía, he
-          disfrutado mucho de libros de <strong>Brandon Sanderson</strong> y
-          <strong>Michael Ende</strong>.
-        </p>
-        <Books />
-      </section>
-    </section>
-
-    <section>
-      <h2>Programación</h2>
-      <p>
-        Empezé a programar a los 14, pero no fue hastas los 17 años que me lo
-        tomé en serio. He programado en C, Python, Lua, PHP, C# y Rust; pero los
-        lenguajes que más uso actualmente son <strong>JavaScript</strong> y <strong
-          >TypeScript</strong
-        >. Trabajo en su mayoria con <strong>Angular</strong>, <strong
-          >Bootstrap</strong
+  <div class="max-w-screen-lorem mx-auto">
+    <section class="pt-12 pb-14 md:pt-16 md:pb-20">
+      <div class="relative">
+        <div
+          class="absolute w-44 h-20 gradient blur-background-effect opacity-25 top-0 left-4 blur-3xl pointer-events-none"
         >
-        <strong>NodeJs</strong>, <strong>Express</strong> y <strong
-          >MongoDB</strong
-        >; pero también he visto (un poco más o un poco menos) Deno, Bun, Astro,
-        TailwindCSS, Fresh React, Flask, Nestjs y MySQL. No solo quiero aprender
-        desarrollo web, así que aprendí otras cosas como
-        <strong>Docker</strong> y Rust para tocar más ramas.
-      </p>
-      <ul class="my-6 space-y-4 list-disc pl-8">
-        <li>
-          <a
-            class="prog"
-            href="https://github.com/michelangelo-valderrama/game-of-life"
-            >[Conway's Game of Life]</a
-          > ~ El juego de la vida de Conway con Bun y TypeScript.
-        </li>
-        <li>
-          <a
-            class="prog"
-            href="https://github.com/michelangelo-valderrama/python-mini-projects"
-            >[Python Mini Projects]</a
-          > ~ Algunos proyectos con Python sobre matemáticas y animaciones
-          matemáticas con <a href="https://www.manim.community/" target="_blank"
-            >Manim</a
-          >.
-        </li>
-        <li>
-          🚧 <a
-            class="prog"
-            href="https://github.com/michelangelo-valderrama/neoTodoList"
-            >[Neo Todo List]</a
-          > ~ Un todo list con Angular, Nestjs y MongoDB.
-        </li>
-      </ul>
+        </div>
+        <h1
+          class="text-4xl md:text-5xl font-bold gradient background-gradient-effect text-transparent bg-clip-text"
+        >
+          About <small set:html="<コ:彡" />
+        </h1>
+      </div>
     </section>
-  </article>
+    <article class="text-lg leading-relaxed max-w-screen-md">
+      <div>
+        <p class="book-line">
+          Llamadme Michelangelo. Soy alguien con muchos intereses, y que a veces
+          se obseciona con algún tema en particular durante días o semanas sin
+          ningún motivo. Para que estas divagaciones mías no solo se queden en
+          solo eso, <em>“mías”</em>, pensé en crear un blog para poder escribir
+          sobre estas y no queden en nada. Tal vez incluso le puedan servir a
+          alguien.
+        </p>
+        <p>
+          Actualmente, trabajo por horas como desarrollador fullstack en <a
+            href="https://if7sports.com/"
+            target="_blank">IF7Sports</a
+          >.
+        </p>
+      </div>
+
+      <section>
+        <h2>Dibujo</h2>
+        <p>
+          Llevo dibujando desde que tengo uso de razón, pero hoy día solo hago
+          algún dibujo suelto en uno de mis sketchbooks cada cierto tiempo. Cada
+          vez me enfoco más en el diseño, pero hace unos años me centré bastante
+          en el dibujo anatómico.
+        </p>
+        <Draws />
+      </section>
+
+      <section>
+        <h2>Música</h2>
+        <p>
+          Desde los 8 años que llevo tocando la guitarra española. También
+          aprendí la guitarra eléctrica, el ukelele, el piano y el bajo. Nunca
+          me he enfocado en dominar estos instrumentos, sobre todo lo que quería
+          era hacer música en <strong>GarageBand</strong> y <strong
+            >FLStudio</strong
+          >.
+        </p>
+        <div role="list" class="grid sm:grid-cols-2 gap-y-8">
+          {
+            songs.map(({ title, src }) => (
+              <article role="listitem">
+                <label>
+                  <em>{title}</em>
+                </label>
+                <audio controls>
+                  <source src={`/music/${src}`} />
+                </audio>
+              </article>
+            ))
+          }
+        </div>
+      </section>
+
+      <section>
+        <h2>Demás cosas</h2>
+        <section>
+          <h3>Cine</h3>
+          <p>
+            Hace pocos años me adentré con fuerza en el cine, sobretodo la
+            dirección cinematográfica con directores como <strong
+              >Stanley Kubrick</strong
+            > o <strong>Bong Joon-ho</strong>. Disfruto mucho ver películas de
+            todo tipo y también ver vídeos analizandolas.
+          </p>
+          <Movies />
+        </section>
+        <section>
+          <h3>Libros</h3>
+          <p>
+            Empezar a leer fue una decisión muy conciente pues consideraba que
+            sería un buen hábito. Empezé con la ciencia ficción, después empezé
+            a leer mucho sobre divulgación científica y matemática; sobre todo
+            leía a <strong>Issac Asimov</strong>. Aunque no soy mucho de
+            fantasía, he disfrutado mucho de libros de <strong
+              >Brandon Sanderson</strong
+            > y
+            <strong>Michael Ende</strong>.
+          </p>
+          <Books />
+        </section>
+      </section>
+
+      <section>
+        <h2>Programación</h2>
+        <p>
+          Empezé a programar a los 14, pero no fue hastas los 17 años que me lo
+          tomé en serio. He programado en C, Python, Lua, PHP, C# y Rust; pero
+          los lenguajes que más uso actualmente son <strong>JavaScript</strong>
+           y <strong>TypeScript</strong>. Trabajo en su mayoria con <strong
+            >Angular</strong
+          >, <strong>Bootstrap</strong>
+          <strong>NodeJs</strong>, <strong>Express</strong> y <strong
+            >MongoDB</strong
+          >; pero también he visto (un poco más o un poco menos) Deno, Bun,
+          Astro, TailwindCSS, Fresh React, Flask, Nestjs y MySQL. No solo quiero
+          aprender desarrollo web, así que aprendí otras cosas como
+          <strong>Docker</strong> y Rust para tocar más ramas.
+        </p>
+        <ul class="my-6 space-y-4 list-disc pl-8">
+          <li>
+            <a
+              class="prog"
+              href="https://github.com/michelangelo-valderrama/game-of-life"
+              >[Conway's Game of Life]</a
+            > ~ El juego de la vida de Conway con Bun y TypeScript.
+          </li>
+          <li>
+            <a
+              class="prog"
+              href="https://github.com/michelangelo-valderrama/python-mini-projects"
+              >[Python Mini Projects]</a
+            > ~ Algunos proyectos con Python sobre matemáticas y animaciones
+            matemáticas con <a
+              href="https://www.manim.community/"
+              target="_blank">Manim</a
+            >.
+          </li>
+          <li>
+            🚧 <a
+              class="prog"
+              href="https://github.com/michelangelo-valderrama/neoTodoList"
+              >[Neo Todo List]</a
+            > ~ Un todo list con Angular, Nestjs y MongoDB.
+          </li>
+        </ul>
+      </section>
+    </article>
+  </div>
 </BaseLayout>
 
 <style>

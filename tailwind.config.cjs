@@ -6,6 +6,9 @@ module.exports = {
   darkMode: "class",
   theme: {
     extend: {
+      screens: {
+        'lorem': '860px'
+      },
       typography: ({ theme }) => ({
         lorem: {
           css: {

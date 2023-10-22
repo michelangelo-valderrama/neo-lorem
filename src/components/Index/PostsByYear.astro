@@ -1,9 +1,9 @@
 ---
-import PostPreview from './PostPreview.astro'
-import { getCollection } from 'astro:content'
-import { groupBy } from '../../utils/all'
+import PostPreview from "./PostPreview.astro"
+import { getCollection } from "astro:content"
+import { groupBy } from "../../utils"
 
-const blog = (await getCollection('blog')).sort(
+const blog = (await getCollection("blog")).sort(
   (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
 )
 blog.splice(0, 1)
@@ -13,34 +13,30 @@ const blogPosts = blog.map((post) => ({
   date: post.data.pubDate,
   title: post.data.title,
   description: post.data.description,
-  year: post.data.pubDate.toLocaleDateString('es-ES', {
-    year: 'numeric',
+  year: post.data.pubDate.toLocaleDateString("es-ES", {
+    year: "numeric",
   }),
 }))
-const postsByYear = groupBy(blogPosts, 'year')
+const postsByYear = groupBy(blogPosts, "year")
 const years = Array.from(new Set(blogPosts.map((post) => post.year)))
 ---
 
-<article>
-  {
-    years.map((year) => (
-      <article class="mb-12">
-        <p class="text-xl md:2xl text-textColor-accent mb-4">
-          <strong>
-            <time>{year}</time>
-          </strong>
-        </p>
-        <article>
-          {(postsByYear[year] as typeof blogPosts).map((post) => (
-            <PostPreview
-              slug={post.slug}
-              date={post.date}
-              title={post.title}
-              description={post.description}
-            />
-          ))}
-        </article>
-      </article>
-    ))
-  }
-</article>
+{
+  years.map((year) => (
+    <article class="mb-12 mt-20 max-w-screen-md">
+      <p class="text-xl md:2xl text-textColor-accent mb-4">
+        <strong>
+          <time>{year}</time>
+        </strong>
+      </p>
+      {(postsByYear[year] as typeof blogPosts).map((post) => (
+        <PostPreview
+          slug={post.slug}
+          date={post.date}
+          title={post.title}
+          description={post.description}
+        />
+      ))}
+    </article>
+  ))
+}

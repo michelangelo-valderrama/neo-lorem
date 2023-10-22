@@ -1,4 +1,4 @@
-import { $s } from "../utils/all"
+import { $s } from "../utils"
 
 /**
  * Muestra y esconde el elemento seleccionado según si se hace scroll para arriba o para abajo.

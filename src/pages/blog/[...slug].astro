@@ -1,12 +1,12 @@
 ---
-import BaseLayout from '../../layouts/BaseLayout.astro'
-import FormattedDate from '../../components/FormattedDate.astro'
-import type { GetStaticPaths } from 'astro'
-import { getCollection, type CollectionEntry } from 'astro:content'
-import RightArrowIcon from '../../icons/RightArrowIcon.astro'
+import BaseLayout from "../../layouts/BaseLayout.astro"
+import FormattedDate from "../../components/FormattedDate.astro"
+import type { GetStaticPaths } from "astro"
+import { getCollection, type CollectionEntry } from "astro:content"
+import RightArrowIcon from "../../icons/RightArrowIcon.astro"
 
 export const getStaticPaths = (async () => {
-  const blog = await getCollection('blog')
+  const blog = await getCollection("blog")
   return blog.map((post) => ({
     params: { slug: post.slug },
     props: { post },
@@ -14,11 +14,14 @@ export const getStaticPaths = (async () => {
 }) satisfies GetStaticPaths
 
 interface Props {
-  post: CollectionEntry<'blog'>
+  post: CollectionEntry<"blog">
 }
 
 const { post } = Astro.props
 const { Content } = await post.render()
+
+const time = Math.round(post.body.split(" ").length / 150)
+const readingTime = time && `${time - 1}-${time + 1}`
 ---
 
 <BaseLayout title={post.data.title} class="scroll-smooth scroll-p-24">
@@ -37,36 +40,49 @@ const { Content } = await post.render()
       )
     }
   </article>
-  <section class="mb-12 md:mb-24 md:text-center">
+  <div class="max-w-screen-lg mx-auto">
     <p class="text-left mb-4 hidden md:block text-textColor-teriary">
       <a href="/blog">
         <i>
-          <RightArrowIcon
-            class="rotate-180 inline-block"
-          />
+          <RightArrowIcon class="rotate-180 inline-block" />
         </i>
-        Blog
+         Blog
       </a>
     </p>
-    <p class="mb-2"><FormattedDate date={post.data.pubDate} /></p>
-    <h1 class="text-4xl md:text-5xl font-bold text-textColor-primary mb-2 md:mb-4">
-      {post.data.title}
-    </h1>
-    <p class="text-lg"><em>{post.data.description}</em></p>
-  </section>
-  <article
-    class="prose prose-lorem dark:prose-invert md:prose-lg prose-img:rounded-lg prose-code:before:content-[''] prose-code:after:content-[''] prose-code:bg-preColor prose-code:p-1 prose-code:rounded-md prose-h1:text-4xl prose-h1:text-center prose-h2:border-b prose-h2:pb-1 prose-h2:border-borderColor-gray prose-h2:text-3xl prose-h3:italic max-w-none"
-  >
-    <Content />
-  </article>
-  <div class="mt-[56vh] mb-[4vh] text-center">
-    <p class="text-textColor-teriary"><em>[Espacio en blanco para mejor lectura]</em></p>
+    <section class="md:text-center max-w-screen-md mx-auto md:px-4">
+      <p class="mb-2">
+        <FormattedDate date={post.data.pubDate} />
+      </p>
+      <h1
+        class="text-4xl md:text-5xl font-bold text-textColor-primary mb-2 md:mb-4"
+      >
+        {post.data.title}
+      </h1>
+      <p class="text-lg"><em>{post.data.description}</em></p>
+    </section>
+    <div class="mt-14 mb-14">
+      <p class="mb-4">
+        ⏱️ {readingTime} minutos
+      </p>
+      <div class="bg-borderColor-gray h-[2px]"></div>
+    </div>
+    <article
+      class="prose prose-lorem dark:prose-invert md:prose-lg prose-img:rounded-lg prose-code:before:content-[''] prose-code:after:content-[''] prose-code:bg-preColor prose-code:p-1 prose-code:rounded-md prose-h1:text-4xl prose-h1:text-center prose-h2:border-b prose-h2:pb-1 prose-h2:border-borderColor-gray prose-h2:text-3xl prose-h3:italic max-w-screen-sm"
+      id="content"
+    >
+      <Content />
+    </article>
+  </div>
+  <div class="mt-[48vh] text-center">
+    <p class="text-textColor-teriary">
+      <em>[Espacio en blanco para mejor lectura]</em>
+    </p>
   </div>
 </BaseLayout>
 
 <script>
-  import createLinksInHeaders from '../../scripts/blogHeaders.ts'
-  window.addEventListener('load', () => {
-    createLinksInHeaders('main')
+  import createLinksInHeaders from "../../scripts/blogHeaders.ts"
+  window.addEventListener("load", () => {
+    createLinksInHeaders("main")
   })
 </script>
