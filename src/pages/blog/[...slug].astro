@@ -1,9 +1,9 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro"
 import FormattedDate from "../../components/FormattedDate.astro"
+import ChevronLeft from "../../icons/ChevronLeft.astro"
 import type { GetStaticPaths } from "astro"
 import { getCollection, type CollectionEntry } from "astro:content"
-import RightArrowIcon from "../../icons/RightArrowIcon.astro"
 
 export const getStaticPaths = (async () => {
   const blog = await getCollection("blog")
@@ -28,7 +28,7 @@ const readingTime = time && `${time - 1}-${time + 1}`
   <article slot="header" class="mb-14 md:mb-20 min-h-[1px]">
     {
       post.data.mainImg && (
-        <picture class="block bg-[#171717]">
+        <picture class="block bg-preColor/20">
           <img
             src={post.data.mainImg}
             alt={post.data.description}
@@ -42,9 +42,11 @@ const readingTime = time && `${time - 1}-${time + 1}`
   </article>
   <div class="max-w-screen-lg mx-auto">
     <p class="text-left mb-4 hidden md:block text-textColor-teriary">
-      <a href="/blog">
+      <a href="/blog" class="group">
         <i>
-          <RightArrowIcon class="rotate-180 inline-block" />
+          <ChevronLeft
+            class="inline-block group-hover:translate-x-[-0.5rem] transition-transform"
+          />
         </i>
          Blog
       </a>
@@ -67,7 +69,7 @@ const readingTime = time && `${time - 1}-${time + 1}`
       <div class="bg-borderColor-gray h-[2px]"></div>
     </div>
     <article
-      class="prose prose-lorem dark:prose-invert md:prose-lg prose-img:rounded-lg prose-code:before:content-[''] prose-code:after:content-[''] prose-code:bg-preColor prose-code:p-1 prose-code:rounded-md prose-h1:text-4xl prose-h1:text-center prose-h2:border-b prose-h2:pb-1 prose-h2:border-borderColor-gray prose-h2:text-3xl prose-h3:italic max-w-screen-sm"
+      class="prose prose-lorem dark:prose-invert md:prose-lg prose-img:rounded-lg prose-code:before:content-[''] prose-code:after:content-[''] prose-code:bg-preColor prose-code:p-1 prose-code:rounded-md prose-h1:text-4xl prose-h1:text-center prose-h2:border-b md:prose-h2:pt-6 prose-h2:pb-1 md:prose-h2:mb-12 md:prose-h2:text-center prose-h2:border-borderColor-gray prose-h2:text-3xl prose-h3:italic prose-h3:mt-12 max-w-screen-sm"
       id="content"
     >
       <Content />

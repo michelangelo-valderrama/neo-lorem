@@ -7,12 +7,12 @@ module.exports = {
   theme: {
     extend: {
       screens: {
-        'lorem': '860px'
+        lorem: "860px",
       },
       typography: ({ theme }) => ({
         lorem: {
           css: {
-            "--tw-prose-body": theme("colors.textColor.secondary"),
+            "--tw-prose-body": theme("colors.textColor.blog"),
             "--tw-prose-headings": theme("colors.textColor.primary"),
             // '--tw-prose-lead': theme('colors.pink[700]'),
             "--tw-prose-links": theme("colors.textColor.accent.DEFAULT"),
@@ -28,7 +28,7 @@ module.exports = {
             "--tw-prose-pre-bg": theme("colors.preColor"),
             "--tw-prose-th-borders": theme("colors.borderColor.gray"),
             "--tw-prose-td-borders": theme("colors.borderColor.gray"),
-            "--tw-prose-invert-body": theme("colors.textColor.secondary"),
+            "--tw-prose-invert-body": theme("colors.textColor.blog"),
             "--tw-prose-invert-headings": theme("colors.textColor.primary"),
             // '--tw-prose-invert-lead': theme('colors.pink[300]'),
             "--tw-prose-invert-links": theme("colors.textColor.accent.DEFAULT"),
@@ -53,9 +53,6 @@ module.exports = {
             },
             ".close": {
               '@apply after:content-["—"]': "",
-            },
-            em: {
-              "@apply text-textColor-teriary !important": "",
             },
             "h1, h2, h3, h4, h5, h6": {
               a: {

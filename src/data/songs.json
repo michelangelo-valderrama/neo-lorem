@@ -1,11 +1,11 @@
 [
   {
     "title": "chout",
-    "src": "chout.wav"
+    "src": "chout.mp3"
   },
   {
     "title": "guitarop",
-    "src": "guitarop.wav"
+    "src": "guitarop.mp3"
   },
   {
     "title": "masty magn",
@@ -17,22 +17,22 @@
   },
   {
     "title": "prisma",
-    "src": "prisma.wav"
+    "src": "prisma.mp3"
   },
   {
     "title": "sur",
-    "src": "sur.wav"
+    "src": "sur.mp3"
   },
   {
     "title": "treap",
-    "src": "treap.wav"
+    "src": "treap.mp3"
   },
   {
     "title": "vynilyminini",
-    "src": "vynilyminini.wav"
+    "src": "vynilyminini.mp3"
   },
   {
     "title": "where is my mind",
-    "src": "where_is_my_mind.m4a"
+    "src": "where_is_my_mind.mp3"
   }
 ]

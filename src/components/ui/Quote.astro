@@ -9,11 +9,11 @@ const { quote, cite, class: className } = Astro.props
 ---
 
 <div
-  class="bg-quotesColor/60 px-4 rounded-lg border-x-2 border-borderColor-accent/60"
+  class="sm:bg-quotesColor/60 sm:px-4 rounded-lg border-l-2 sm:border-r-2 border-borderColor-accent/60"
 >
   <blockquote
     class:list={[
-      "text-right pr-4 py-6 md:pr-0 rounded-none border-0 ml-auto",
+      "text-right py-6 md:pr-0 rounded-none border-0 ml-auto",
       className,
     ]}
   >
