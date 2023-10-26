@@ -1,31 +1,34 @@
 ---
+import { SITE } from "../../consts"
 type Props = {
   title: string
   metaTitle?: string
   description: string
+  keywords?: string[]
 }
 
-const { title, metaTitle, description } = Astro.props
+const { title, metaTitle, description, keywords = [] } = Astro.props
+
+const keywordsArr = [...SITE.KEYWORDS, ...keywords]
 ---
 
 <meta charset="utf-8" />
+
+<link rel="sitemap" href="/sitemap-index.xml" />
+<link rel="manifest" href="/manifest.json">
+
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 <meta name="viewport" content="width=device-width" />
 <meta name="generator" content={Astro.generator} />
 
 <title>{title}</title>
-<meta name="title" content={metaTitle ? metaTitle : title} />
+<meta name="title" content={metaTitle ?? title} />
 <meta name="description" content={description} />
+<meta name="theme-color" content="#18181b" />
 
-<!-- <link rel="preload" as="image" href="/noise-texture.webp" />
-<link
-  rel="preload"
-  as="font"
-  href="/fonts/source-serif-pro-regular.woff2"
-  type="font/woff2"
-  crossorigin
-/> -->
+<meta name="keywords" content={keywordsArr.join(",")} />
 
+<!--Fonts-->
 <link
   rel="preload"
   as="font"
@@ -33,7 +36,6 @@ const { title, metaTitle, description } = Astro.props
   type="font/woff2"
   crossorigin
 />
-
 <link
   rel="preload"
   as="font"
@@ -41,7 +43,6 @@ const { title, metaTitle, description } = Astro.props
   type="font/woff2"
   crossorigin
 />
-
 <link
   rel="preload"
   as="font"
@@ -49,7 +50,6 @@ const { title, metaTitle, description } = Astro.props
   type="font/woff2"
   crossorigin
 />
-
 <link
   rel="preload"
   as="font"
@@ -57,3 +57,4 @@ const { title, metaTitle, description } = Astro.props
   type="font/woff2"
   crossorigin
 />
+<!--#Fonts-->

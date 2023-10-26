@@ -4,6 +4,7 @@ import FormattedDate from "../../components/FormattedDate.astro"
 import ChevronLeft from "../../icons/ChevronLeft.astro"
 import type { GetStaticPaths } from "astro"
 import { getCollection, type CollectionEntry } from "astro:content"
+import HeadPost from "../../components/seo/HeadPost.astro"
 
 export const getStaticPaths = (async () => {
   const blog = await getCollection("blog")
@@ -24,7 +25,12 @@ const time = Math.round(post.body.split(" ").length / 150)
 const readingTime = time && `${time - 1}-${time + 1}`
 ---
 
-<BaseLayout title={post.data.title} class="scroll-smooth scroll-p-24">
+<BaseLayout
+  title={post.data.title}
+  keywords={post.data.tags}
+  class="scroll-smooth scroll-p-24"
+>
+  <HeadPost post={post} slot="meta" />
   <article slot="header" class="mb-14 md:mb-20 min-h-[1px]">
     {
       post.data.mainImg && (

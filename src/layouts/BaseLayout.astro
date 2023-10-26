@@ -8,17 +8,19 @@ import { SITE } from "../consts.ts"
 type Props = {
   title?: string
   class?: string
+  keywords?: string[]
 }
 
-const { title, class: className } = Astro.props
+const { title, class: className, keywords = [] } = Astro.props
 ---
 
 <!doctype html>
 <html lang="es" class:list={["dark font-serif", className]}>
   <head class="min-h-screen">
     <HeadCommon
-      title={title ? title : SITE.TITLE}
+      title={title ?? SITE.TITLE}
       description={SITE.DESCRIPTION}
+      keywords={keywords}
     />
     <slot name="meta" />
     <BaseStyles />

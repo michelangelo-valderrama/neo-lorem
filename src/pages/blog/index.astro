@@ -11,6 +11,7 @@ const blog = (await getCollection("blog")).sort(
 ---
 
 <BaseLayout title={`${SITE.TITLE} · Blog`}>
+  <meta slot="meta" name="robots" content="none" />
   <div class="max-w-screen-lorem mx-auto">
     <section class="pt-12 pb-14 md:pt-16 md:pb-20">
       <div class="relative">
