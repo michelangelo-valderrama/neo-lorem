@@ -7,27 +7,29 @@ import { SITE } from "../consts.ts"
 
 type Props = {
   title?: string
+  description?: string
   class?: string
   keywords?: string[]
 }
 
-const { title, class: className, keywords = [] } = Astro.props
+const { title, class: className, description } = Astro.props
 ---
 
 <!doctype html>
-<html lang="es" class:list={["dark font-serif", className]}>
+<html
+  lang="es"
+  class:list={[
+    "font-serif selection:bg-textColor-accent selection:text-background",
+    className,
+  ]}
+>
   <head class="min-h-screen">
-    <HeadCommon
-      title={title ?? SITE.TITLE}
-      description={SITE.DESCRIPTION}
-      keywords={keywords}
-    />
+    <HeadCommon title={title ?? SITE.TITLE} description={description} />
     <slot name="meta" />
     <BaseStyles />
   </head>
-
   <body
-    class="dark:bg-background dark:text-textColor-secondary break-words overflow-x-hidden selection:bg-textColor-accent selection:text-background"
+    class="bg-background text-textColor-secondary break-words overflow-x-hidden"
   >
     <Header />
     <slot name="header" />
@@ -35,7 +37,7 @@ const { title, class: className, keywords = [] } = Astro.props
       <slot />
     </main>
     <Footer />
-    <style>
+    <!-- <style>
       body::before,
       body::after {
         position: fixed;
@@ -52,6 +54,6 @@ const { title, class: className, keywords = [] } = Astro.props
       body::before {
         background: url("/noise-texture.webp");
       }
-    </style>
+    </style> -->
   </body>
 </html>

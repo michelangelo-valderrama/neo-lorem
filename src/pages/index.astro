@@ -5,17 +5,18 @@ import PostsByYear from "../components/Index/PostsByYear.astro"
 ---
 
 <BaseLayout>
+  <meta slot="meta" name="robots" content="all" />
   <div class="max-w-screen-lorem mx-auto">
     <section
       class="text-textColor-primary text-center flex align-middle justify-center"
     >
       <div class="mt-28 md:mt-36 mb-40 md:mb-52 relative">
         <div
-          class="absolute w-full h-36 gradient blur-background-effect opacity-25 top-0 left-0 blur-3xl pointer-events-none"
+          class="absolute w-full h-36 gradient opacity-25 top-0 left-0 blur-3xl pointer-events-none"
         >
         </div>
         <h1
-          class="text-6xl md:text-7xl font-bold gradient background-gradient-effect text-transparent bg-clip-text"
+          class="animate-[contentShowUp_200ms_ease] text-6xl md:text-7xl font-bold gradient text-transparent bg-clip-text"
         >
           Neo Lorem
         </h1>

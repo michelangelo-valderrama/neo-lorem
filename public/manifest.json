@@ -47,27 +47,20 @@
       "sizes": "512x512"
     }
   ],
-  "id": "/",
-  "start_url": "/",
-  "background_color": "#18181b",
+  "id": "/?source=pwa",
+  "start_url": "/?source=pwa",
+  "background_color": "#d8b4fe",
   "display": "standalone",
   "scope": "/",
-  "theme_color": "#18181b",
+  "theme_color": "#d8b4fe",
+  "description": "Blog personal sobre informática, programación y demás.",
   "shortcuts": [
     {
       "name": "Neo Lorem ~ Blog",
       "short_name": "Neo Lorem Blog",
-      "description": "Blog personal",
+      "description": "Acceso directo a los posts",
       "url": "/blog?source=pwa",
-      "icons": [{ "src": "/images/today.png", "sizes": "192x192" }]
-    },
-    {
-      "name": "How's weather tomorrow?",
-      "short_name": "Tomorrow",
-      "description": "View weather information for tomorrow",
-      "url": "/tomorrow?source=pwa",
-      "icons": [{ "src": "/images/icons-192.png", "sizes": "192x192" }]
+      "icons": [{ "src": "/images/icons/icons-192.png", "sizes": "192x192" }]
     }
-  ],
-  "description": "Blog personal sobre programación"
+  ]
 }

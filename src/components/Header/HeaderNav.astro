@@ -1,10 +1,5 @@
----
-
----
-
 <article
-  id="scroll-elem"
-  class="top-element scroll-visibility fixed top-[64px] md:top-[76px] left-0 w-full bg-background/80 backdrop-blur-md pt-3 md:pt-4 pb-1 transition-all z-10 up"
+  class="top-element scroll-visibility fixed top-[64px] md:top-[76px] left-0 w-full bg-background/80 pt-3 md:pt-4 pb-1 z-10 up"
 >
   <nav class="flex md:text-base justify-center font-semibold">
     <slot />
@@ -27,7 +22,6 @@
 
 <script>
   import { showNav } from "../../scripts/showNav"
-
   const scrollHandler = showNav(".scroll-visibility")
   window.addEventListener("scroll", scrollHandler)
 </script>

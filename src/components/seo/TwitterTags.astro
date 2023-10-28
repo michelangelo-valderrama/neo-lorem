@@ -1,0 +1,32 @@
+---
+import { SITE } from "../../consts"
+
+interface Props {
+  title: string
+  description: string
+  card?: string
+  site?: string
+  creator?: string
+  image?: string
+  imageAlt?: string
+}
+
+const {
+  title,
+  description,
+  card = "summary_large_image",
+  site = "@VTokyo9",
+  creator = "@VTokyo9",
+  image = SITE.IMAGE,
+  imageAlt = SITE.IMAGE_ALT,
+} = Astro.props
+---
+
+<!--Twitter Tags-->
+<meta property="twitter:title" content={title} />
+<meta property="twitter:description" content={description} />
+<meta property="twitter:card" content={card} />
+<meta property="twitter:site" content={site} />
+<meta property="twitter:creator" content={creator} />
+<meta property="twitter:image" content={image} />
+<meta property="twitter:image:alt" content={imageAlt} />

@@ -1,34 +1,27 @@
 ---
 import { SITE } from "../../consts"
-type Props = {
+import OpenGraphTags from "./OpenGraphTags.astro"
+import TwitterTags from "./TwitterTags.astro"
+
+interface Props {
   title: string
-  metaTitle?: string
-  description: string
-  keywords?: string[]
+  description?: string
 }
 
-const { title, metaTitle, description, keywords = [] } = Astro.props
+const url = Astro.url
+const { title, description = SITE.DESCRIPTION } = Astro.props
 
-const keywordsArr = [...SITE.KEYWORDS, ...keywords]
+const canonical = url.href
 ---
 
-<meta charset="utf-8" />
-
-<link rel="sitemap" href="/sitemap-index.xml" />
-<link rel="manifest" href="/manifest.json">
-
-<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-<meta name="viewport" content="width=device-width" />
-<meta name="generator" content={Astro.generator} />
-
+<!--High Priority Global Metadata-->
 <title>{title}</title>
-<meta name="title" content={metaTitle ?? title} />
-<meta name="description" content={description} />
-<meta name="theme-color" content="#18181b" />
+<meta http-equiv="X-UA-Compatible" content="IE=7" />
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="theme-color" content="#d8b4fe" />
 
-<meta name="keywords" content={keywordsArr.join(",")} />
-
-<!--Fonts-->
+<!--Font preloads-->
 <link
   rel="preload"
   as="font"
@@ -57,4 +50,21 @@ const keywordsArr = [...SITE.KEYWORDS, ...keywords]
   type="font/woff2"
   crossorigin
 />
-<!--#Fonts-->
+
+<!--Low Priority Global Metadata-->
+<link rel="manifest" href="manifest.json" />
+<link rel="sitemap" href="/sitemap-index.xml" />
+<link rel="shortcut icon" href="/favicon.svg" type="image/x-icon" />
+<link
+  rel="alternate"
+  type="application/rss+xml"
+  title="RSS Feed de neolorem.dev"
+  href="/rss.xml"
+/>
+
+<!--Page Metadata-->
+<meta name="description" content={description} />
+<link rel="canonical" href={canonical} />
+
+<OpenGraphTags title={title} description={description} />
+<TwitterTags title={title} description={description} />

@@ -2,7 +2,10 @@ export const SITE = {
   TITLE: "Neo Lorem",
   DESCRIPTION: "Bienvenido a mi blog :^",
   URL: "https://neolorem.dev",
-  KEYWORDS: ["Programación", "Desarrollo web", "Informática", "Ciencia"],
+  IMAGE: "banner.png",
+  IMAGE_ALT: "Blog Neo Lorem",
+  IMAGE_WIDTH: "1200",
+  IMAGE_HEIGHT: "675",
 }
 
 export const URLS_MAP = [

@@ -27,10 +27,10 @@ const readingTime = time && `${time - 1}-${time + 1}`
 
 <BaseLayout
   title={post.data.title}
-  keywords={post.data.tags}
+  description={post.data.description}
   class="scroll-smooth scroll-p-24"
 >
-  <HeadPost post={post} slot="meta" />
+  <HeadPost slot="meta" post={post} slot="meta" />
   <article slot="header" class="mb-14 md:mb-20 min-h-[1px]">
     {
       post.data.mainImg && (
@@ -75,7 +75,7 @@ const readingTime = time && `${time - 1}-${time + 1}`
       <div class="bg-borderColor-gray h-[2px]"></div>
     </div>
     <article
-      class="prose prose-lorem dark:prose-invert md:prose-lg prose-img:rounded-lg prose-code:before:content-[''] prose-code:after:content-[''] prose-code:bg-preColor prose-code:p-1 prose-code:rounded-md prose-h1:text-4xl prose-h1:text-center prose-h2:border-b md:prose-h2:pt-6 prose-h2:pb-1 md:prose-h2:mb-12 md:prose-h2:text-center prose-h2:border-borderColor-gray prose-h2:text-3xl prose-h3:italic prose-h3:mt-12 max-w-screen-sm"
+      class="prose prose-lorem dark:prose-invert prose-lg prose-img:rounded-lg prose-code:before:content-[''] prose-code:after:content-[''] prose-code:bg-preColor prose-code:p-1 prose-code:rounded-md prose-h1:text-4xl prose-h1:text-center prose-h2:border-b md:prose-h2:pt-6 prose-h2:pb-1 md:prose-h2:mb-12 md:prose-h2:text-center prose-h2:border-borderColor-gray prose-h2:text-3xl prose-h3:italic prose-h3:mt-12 max-w-screen-sm"
       id="content"
     >
       <Content />

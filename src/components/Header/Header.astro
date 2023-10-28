@@ -5,17 +5,14 @@ import { URLS_MAP } from "../../consts"
 ---
 
 <div class="mb-[118px]">
-  <article
-    id="header-container"
-    class="fixed top-0 left-0 w-full bg-background/80 backdrop-blur-md z-20 transition-all"
-  >
+  <article class="fixed top-0 left-0 w-full bg-background/80 z-20">
     <div
-      id="header-content"
-      class="max-w-screen-2xl mx-auto flex justify-between py-4 px-6 md:px-8 transition-all"
+      class="max-w-screen-2xl mx-auto flex justify-between py-4 px-6 md:px-8"
     >
       <a href="/" class="active:scale-90 transition-transform">
         <img
           class="pointer-events-none w-8 md:w-11"
+          loading="lazy"
           src="/favicon.svg"
           alt="Logo del blog"
           height={44}
