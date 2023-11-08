@@ -1,10 +1,9 @@
 ---
-import BaseLayout from "../../layouts/BaseLayout.astro"
 import FormattedDate from "../../components/FormattedDate.astro"
 import ChevronLeft from "../../icons/ChevronLeft.astro"
 import type { GetStaticPaths } from "astro"
 import { getCollection, type CollectionEntry } from "astro:content"
-import HeadPost from "../../components/seo/HeadPost.astro"
+import PostLayout from "../../layouts/PostLayout.astro"
 
 export const getStaticPaths = (async () => {
   const blog = await getCollection("blog")
@@ -25,33 +24,13 @@ const time = Math.round(post.body.split(" ").length / 150)
 const readingTime = time && `${time - 1}-${time + 1}`
 ---
 
-<BaseLayout
-  title={post.data.title}
-  description={post.data.description}
-  class="scroll-smooth scroll-p-24"
->
-  <HeadPost slot="meta" post={post} slot="meta" />
-  <article slot="header" class="mb-14 md:mb-20 min-h-[1px]">
-    {
-      post.data.mainImg && (
-        <picture class="block bg-preColor/20">
-          <img
-            src={post.data.mainImg}
-            alt={post.data.description}
-            width="800"
-            height="400"
-            class="mx-auto max-h-96 max-w-screen-lg w-full object-cover"
-          />
-        </picture>
-      )
-    }
-  </article>
+<PostLayout post={post}>
   <div class="max-w-screen-lg mx-auto">
-    <p class="text-left mb-4 hidden md:block text-textColor-teriary">
+    <p class="text-left mb-4 hidden md:block text-textColor-accent font-bold text-lg">
       <a href="/blog" class="group">
         <i>
           <ChevronLeft
-            class="inline-block group-hover:translate-x-[-0.5rem] transition-transform"
+            class="inline-block group-hover:translate-x-[-0.25rem] transition-transform"
           />
         </i>
          Blog
@@ -66,7 +45,7 @@ const readingTime = time && `${time - 1}-${time + 1}`
       >
         {post.data.title}
       </h1>
-      <p class="text-lg"><em>{post.data.description}</em></p>
+      <p class="text-lg md:text-xl"><em>{post.data.description}</em></p>
     </section>
     <div class="mt-14 mb-14">
       <p class="mb-4">
@@ -75,7 +54,7 @@ const readingTime = time && `${time - 1}-${time + 1}`
       <div class="bg-borderColor-gray h-[2px]"></div>
     </div>
     <article
-      class="prose prose-lorem dark:prose-invert prose-lg prose-img:rounded-lg prose-code:before:content-[''] prose-code:after:content-[''] prose-code:bg-preColor prose-code:p-1 prose-code:rounded-md prose-h1:text-4xl prose-h1:text-center prose-h2:border-b md:prose-h2:pt-6 prose-h2:pb-1 md:prose-h2:mb-12 md:prose-h2:text-center prose-h2:border-borderColor-gray prose-h2:text-3xl prose-h3:italic prose-h3:mt-12 max-w-screen-sm"
+      class="prose prose-lorem dark:prose-invert md:prose-xl prose-code:before:content-[''] prose-code:after:content-[''] prose-h1:text-center md:prose-h2:pt-8 md:prose-h2:mb-6 md:prose-h2:text-center prose-h3:text-2xl prose-h3:italic prose-h3:mt-12 max-w-screen-md mx-auto"
       id="content"
     >
       <Content />
@@ -86,11 +65,11 @@ const readingTime = time && `${time - 1}-${time + 1}`
       <em>[Espacio en blanco para mejor lectura]</em>
     </p>
   </div>
-</BaseLayout>
-
+</PostLayout>
+<!-- 
 <script>
   import createLinksInHeaders from "../../scripts/blogHeaders.ts"
   window.addEventListener("load", () => {
     createLinksInHeaders("main")
   })
-</script>
+</script> -->

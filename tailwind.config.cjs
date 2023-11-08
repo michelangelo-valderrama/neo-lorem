@@ -49,10 +49,7 @@ module.exports = {
         DEFAULT: {
           css: {
             ".aside": {
-              '@apply before:content-["—"]': "",
-            },
-            ".close": {
-              '@apply after:content-["—"]': "",
+              '@apply before:content-["—"] after:content-["—"]': "",
             },
             "h1, h2, h3, h4, h5, h6": {
               a: {

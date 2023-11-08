@@ -49,7 +49,7 @@
   ],
   "id": "/?source=pwa",
   "start_url": "/?source=pwa",
-  "background_color": "#d8b4fe",
+  "background_color": "#18181b",
   "display": "standalone",
   "scope": "/",
   "theme_color": "#d8b4fe",

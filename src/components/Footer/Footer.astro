@@ -1,23 +1,35 @@
 ---
 import HeaderLink from "../HeaderLink.astro"
 import { URLS_MAP } from "../../consts.ts"
+import GithubIcon from "../../icons/GithubIcon.astro"
 ---
 
-<footer class="max-w-screen-lorem mx-auto p-6 md:px-0">
-  <article class="w-28 mb-12 mt-14">
-    {
-      URLS_MAP.map(({ href, title }) => (
-        <div class="hover:text-textColor-primary font-semibold">
-          <HeaderLink
-            href={href}
-            title={title}
-            class="active block px-4 py-1 border-l-2 border-l-borderColor-gray"
-          />
-        </div>
-      ))
-    }
-  </article>
-  <p class="text-sm">creado con <strong>Astro</strong></p>
+<footer
+  class="border-t border-borderColor-gray mb-12 mt-36"
+>
+  <div class="p-6 md:px-0 max-w-screen-lorem mx-auto flex justify-between items-center">
+    <div class="w-28">
+      {
+        URLS_MAP.map(({ href, title }) => (
+          <div class="hover:text-textColor-primary font-semibold">
+            <HeaderLink
+              href={href}
+              title={title}
+              class="active block px-4 py-1 border-l-2 border-l-borderColor-gray"
+            />
+          </div>
+        ))
+      }
+    </div>
+    <div class="flex justify-center gap-2">
+      <a
+        class="hover:text-textColor-primary"
+        href="https://github.com/michelangelo-valderrama"
+        target="_blank">GitHub</a
+      >
+      <GithubIcon class="w-5 h-5 text-textColor-primary" />
+    </div>
+  </div>
 </footer>
 
 <style>

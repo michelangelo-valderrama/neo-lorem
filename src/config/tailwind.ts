@@ -36,7 +36,7 @@ export const colors = {
   },
   hrColor: zinc[800],
   quotesColor: {
-    DEFAULT: zinc[800],
+    DEFAULT: zinc[400],
   },
   preColor: zinc[700],
 }
@@ -66,5 +66,16 @@ export const fontFamily = {
     "Times New Roman",
     "Times",
     "serif",
+  ],
+  mono: [
+    "Cascadia",
+    "ui-monospace",
+    "SFMono-Regular",
+    "Menlo",
+    "Monaco",
+    "Consolas",
+    "Liberation Mono",
+    "Courier New",
+    "monospace",
   ],
 }

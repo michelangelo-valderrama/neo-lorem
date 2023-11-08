@@ -1,0 +1,39 @@
+---
+import type { CollectionEntry } from "astro:content"
+import BaseLayout from "./BaseLayout.astro"
+import HeadPost from "../components/seo/HeadPost.astro"
+
+interface Props {
+  post: CollectionEntry<"blog">
+}
+
+const { post } = Astro.props
+---
+
+<BaseLayout
+  title={post.data.title}
+  description={post.data.description}
+  class="scroll-smooth scroll-p-24"
+  image={post.data.mainImg}
+  imageAlt={post.data.description}
+  imageHeight="800"
+  imageWidth="400"
+>
+  <HeadPost slot="meta" post={post} slot="meta" />
+  <article slot="header" class="mb-14 md:mb-20 min-h-[1px]">
+    {
+      post.data.mainImg && (
+        <picture class="block bg-preColor/20">
+          <img
+            src={post.data.mainImg}
+            alt={post.data.description}
+            width="800"
+            height="400"
+            class="mx-auto max-h-96 max-w-screen-lg w-full object-cover"
+          />
+        </picture>
+      )
+    }
+  </article>
+  <slot />
+</BaseLayout>

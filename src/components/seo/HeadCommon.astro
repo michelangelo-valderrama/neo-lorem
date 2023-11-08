@@ -6,10 +6,21 @@ import TwitterTags from "./TwitterTags.astro"
 interface Props {
   title: string
   description?: string
+  image?: string
+  imageAlt?: string
+  imageWidth?: string
+  imageHeight?: string
 }
 
 const url = Astro.url
-const { title, description = SITE.DESCRIPTION } = Astro.props
+const {
+  title,
+  description = SITE.DESCRIPTION,
+  image,
+  imageAlt,
+  imageWidth,
+  imageHeight,
+} = Astro.props
 
 const canonical = url.href
 ---
@@ -52,7 +63,7 @@ const canonical = url.href
 />
 
 <!--Low Priority Global Metadata-->
-<link rel="manifest" href="manifest.json" />
+<link rel="manifest" href="/manifest.json" />
 <link rel="sitemap" href="/sitemap-index.xml" />
 <link rel="shortcut icon" href="/favicon.svg" type="image/x-icon" />
 <link
@@ -66,5 +77,17 @@ const canonical = url.href
 <meta name="description" content={description} />
 <link rel="canonical" href={canonical} />
 
-<OpenGraphTags title={title} description={description} />
-<TwitterTags title={title} description={description} />
+<OpenGraphTags
+  title={title}
+  description={description}
+  image={image}
+  imageAlt={imageAlt}
+  imageWidth={imageWidth}
+  imageHeight={imageHeight}
+/>
+<TwitterTags
+  title={title}
+  description={description}
+  image={image}
+  imageAlt={imageAlt}
+/>

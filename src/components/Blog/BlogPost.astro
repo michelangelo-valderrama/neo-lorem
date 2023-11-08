@@ -14,14 +14,14 @@ interface Props extends HTMLAttributes<"a"> {
 const { slug, date, title, description, tags } = Astro.props
 ---
 
-<article class="sm:flex sm:flex-row-reverse sm:gap-10 mb-12">
-  <article class="sm:w-32 sm:text-right">
-    <p class="sm:font-bold md:text-lg text-textColor-teriary">
+<article class="sm:flex sm:flex-row-reverse sm:gap-x-20 mb-10">
+  <article class="sm:text-right">
+    <p class="sm:font-bold md:text-lg text-sm">
       <FormattedDate date={date} />
     </p>
   </article>
   <article class="sm:flex-1">
-    <p class="text-2xl md:text-3xl text-textColor-primary mb-1 md:mb-2">
+    <p class="text-xl md:text-2xl text-textColor-primary mb-1 md:mb-0">
       <a
         href={`/blog/${slug}`}
         class="hover:underline hover:underline-offset-8"
@@ -30,18 +30,20 @@ const { slug, date, title, description, tags } = Astro.props
       </a>
     </p>
     <p>{description}</p>
-    <p class="mt-4">
-      <ul class="hidden mb-4 sm:flex w-full sm:flex-wrap justify-start sm:gap-x-2 sm:gap-y-4">
+    <div class="my-4">
+      <ul
+        class="hidden sm:flex w-full sm:flex-wrap justify-start sm:gap-x-2 sm:gap-y-4"
+      >
         {
           tags.map((tag) => (
             <li>
-              <span class="border border-borderColor-gray px-2 py-1 rounded-lg">
-                {tag}
-              </span>
+              <span class="text-sm px-2 py-1 rounded-lg bg-hrColor">{tag}</span>
             </li>
           ))
         }
       </ul>
+    </div>
+    <p>
       <span class="text-textColor-accent group">
         <a
           href={`/blog/${slug}`}

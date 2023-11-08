@@ -9,10 +9,21 @@ type Props = {
   title?: string
   description?: string
   class?: string
-  keywords?: string[]
+  image?: string
+  imageAlt?: string
+  imageWidth?: string
+  imageHeight?: string
 }
 
-const { title, class: className, description } = Astro.props
+const {
+  title,
+  class: className,
+  description,
+  image,
+  imageAlt,
+  imageHeight,
+  imageWidth,
+} = Astro.props
 ---
 
 <!doctype html>
@@ -24,7 +35,14 @@ const { title, class: className, description } = Astro.props
   ]}
 >
   <head class="min-h-screen">
-    <HeadCommon title={title ?? SITE.TITLE} description={description} />
+    <HeadCommon
+      title={title ?? SITE.TITLE}
+      description={description}
+      image={image}
+      imageAlt={imageAlt}
+      imageHeight={imageHeight}
+      imageWidth={imageWidth}
+    />
     <slot name="meta" />
     <BaseStyles />
   </head>

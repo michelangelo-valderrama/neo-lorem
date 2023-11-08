@@ -1,5 +1,6 @@
 ---
 import type { CollectionEntry } from "astro:content"
+import { SITE } from "../../consts"
 
 interface Props {
   post: CollectionEntry<"blog">
@@ -10,10 +11,7 @@ const pubDate = post.data.pubDate.toDateString()
 const update = post.data.update?.toDateString() ?? pubDate
 const title = post.data.title
 const description = post.data.description
-const bannerUrl = new URL(
-  post.data.mainImg ?? "https://if7sports.com/assets/images/blog/Bonos3.webp",
-  Astro.site
-)
+const bannerUrl = new URL(post.data.mainImg ?? SITE.IMAGE, Astro.site)
 const bannerAlt = post.data.title ?? "Image alt"
 const bannerWidth = 800
 const bannerHeight = 420
@@ -48,7 +46,7 @@ const bannerHeight = 420
     author: [
       {
         "@type": "People",
-        name: "Michelangelo",
+        name: "Michelangelo Valderrama",
         url: Astro.site,
       },
     ],

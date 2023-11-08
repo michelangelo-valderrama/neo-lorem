@@ -1,0 +1,20 @@
+---
+interface Props {
+  img: string
+  foot: string
+  alt?: string
+}
+
+const { img, foot, alt = foot } = Astro.props
+const src = `/images/blog/${img}`
+---
+
+<figure class="">
+  <img
+    loading="lazy"
+    class="mx-auto bg-[#fafafa] border border-borderColor-light"
+    src={src}
+    alt={alt}
+  />
+  <figcaption class="text-center" set:html={foot} />
+</figure>
