@@ -1,6 +1,7 @@
 export const SITE = {
   TITLE: "Neo Lorem",
-  DESCRIPTION: "Bienvenido a mi blog :^",
+  DESCRIPTION:
+    "Llamadme Michelangelo. Soy alguien con muchos intereses, y que a veces se obseciona con algún tema en particular durante días o semanas sin ningún motivo",
   URL: "https://neolorem.dev",
   IMAGE: "/banner.png",
   IMAGE_ALT: "Banner Neo Lorem",

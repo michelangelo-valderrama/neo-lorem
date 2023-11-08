@@ -19,14 +19,14 @@ const lastPost = blog[0]
   <div class="sm:grid sm:grid-cols-2 sm:gap-4">
     <div class="sm:text-right group">
       <h2
-        class="font-semibold text-4xl text-textColor-primary group-hover:text-textColor-accent-sky transition"
+        class="font-semibold text-4xl text-textColor-primary group-hover:text-textColor-accent transition"
       >
         <a href={`/blog/${lastPost.slug}`}>
           {lastPost.data.title}
         </a>
       </h2>
       <div
-        class="sm:ml-auto h-[2px] w-12 group-hover:w-24 rounded-lg bg-textColor-primary group-hover:bg-textColor-accent-sky mt-2 transition-all"
+        class="sm:ml-auto h-[2px] w-12 group-hover:w-24 rounded-lg bg-textColor-primary group-hover:bg-textColor-accent mt-2 transition-all"
       >
       </div>
     </div>
