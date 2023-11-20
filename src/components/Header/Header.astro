@@ -4,14 +4,16 @@ import HeaderLink from "../HeaderLink.astro"
 import { URLS_MAP } from "../../consts"
 ---
 
-<div class="mb-[128px]">
-  <article class="fixed top-0 left-0 w-full bg-background/80 backdrop-blur-md z-20">
+<div class="mb-[108px]">
+  <article
+    class="fixed top-0 left-0 w-full bg-background/60 backdrop-blur-md border-b border-borderColor-gray z-20"
+  >
     <div
-      class="max-w-screen-2xl mx-auto flex justify-between py-4 px-6 md:px-8"
+      class="max-w-screen-2xl mx-auto flex justify-between py-2 px-6 md:px-8"
     >
       <a href="/" class="active:scale-90 transition-transform">
         <img
-          class="pointer-events-none w-8 md:w-11"
+          class="pointer-events-none w-8 md:w-10"
           loading="lazy"
           src="/favicon.svg"
           alt="Logo del blog"
@@ -19,17 +21,23 @@ import { URLS_MAP } from "../../consts"
           width={44}
         />
       </a>
-      <!-- <menu class="flex gap-4">
-          <ul>light</ul>
-          <ul>command</ul>
-        </menu> -->
+      <!-- <menu class="flex gap-x-4 items-center text-textColor-secondary">
+        <li>
+          <button
+            type="button"
+            class="w-9 h-9 md:w-10 md:h-10 flex items-center justify-center bg-button/80 hover:text-textColor-accent hover:border-[3px] border-borderColor-accent box-border rounded-lg hover:shadow-textColor-accent/40 hover:shadow-[0_2px_40px_-4px] focus:scale-90 transition-all"
+          >
+            <CommandIcon class="w-5 h-5" />
+          </button>
+        </li>
+      </menu> -->
     </div>
   </article>
   <HeaderNav>
     {
       URLS_MAP.map(({ href, title }, index) => (
         <>
-          <span class="hover:text-textColor-primary">
+          <span class="text-textColor-secondary/80 hover:text-textColor-primary transition">
             <HeaderLink href={href} title={title} class="px-6 py-2" />
           </span>
           {URLS_MAP.length !== index + 1 && (

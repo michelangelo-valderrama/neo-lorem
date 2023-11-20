@@ -7,16 +7,16 @@ import sitemap from "@astrojs/sitemap"
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [
-    tailwind(),
-    mdx(),
-    preact(),
-    sitemap({
-      filter: (page) => page !== `${SITE.URL}/404`,
-    }),
-  ],
   site: SITE.URL,
   image: {
     service: passthroughImageService(),
   },
+  integrations: [
+    tailwind(),
+    mdx(),
+    preact({ compat: true }),
+    sitemap({
+      filter: (page) => page !== `${SITE.URL}/404`,
+    }),
+  ],
 })

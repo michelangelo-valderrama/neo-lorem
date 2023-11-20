@@ -49,10 +49,10 @@
   ],
   "id": "/?source=pwa",
   "start_url": "/?source=pwa",
-  "background_color": "#18181b",
+  "background_color": "#fff",
   "display": "standalone",
   "scope": "/",
-  "theme_color": "#d8b4fe",
+  "theme_color": "#a855f7",
   "description": "Blog personal sobre informática, programación y demás.",
   "shortcuts": [
     {

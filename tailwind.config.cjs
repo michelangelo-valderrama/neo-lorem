@@ -6,6 +6,8 @@ module.exports = {
   darkMode: "class",
   theme: {
     extend: {
+      colors,
+      fontFamily,
       screens: {
         lorem: "860px",
       },
@@ -25,7 +27,6 @@ module.exports = {
             "--tw-prose-captions": theme("colors.textColor.primary"),
             "--tw-prose-code": theme("colors.textColor.primary"),
             "--tw-prose-pre-code": theme("colors.textColor.primary"),
-            "--tw-prose-pre-bg": theme("colors.preColor"),
             "--tw-prose-th-borders": theme("colors.borderColor.gray"),
             "--tw-prose-td-borders": theme("colors.borderColor.gray"),
             "--tw-prose-invert-body": theme("colors.textColor.blog"),
@@ -83,8 +84,6 @@ module.exports = {
         },
       }),
     },
-    colors,
-    fontFamily,
   },
   plugins: [require("@tailwindcss/typography")],
 }

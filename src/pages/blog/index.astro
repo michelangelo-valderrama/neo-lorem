@@ -10,8 +10,11 @@ const blog = (await getCollection("blog")).sort(
 )
 ---
 
-<BaseLayout title={`${SITE.TITLE} · Blog`} description="Artículos disponibles">
-  <meta slot="meta" name="robots" content="noindex" />
+<BaseLayout
+  title={`${SITE.TITLE} · Blog`}
+  description="Artículos disponibles del blog Neo Lorem sobre ciencia y tecnología"
+>
+  <meta slot="meta" name="robots" content="all" />
   <div class="max-w-screen-lorem mx-auto">
     <section class="pt-12 pb-14">
       <div class="relative">

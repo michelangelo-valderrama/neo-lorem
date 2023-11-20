@@ -20,29 +20,5 @@ const { post } = Astro.props
   imageWidth="400"
 >
   <HeadPost slot="meta" post={post} slot="meta" />
-  <article slot="header" class="mb-14 md:mb-20 min-h-[1px]">
-    {
-      post.data.mainImg && (
-        <picture class="block relative">
-          <div class="absolute w-full top-0 left-0 backdrop-blur-md bg-background/20">
-            <img
-              src={post.data.mainImg}
-              alt={post.data.description}
-              width="800"
-              height="400"
-              class="mx-auto max-h-96 max-w-screen-lg w-full object-cover z-[2]"
-            />
-          </div>
-          <img
-            src={post.data.mainImg}
-            alt={post.data.description}
-            width="800"
-            height="400"
-            class="max-h-96 w-full object-cover"
-          />
-        </picture>
-      )
-    }
-  </article>
   <slot />
 </BaseLayout>

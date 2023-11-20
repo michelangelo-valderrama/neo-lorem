@@ -11,7 +11,7 @@ export default function createLinksInHeaders(query: string) {
     (_, number, others, id, text) => {
       return `
           <h${number}${others}id="${id}">
-          <a href="#${id}"><span class="text-textColor-accent">§</span> ${text}</a>
+          <a href="#${id}" class="font-semibold"><span class="text-textColor-accent">§</span> ${text}</a>
           </h${number}>
         `
     }
