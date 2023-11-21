@@ -3,7 +3,7 @@ import FormattedDate from "../../components/FormattedDate.astro"
 import type { GetStaticPaths } from "astro"
 import { getCollection, type CollectionEntry } from "astro:content"
 import PostLayout from "../../layouts/PostLayout.astro"
-import RightArrowIcon from "../../icons/RightArrowIcon.astro"
+import RightArrowIcon from "../../components/ui/icons/RightArrowIcon.astro"
 
 export const getStaticPaths = (async () => {
   const blog = await getCollection("blog")
@@ -25,9 +25,9 @@ const readingTime = time && `${time - 1}-${time + 1}`
 ---
 
 <PostLayout post={post}>
-  <div class="max-w-screen-sm mx-auto pt-6">
-    <section class="max-w-screen-md mx-auto">
-      <div class="mb-6 hidden md:block text-textColor-accent font-bold text-lg">
+  <div class="max-w-screen-sm mx-auto pt-2 md:pt-6">
+    <section class="max-w-screen-md mx-auto pb-10 md:pb-14">
+      <div class="mb-4 md:mb-6 text-textColor-accent font-bold text-lg">
         <a href="/blog" class="group">
           <RightArrowIcon
             class="inline-block group-hover:translate-x-[-0.25rem] transition-transform rotate-180"
@@ -43,7 +43,7 @@ const readingTime = time && `${time - 1}-${time + 1}`
       <p class="text-lg md:text-xl text-textColor-secondary">
         <em>{post.data.description}</em>
       </p>
-      <div class="bg-borderColor-light h-[1px] mt-8 mb-6"></div>
+      <div class="bg-borderColor-light h-[1px] mt-8 mb-4 md:mb-6"></div>
       {
         post.data.mainImg && (
           <img
@@ -51,7 +51,7 @@ const readingTime = time && `${time - 1}-${time + 1}`
             alt={post.data.description}
             width="800"
             height="400"
-            class="mx-auto max-w-screen-md w-full object-cover"
+            class="mx-auto max-w-screen-md w-full object-cover mb-4 md:mb-6"
           />
         )
       }
@@ -64,7 +64,7 @@ const readingTime = time && `${time - 1}-${time + 1}`
           ⏱️ {readingTime} minutos
         </p>
       </div>
-      <ul class="flex gap-x-2">
+      <ul class="flex flex-wrap gap-2">
         {
           post.data.tags.map((tag) => (
             <li>
@@ -75,7 +75,7 @@ const readingTime = time && `${time - 1}-${time + 1}`
       </ul>
     </section>
     <article
-      class="prose prose-lorem prose-invert prose-lg sm:prose-xl prose-code:before:content-[''] prose-code:after:content-[''] prose-h1:text-center md:prose-h2:mb-6 md:prose-h2:text-center prose-h3:text-lg md:prose-h3:text-xl prose-h3:italic prose-h3:mt-12 max-w-none pt-4"
+      class="prose prose-purple dark:prose-invert prose-lg sm:prose-xl prose-code:before:content-[''] prose-code:after:content-[''] prose-h1:text-center md:prose-h2:mb-6 md:prose-h2:text-center prose-h3:text-lg md:prose-h3:text-xl prose-h3:italic prose-h3:mt-12 max-w-none"
       id="content"
     >
       <Content />

@@ -1,4 +1,5 @@
 import { colors, fontFamily } from "./src/config/tailwind"
+const { createThemes } = require("tw-colors")
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
@@ -6,7 +7,6 @@ module.exports = {
   darkMode: "class",
   theme: {
     extend: {
-      colors,
       fontFamily,
       screens: {
         lorem: "860px",
@@ -85,5 +85,15 @@ module.exports = {
       }),
     },
   },
-  plugins: [require("@tailwindcss/typography")],
+  plugins: [
+    require("@tailwindcss/typography"),
+    createThemes(
+      {
+        ...colors,
+      },
+      {
+        defaultTheme: "light",
+      }
+    ),
+  ],
 }

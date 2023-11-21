@@ -9,12 +9,6 @@ export const SITE = {
   IMAGE_HEIGHT: "675",
 }
 
-export let lightTheme = true
-export const toggleTheme = () => {
-  lightTheme = !lightTheme
-  console.log(lightTheme)
-}
-
 export const URLS_MAP = [
   {
     href: "/",

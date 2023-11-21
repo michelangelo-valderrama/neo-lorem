@@ -1,5 +1,6 @@
 {
   "hosting": {
+    "site": "neo-lorem",
     "public": "dist",
     "ignore": []
   }

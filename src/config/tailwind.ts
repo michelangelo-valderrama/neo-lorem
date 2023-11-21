@@ -1,17 +1,6 @@
-import {
-  zinc,
-  purple,
-  pink,
-  sky,
-  indigo,
-  transparent,
-  current,
-} from "tailwindcss/colors"
-import { lightTheme } from "../consts"
+import { zinc, purple, pink, sky, indigo } from "tailwindcss/colors"
 
-/* const colorLight = {
-  transparent,
-  current,
+const light = {
   background: "#fff",
   textColor: {
     primary: zinc[900],
@@ -41,9 +30,7 @@ import { lightTheme } from "../consts"
   },
 }
 
-const colorDark = {
-  transparent,
-  current,
+const dark = {
   background: zinc[900],
   textColor: {
     primary: "#fff",
@@ -73,39 +60,7 @@ const colorDark = {
   },
 }
 
-export const colors = lightTheme ? colorLight : colorDark */
-
-export const colors = {
-  transparent,
-  current,
-  background: lightTheme ? "#fff" : zinc[900],
-  textColor: {
-    primary: lightTheme ? zinc[900] : "#fff",
-    secondary: lightTheme ? zinc[600] : zinc[300],
-    teriary: lightTheme ? indigo[600] : indigo[200],
-    accent: {
-      DEFAULT: lightTheme ? purple[500] : purple[300],
-      indigo: lightTheme ? indigo[400] : indigo[300],
-      sky: lightTheme ? sky[400] : sky[300],
-    },
-    blog: lightTheme ? zinc[700] : zinc[300],
-  },
-  textGradient: {
-    sky: lightTheme ? sky[200] : sky[300],
-    purple: lightTheme ? purple[200] : purple[400],
-    pink: lightTheme ? pink[200] : pink[300],
-  },
-  button: lightTheme ? zinc[100] : zinc[950],
-  borderColor: {
-    gray: lightTheme ? zinc[300] : zinc[600],
-    light: lightTheme ? zinc[200] : zinc[400],
-    accent: lightTheme ? purple[500] : purple[400],
-  },
-  hrColor: lightTheme ? zinc[200] : zinc[800],
-  quotesColor: {
-    DEFAULT: lightTheme ? zinc[600] : zinc[400],
-  },
-}
+export const colors = { light, dark }
 
 export const fontFamily = {
   sans: [

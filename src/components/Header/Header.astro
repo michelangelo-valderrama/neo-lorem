@@ -2,6 +2,7 @@
 import HeaderNav from "./HeaderNav.astro"
 import HeaderLink from "../HeaderLink.astro"
 import { URLS_MAP } from "../../consts"
+import ToggleTheme from "./ToggleTheme.astro"
 ---
 
 <div class="mb-[108px]">
@@ -21,16 +22,19 @@ import { URLS_MAP } from "../../consts"
           width={44}
         />
       </a>
-      <!-- <menu class="flex gap-x-4 items-center text-textColor-secondary">
+      <menu class="flex gap-x-4 items-center text-textColor-secondary">
         <li>
+          <ToggleTheme />
+        </li>
+        <!-- <li>
           <button
             type="button"
             class="w-9 h-9 md:w-10 md:h-10 flex items-center justify-center bg-button/80 hover:text-textColor-accent hover:border-[3px] border-borderColor-accent box-border rounded-lg hover:shadow-textColor-accent/40 hover:shadow-[0_2px_40px_-4px] focus:scale-90 transition-all"
           >
             <CommandIcon class="w-5 h-5" />
           </button>
-        </li>
-      </menu> -->
+        </li> -->
+      </menu>
     </div>
   </article>
   <HeaderNav>

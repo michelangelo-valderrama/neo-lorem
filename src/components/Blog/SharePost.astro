@@ -1,0 +1,87 @@
+---
+import FacebookIcon from "../ui/icons/FacebookIcon.astro"
+import TelegramIcon from "../ui/icons/TelegramIcon.astro"
+import WhatsappIcon from "../ui/icons/WhatsappIcon.astro"
+import XIcon from "../ui/icons/XIcon.astro"
+
+interface Props {
+  postTitle: string
+}
+
+const { postTitle } = Astro.props
+const { href } = Astro.url
+---
+
+<div class="flex gap-x-2 items-center">
+  <!--Facebook-->
+  <article>
+    <a
+      href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
+        href
+      )}&src=sdkpreparse`}
+      target="openInNewWindow"
+      class="rounded-full bg-[#3e68c0] hover:bg-[#3e68c0]/80 text-white h-7 w-7 flex items-center justify-center focus:ring-4 focus:ring-[#3e68c0]/40 transition"
+    >
+      <FacebookIcon class="w-5 h-5" />
+    </a>
+  </article>
+  <!--Twitter-->
+  <article>
+    <a
+      class="rounded-full bg-[#3e3e3e] hover:bg-[#3e3e3e]/80 text-white h-7 w-7 flex items-center justify-center focus:ring-4 focus:ring-[#3e3e3e]/40 transition"
+      target="openInNewWindow"
+      rel="noopener noreferrer"
+      href={`https://twitter.com/share?url=${href}&text=${postTitle}`}
+    >
+      <XIcon class="w-[14px] h-[14px]" />
+    </a>
+  </article>
+  <!--Telegram-->
+  <article>
+    <a
+      href={`https://t.me/share/url?url=${href}&text=${postTitle}`}
+      target="openInNewWindow"
+      class="rounded-full bg-[#2ca5e0] hover:bg-[#2ca5e0]/80 text-white h-7 w-7 flex items-center justify-center focus:ring-4 focus:ring-[#2ca5e0]/40 transition"
+    >
+      <TelegramIcon class="w-4 h-4" />
+    </a>
+  </article>
+  <!--Whatsapp-->
+  <article>
+    <a
+      href={`https://wa.me/?text=${postTitle} ${href}`}
+      target="openInNewWindow"
+      class="rounded-full bg-[#13d25a] hover:bg-[#13d25a]/80 text-white h-7 w-7 flex items-center justify-center focus:ring-4 focus:ring-[#13d25a]/40 transition"
+    >
+      <WhatsappIcon class="w-4 h-4" />
+    </a>
+  </article>
+</div>
+
+<script>
+  let windowObjectReference: Window | null = null
+  function openRequestedTab(url: string, windowName: string) {
+    if (windowObjectReference === null || windowObjectReference.closed) {
+      windowObjectReference = window.open(
+        url,
+        windowName,
+        "popup,width=600,height=600"
+      )
+    } else {
+      windowObjectReference.focus()
+    }
+  }
+  const links = document.querySelectorAll<HTMLLinkElement>(
+    "a[target='openInNewWindow']"
+  )
+  for (let link of links) {
+    link.addEventListener(
+      "click",
+      (e) => {
+        openRequestedTab(link.href, "_blank")
+        e.preventDefault()
+      },
+      false
+    )
+  }
+</script>
