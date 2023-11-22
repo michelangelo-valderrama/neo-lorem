@@ -48,7 +48,7 @@ const dark = {
     purple: purple[400],
     pink: pink[300],
   },
-  button: zinc[950],
+  button: zinc[800],
   borderColor: {
     gray: zinc[600],
     light: zinc[400],
