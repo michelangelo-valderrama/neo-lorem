@@ -1,0 +1,43 @@
+---
+import type { MarkdownHeading } from "astro"
+
+interface Props {
+  headings: MarkdownHeading[]
+}
+
+const { headings } = Astro.props
+
+const firstLayer: any[] = []
+let depth = 0
+
+for (const heading of headings) {
+  if (!firstLayer.length || heading.depth <= depth) {
+    depth = heading.depth
+    firstLayer.push({ ...heading, children: [] })
+  } else if (heading.depth > depth) {
+    firstLayer.at(-1)?.children.push(heading)
+  }
+}
+---
+
+<ul class="w-full">
+  {
+    firstLayer.map(({ slug, text, children }) => (
+      <li>
+        <a
+          class="block py-1 text-textColor-secondary hover:font-semibold hover:text-textColor-accent transition-colors"
+          href={`#${slug}`}
+        >
+          {text}
+        </a>
+        {children.length ? <Astro.self headings={children} /> : null}
+      </li>
+    ))
+  }
+</ul>
+
+<style>
+  li ul {
+    @apply pl-4;
+  }
+</style>

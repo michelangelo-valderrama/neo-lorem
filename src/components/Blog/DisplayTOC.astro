@@ -1,0 +1,52 @@
+---
+import ListIcon from "../ui/icons/ListIcon.astro"
+import TableOfContents from "./TableOfContents.astro"
+import type { MarkdownHeading } from "astro"
+
+interface Props {
+  headings: MarkdownHeading[]
+}
+
+const { headings } = Astro.props
+---
+
+<div class="fixed right-4 top-48">
+  <button
+    class="w-10 h-10 flex items-center justify-center bg-button/80 hover:text-textColor-accent hover:border-[3px] border-borderColor-accent box-border rounded-lg hover:shadow-textColor-accent/40 hover:shadow-[0_2px_40px_-4px] focus:scale-90 transition-all"
+    id="toc-btn"
+  >
+    <ListIcon class="w-5 h-5" />
+    <span class="sr-only">Tabla de Contenidos</span>
+  </button>
+</div>
+<aside class="hidden fixed right-4 top-32" id="toc">
+  <div
+    class="border border-borderColor-gray bg-background p-6 box-content w-[300px] opacity-60 hover:opacity-100 transition-opacity max-h-[65vh] overflow-y-scroll"
+  >
+    <div>
+      <h2 class="text-xl font-semibold mb-2">Tabla de Contenidos</h2>
+      <TableOfContents
+        headings={[
+          {
+            depth: 2,
+            slug: "",
+            text: "Inicio",
+          },
+          ...headings,
+        ]}
+      />
+    </div>
+  </div>
+</aside>
+
+<script>
+  import { $ } from "../../utils"
+
+  const tocBtn = $("#toc-btn") as HTMLButtonElement
+  const toc = $("#toc") as HTMLDivElement
+
+  tocBtn.addEventListener("click", () => {
+    console.log("click")
+    toc.classList.toggle("hidden")
+  })
+</script>

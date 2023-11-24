@@ -1,0 +1,77 @@
+---
+
+---
+
+<button
+  class="w-10 h-10 flex items-center justify-center bg-button/80 hover:text-textColor-accent hover:border-[3px] border-borderColor-accent box-border rounded-lg hover:shadow-textColor-accent/40 hover:shadow-[0_2px_40px_-4px] focus:scale-90 transition-all"
+  type="button"
+  id="fontToggle"
+>
+  <svg
+    width="20"
+    height="20"
+    viewBox="0 -1 21 21"
+    fill="currentColor"
+    class="serif w-5 h-5"
+    ><g
+      ><path
+        d="M3.285 0l-.45-3.54v-5.85a3.451 3.451 0 00-.623-2.265 2.631 2.631 0 00-2.107-.735 3.945 3.945 0 00-1.485.255 2.136 2.136 0 00-.968.727 1.922 1.922 0 00-.338 1.148h-3.87a4.318 4.318 0 01.8-2.693 4.556 4.556 0 012.287-1.53 11.587 11.587 0 013.574-.487 8.288 8.288 0 013.3.608A4.688 4.688 0 015.6-12.5a6.041 6.041 0 01.78 3.225V0zm-4.77.42a6.723 6.723 0 01-3.127-.653A4.568 4.568 0 01-6.495-1.95a4.457 4.457 0 01-.63-2.31A3.666 3.666 0 01-6.4-6.578a4.376 4.376 0 012.063-1.41 9.451 9.451 0 013.15-.472 13.361 13.361 0 012.242.18 19.7 19.7 0 012.108.48v2.07a11.324 11.324 0 00-1.8-.42A12.069 12.069 0 00-.465-6.3a4.119 4.119 0 00-2.07.465 1.667 1.667 0 00-.81 1.575 1.8 1.8 0 00.66 1.395 3.117 3.117 0 002.1.585 3.431 3.431 0 001.86-.48 3.291 3.291 0 001.163-1.2 2.956 2.956 0 00.4-1.44h.84a7.118 7.118 0 01-.588 2.9A4.955 4.955 0 011.358-.375 4.872 4.872 0 01-1.485.42z"
+        transform="translate(10 16)"></path></g
+    ></svg
+  >
+  <svg
+    width="20"
+    height="20"
+    viewBox="0 0 21 21"
+    fill="currentColor"
+    class="sans w-5 h-5"
+    ><path
+      d="M17.732 16.754v1.236h-6.108a9.557 9.557 0 00.134-1.347l.034-.983a4.986 4.986 0 01-4.631 2.513 4.48 4.48 0 01-3.205-1.039 4.055 4.055 0 01-1.09-3.08 4.258 4.258 0 012.151-3.931q2.144-1.275 6.775-1.275v-2.55a4.375 4.375 0 00-.436-2.144 1.909 1.909 0 00-1.812-.765 2.482 2.482 0 00-1.661.437 1.37 1.37 0 00-.487 1.056 1.982 1.982 0 00.168.838 3.322 3.322 0 01.134.728 1.528 1.528 0 01-.52 1.238 1.99 1.99 0 01-1.326.437 2.04 2.04 0 01-1.527-.6 2.075 2.075 0 01-.587-1.512 3.2 3.2 0 011.679-2.808 8.439 8.439 0 014.53-1.056q6.242 0 6.242 4.844v9.142q0 .692.436.692zm-8.658-.73a2.227 2.227 0 001.8-.965 4.865 4.865 0 00.923-2.531v-2.4a5.129 5.129 0 00-3.322.874 3.232 3.232 0 00-1.04 2.622q-.006 2.4 1.639 2.4z"
+    ></path></svg
+  >
+</button>
+
+<style>
+  .sans {
+    display: block;
+  }
+  .serif {
+    display: none;
+  }
+
+  :global(.font-serif) .sans {
+    display: none;
+  }
+  :global(.font-serif) .serif {
+    display: block;
+  }
+</style>
+
+<script is:inline>
+  const font = (() => {
+    if (typeof localStorage !== "undefined" && localStorage.getItem("font")) {
+      return localStorage.getItem("font")
+    }
+    return "sans"
+  })()
+
+  if (font === "sans") {
+    document.documentElement.classList.remove("font-serif")
+  } else {
+    document.documentElement.classList.add("font-serif")
+  }
+
+  window.localStorage.setItem("font", font)
+
+  const handleFontToggleClick = () => {
+    const element = document.documentElement
+    element.classList.toggle("font-serif")
+
+    const isSerif = element.classList.contains("font-serif")
+    localStorage.setItem("font", isSerif ? "serif" : "sans")
+  }
+
+  document
+    .getElementById("fontToggle")
+    .addEventListener("click", handleFontToggleClick)
+</script>

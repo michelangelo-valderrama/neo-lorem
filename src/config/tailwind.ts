@@ -4,7 +4,7 @@ const light = {
   background: "#fff",
   textColor: {
     primary: zinc[900],
-    secondary: zinc[700],
+    secondary: zinc[600],
     teriary: indigo[600],
     accent: {
       DEFAULT: purple[500],
@@ -20,8 +20,8 @@ const light = {
   },
   button: zinc[100],
   borderColor: {
-    gray: zinc[300],
-    light: zinc[100],
+    gray: zinc[200],
+    light: zinc[300],
     accent: purple[500],
   },
   hrColor: zinc[200],
@@ -50,8 +50,8 @@ const dark = {
   },
   button: zinc[800],
   borderColor: {
-    gray: zinc[600],
-    light: zinc[400],
+    gray: zinc[800],
+    light: zinc[600],
     accent: purple[400],
   },
   hrColor: zinc[800],
@@ -64,6 +64,7 @@ export const colors = { light, dark }
 
 export const fontFamily = {
   sans: [
+    "Karla",
     "ui-sans-serif",
     "system-ui",
     "-apple-system",

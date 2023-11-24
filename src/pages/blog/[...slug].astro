@@ -4,6 +4,8 @@ import type { GetStaticPaths } from "astro"
 import { getCollection, type CollectionEntry } from "astro:content"
 import PostLayout from "../../layouts/PostLayout.astro"
 import RightArrowIcon from "../../components/ui/icons/RightArrowIcon.astro"
+import TableOfContents from "../../components/Blog/TableOfContents.astro"
+import DisplayTOC from "../../components/Blog/DisplayTOC.astro"
 
 export const getStaticPaths = (async () => {
   const blog = await getCollection("blog")
@@ -18,13 +20,14 @@ interface Props {
 }
 
 const { post } = Astro.props
-const { Content } = await post.render()
+const { Content, headings } = await post.render()
 
 const time = Math.round(post.body.split(" ").length / 150)
 const readingTime = time && `${time - 1}-${time + 1}`
 ---
 
 <PostLayout post={post}>
+  <!-- <DisplayTOC headings={headings} /> -->
   <div class="max-w-screen-sm mx-auto pt-2 md:pt-6">
     <section class="max-w-screen-md mx-auto pb-10 md:pb-14">
       <div class="mb-4 md:mb-6 text-textColor-accent font-bold text-lg">
@@ -81,7 +84,6 @@ const readingTime = time && `${time - 1}-${time + 1}`
       <Content />
     </article>
   </div>
-
   <div class="mt-[30vh] md:mt-[50vh] text-center"></div>
 </PostLayout>
 
