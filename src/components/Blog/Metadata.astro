@@ -1,0 +1,40 @@
+---
+import type { CollectionEntry } from "astro:content"
+import FormattedDate from "../FormattedDate.astro"
+
+interface Props {
+  post: CollectionEntry<"blog">
+}
+
+const {
+  post: { data, body },
+} = Astro.props
+
+const time = Math.round(body.split(" ").length / 150)
+const readingTime = time && `${time - 1}-${time + 1}`
+---
+
+<div class="mb-1 md:mb-3 flex gap-3 items-center flex-wrap">
+  <p>
+    <FormattedDate date={data.pubDate} />
+     / {readingTime} minutos
+  </p>
+  {
+    data.update && (
+      <div class="mb-3 md:mb-0 text-sm">
+        <span class="text-textColor-accent-indigo bg-textColor-accent-indigo/20 rounded-lg px-2 py-1">
+          Última actualización: <FormattedDate date={data.update} />
+        </span>
+      </div>
+    )
+  }
+</div>
+<ul class="flex flex-wrap gap-2">
+  {
+    data.tags.map((tag) => (
+      <li>
+        <span class="text-sm px-2 py-1 rounded-lg bg-hrColor">{tag}</span>
+      </li>
+    ))
+  }
+</ul>

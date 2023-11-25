@@ -2,12 +2,15 @@
 import type { CollectionEntry } from "astro:content"
 import BaseLayout from "./BaseLayout.astro"
 import HeadPost from "../components/seo/HeadPost.astro"
+import DisplayTOC from "../components/Blog/DisplayTOC.astro"
 
 interface Props {
   post: CollectionEntry<"blog">
 }
 
 const { post } = Astro.props
+
+const { headings } = await post.render()
 ---
 
 <BaseLayout
@@ -16,9 +19,12 @@ const { post } = Astro.props
   class="scroll-p-28"
   image={post.data.mainImg}
   imageAlt={post.data.description}
-  imageHeight="800"
-  imageWidth="400"
+  nav={false}
 >
   <HeadPost slot="meta" post={post} slot="meta" />
-  <slot />
+  <div class="max-w-screen-sm mx-auto relative">
+    <DisplayTOC postTitle={post.data.title} headings={headings} />
+    <slot />
+  </div>
+  <div class="mt-[30vh] md:mt-[50vh] text-center"></div>
 </BaseLayout>

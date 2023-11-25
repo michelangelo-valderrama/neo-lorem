@@ -12,13 +12,11 @@ const update = post.data.update?.toDateString() ?? pubDate
 const title = post.data.title
 const description = post.data.description
 const bannerUrl = new URL(post.data.mainImg ?? SITE.IMAGE, Astro.site)
-const bannerAlt = post.data.title ?? "Image alt"
-const bannerWidth = 800
-const bannerHeight = 420
 ---
 
 <meta slot="meta" name="robots" content="all" />
 
+<!--Article Tags-->
 <meta property="article:publisher" content={Astro.site} />
 <meta property="article:author" content={Astro.site} />
 {post.data.tags.map((tag) => <meta property="article:tag" content={tag} />)}
@@ -32,14 +30,7 @@ const bannerHeight = 420
     "@type": "Article",
     headline: title,
     abstract: description,
-    image: [
-      {
-        contentUrl: bannerUrl,
-        width: bannerWidth,
-        height: bannerHeight,
-        caption: bannerAlt,
-      },
-    ],
+    image: [bannerUrl],
     dateCreated: pubDate,
     datePublished: pubDate,
     dateModified: update,

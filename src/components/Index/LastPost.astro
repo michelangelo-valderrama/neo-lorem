@@ -1,9 +1,9 @@
 ---
-import FormattedDate from '../FormattedDate.astro'
-import { getCollection } from 'astro:content'
+import FormattedDate from "../FormattedDate.astro"
+import { getCollection } from "astro:content"
 
 const blog = (
-  await getCollection('blog', ({ data }) => {
+  await getCollection("blog", ({ data }) => {
     const dateNow = new Date()
     return data.pubDate.getFullYear() === dateNow.getFullYear()
   })
@@ -17,19 +17,17 @@ const lastPost = blog[0]
     <FormattedDate date={lastPost.data.pubDate} />
   </p>
   <div class="sm:grid sm:grid-cols-2 sm:gap-4">
-    <div class="sm:text-right group">
+    <a href={`/blog/${lastPost.slug}`} class="block sm:text-right group">
       <h2
         class="font-semibold text-4xl text-textColor-primary group-hover:text-textColor-accent transition"
       >
-        <a href={`/blog/${lastPost.slug}`}>
-          {lastPost.data.title}
-        </a>
+        {lastPost.data.title}
       </h2>
       <div
         class="sm:ml-auto h-[2px] w-12 group-hover:w-24 rounded-lg bg-textColor-primary group-hover:bg-textColor-accent mt-2 transition-all"
       >
       </div>
-    </div>
+    </a>
     <div class="mt-2 sm:mt-0">
       <p class="text-lg">{lastPost.data.description}</p>
     </div>

@@ -1,11 +1,10 @@
 ---
-import FormattedDate from "../../components/FormattedDate.astro"
 import type { GetStaticPaths } from "astro"
 import { getCollection, type CollectionEntry } from "astro:content"
 import PostLayout from "../../layouts/PostLayout.astro"
 import RightArrowIcon from "../../components/ui/icons/RightArrowIcon.astro"
-import TableOfContents from "../../components/Blog/TableOfContents.astro"
-import DisplayTOC from "../../components/Blog/DisplayTOC.astro"
+import Metadata from "../../components/Blog/Metadata.astro"
+import TopActions from "../../components/Blog/TopActions.astro"
 
 export const getStaticPaths = (async () => {
   const blog = await getCollection("blog")
@@ -20,76 +19,49 @@ interface Props {
 }
 
 const { post } = Astro.props
-const { Content, headings } = await post.render()
-
-const time = Math.round(post.body.split(" ").length / 150)
-const readingTime = time && `${time - 1}-${time + 1}`
+const { Content } = await post.render()
 ---
 
 <PostLayout post={post}>
-  <!-- <DisplayTOC headings={headings} /> -->
-  <div class="max-w-screen-sm mx-auto pt-2 md:pt-6">
-    <section class="max-w-screen-md mx-auto pb-10 md:pb-14">
-      <div class="mb-4 md:mb-6 text-textColor-accent font-bold text-lg">
-        <a href="/blog" class="group">
-          <RightArrowIcon
-            class="inline-block group-hover:translate-x-[-0.25rem] transition-transform rotate-180"
-          />
-           Blog
-        </a>
-      </div>
-      <h1
-        class="text-4xl md:text-5xl font-semibold md:font-normal text-textColor-primary mb-2 md:mb-4"
-      >
-        {post.data.title}
-      </h1>
-      <p class="text-lg md:text-xl text-textColor-secondary">
-        <em>{post.data.description}</em>
-      </p>
-      <div class="bg-borderColor-light h-[1px] mt-8 mb-4 md:mb-6"></div>
-      {
-        post.data.mainImg && (
-          <img
-            src={post.data.mainImg}
-            alt={post.data.description}
-            width="800"
-            height="400"
-            class="mx-auto max-w-screen-md w-full object-cover mb-4 md:mb-6"
-          />
-        )
-      }
-      <div class="flex mb-3">
-        <p>
-          <FormattedDate date={post.data.pubDate} />
-        </p>
-        <p class="mx-4">|</p>
-        <p>
-          ⏱️ {readingTime} minutos
-        </p>
-      </div>
-      <ul class="flex flex-wrap gap-2">
-        {
-          post.data.tags.map((tag) => (
-            <li>
-              <span class="text-sm px-2 py-1 rounded-lg bg-hrColor">{tag}</span>
-            </li>
-          ))
-        }
-      </ul>
-    </section>
-    <article
-      class="prose prose-purple dark:prose-invert prose-lg sm:prose-xl prose-code:before:content-[''] prose-code:after:content-[''] prose-h1:text-center md:prose-h2:mb-6 md:prose-h2:text-center prose-h3:text-lg md:prose-h3:text-xl prose-h3:italic prose-h3:mt-12 max-w-none"
-      id="content"
+  <section class="max-w-screen-md mx-auto pb-10 md:pb-14">
+    <TopActions postTitle={post.data.title} />
+    <h1
+      class="text-4xl md:text-5xl font-semibold md:font-normal text-textColor-primary mb-2 md:mb-4"
     >
-      <Content />
-    </article>
-  </div>
-  <div class="mt-[30vh] md:mt-[50vh] text-center"></div>
+      {post.data.title}
+    </h1>
+    <p class="text-lg md:text-xl text-textColor-secondary">
+      <em>{post.data.description}</em>
+    </p>
+    <div class="bg-borderColor-light h-[1px] mt-8 mb-4 md:mb-6"></div>
+    {
+      post.data.mainImg && (
+        <img
+          src={post.data.mainImg}
+          alt={post.data.description}
+          width="800"
+          height="400"
+          class="mx-auto max-w-screen-md w-full object-cover mb-4 md:mb-6"
+        />
+      )
+    }
+    <Metadata post={post} />
+  </section>
+  <article
+    class="prose prose-purple dark:prose-invert prose-lg sm:prose-xl prose-code:before:content-[''] prose-code:after:content-[''] prose-h1:text-center md:prose-h2:mb-6 md:prose-h2:text-center prose-h3:text-lg md:prose-h3:text-xl prose-h3:italic prose-h3:mt-12 max-w-none"
+    id="content"
+  >
+    <Content />
+  </article>
 </PostLayout>
 
 <script>
   import createLinksInHeaders from "../../scripts/blogHeaders.ts"
+  import { $ } from "../../utils"
   window.addEventListener("load", () => {
-    createLinksInHeaders("main")
+    createLinksInHeaders("#content")
+
+    const footnote = $("#footnote-label") as HTMLHeadingElement | null
+    footnote?.classList.remove("sr-only")
   })
 </script>

@@ -28,6 +28,7 @@ const light = {
   quotesColor: {
     DEFAULT: zinc[500],
   },
+  popover: zinc[700],
 }
 
 const dark = {
@@ -58,6 +59,7 @@ const dark = {
   quotesColor: {
     DEFAULT: zinc[400],
   },
+  popover: zinc[700],
 }
 
 export const colors = { light, dark }

@@ -1,52 +1,112 @@
 ---
 import ListIcon from "../ui/icons/ListIcon.astro"
+import RightArrowIcon from "../ui/icons/RightArrowIcon.astro"
+import ShareIcon from "../ui/icons/ShareIcon.astro"
+import SharePost from "./SharePost.astro"
 import TableOfContents from "./TableOfContents.astro"
 import type { MarkdownHeading } from "astro"
 
 interface Props {
   headings: MarkdownHeading[]
+  postTitle: string
 }
 
-const { headings } = Astro.props
+const { headings, postTitle } = Astro.props
 ---
 
-<div class="fixed right-4 top-48">
-  <button
-    class="w-10 h-10 flex items-center justify-center bg-button/80 hover:text-textColor-accent hover:border-[3px] border-borderColor-accent box-border rounded-lg hover:shadow-textColor-accent/40 hover:shadow-[0_2px_40px_-4px] focus:scale-90 transition-all"
-    id="toc-btn"
-  >
-    <ListIcon class="w-5 h-5" />
-    <span class="sr-only">Tabla de Contenidos</span>
-  </button>
-</div>
-<aside class="hidden fixed right-4 top-32" id="toc">
+<aside class="hidden xl:block fixed right-4 top-36">
   <div
-    class="border border-borderColor-gray bg-background p-6 box-content w-[300px] opacity-60 hover:opacity-100 transition-opacity max-h-[65vh] overflow-y-scroll"
+    class="border border-borderColor-gray py-4 px-6 bg-background box-content w-60 2xl:w-80 opacity-40 hover:opacity-100 transition-opacity max-h-[65vh] overflow-y-scroll"
   >
-    <div>
-      <h2 class="text-xl font-semibold mb-2">Tabla de Contenidos</h2>
-      <TableOfContents
-        headings={[
-          {
-            depth: 2,
-            slug: "",
-            text: "Inicio",
-          },
-          ...headings,
-        ]}
+    <h2 class="text-xl font-semibold mb-2">Tabla de Contenidos</h2>
+    <TableOfContents
+      headings={[
+        {
+          depth: 2,
+          slug: "",
+          text: "Inicio",
+        },
+        ...headings,
+      ]}
+    />
+  </div>
+</aside>
+
+<aside class="xl:hidden fixed bottom-6 w-full left-0 px-6 z-20">
+  <div
+    class="max-w-screen-sm mx-auto bg-background border-2 border-borderColor-gray rounded-lg transition relative flex items-center px-2 py-1.5"
+  >
+    <!--Back-->
+    <a
+      href="/blog"
+      class="group w-9 h-9 hover:bg-button/80 rounded-lg flex items-center justify-center transition"
+    >
+      <RightArrowIcon
+        class="w-5 h-5 group-focus:translate-x-[-0.25rem] transition-transform rotate-180"
       />
+      <span class="sr-only">Blog</span>
+    </a>
+    <!--TOC-->
+    <button
+      class="flex hover:bg-button/80 rounded-lg items-center gap-x-2 mx-auto hover:text-textColor-primary transition px-4 py-1.5"
+      id="toc-btn"
+    >
+      <ListIcon class="w-5 h-5" />
+      <span>Tabla de Contenidos</span>
+    </button>
+    <aside class="hidden absolute bottom-[48px] left-0 w-full px-2" id="toc">
+      <div
+        class="mx-auto border-2 border-borderColor-gray py-4 px-6 bg-background max-w-md max-h-[40vh] overflow-y-scroll rounded-top-lg"
+      >
+        <TableOfContents
+          headings={[
+            {
+              depth: 2,
+              slug: "",
+              text: "Inicio",
+            },
+            ...headings,
+          ]}
+        />
+      </div>
+    </aside>
+    <!--Share-->
+    <button
+      class="w-9 h-9 hover:bg-button/80 rounded-lg flex items-center justify-center transition"
+      id="share-btn"
+    >
+      <ShareIcon class="w-5 h-5" />
+    </button>
+    <div
+      class="hidden absolute bottom-14 right-0 py-4 px-3 border-2 border-borderColor-gray bg-background rounded-lg"
+      id="share"
+    >
+      <SharePost postTitle={postTitle} />
     </div>
   </div>
 </aside>
 
-<script>
-  import { $ } from "../../utils"
+<script is:inline>
+  window.addEventListener("load", () => {
+    const btnToc = document.querySelector("#toc-btn")
+    const toc = document.querySelector("#toc")
 
-  const tocBtn = $("#toc-btn") as HTMLButtonElement
-  const toc = $("#toc") as HTMLDivElement
+    btnToc.addEventListener("click", () => {
+      toc.classList.toggle("hidden")
+    })
 
-  tocBtn.addEventListener("click", () => {
-    console.log("click")
-    toc.classList.toggle("hidden")
+    const btnShare = document.querySelector("#share-btn")
+    const share = document.querySelector("#share")
+
+    btnShare.addEventListener("click", () => {
+      share.classList.toggle("hidden")
+    })
   })
 </script>
+
+<style>
+  .rounded-top-lg {
+    border-top-right-radius: 0.5rem;
+    border-top-left-radius: 0.5rem;
+  }
+</style>

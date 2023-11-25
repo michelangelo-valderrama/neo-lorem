@@ -9,9 +9,9 @@ import songs from "../data/songs.json"
 
 <BaseLayout
   title={`${SITE.TITLE} · About`}
-  description="Llamadme Michelangelo. Soy alguien con muchos intereses, y que a veces se obseciona con algún tema en particular durante días o semanas sin ningún motivo."
+  description={`Llamadme ${SITE.ME}. Soy alguien con muchos intereses, y que a veces se obseciona con algún tema en particular durante días o semanas sin ningún motivo.`}
 >
-  <meta slot="meta" name="robots" content="noindex" />
+  <meta slot="meta" name="robots" content="all" />
   <div class="max-w-screen-lorem mx-auto">
     <section class="pt-12 pb-14">
       <div class="relative">
@@ -23,18 +23,12 @@ import songs from "../data/songs.json"
     <article class="text-lg leading-relaxed max-w-screen-md">
       <div>
         <p class="book-line">
-          Llamadme Michelangelo. Soy alguien con muchos intereses, y que a veces
-          se obseciona con algún tema en particular durante días o semanas sin
+          Llamadme {SITE.ME}. Soy alguien con muchos intereses, y que a veces se
+          obseciona con algún tema en particular durante días o semanas sin
           ningún motivo. Para que estas divagaciones mías no solo se queden en
           solo eso, <em>“mías”</em>, pensé en crear un blog para poder escribir
           sobre estas y no queden en nada. Tal vez incluso le puedan servir a
           alguien.
-        </p>
-        <p>
-          Actualmente, trabajo por horas como desarrollador fullstack en <a
-            href="https://if7sports.com/"
-            target="_blank">IF7Sports</a
-          >.
         </p>
       </div>
 

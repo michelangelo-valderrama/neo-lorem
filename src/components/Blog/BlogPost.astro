@@ -24,7 +24,7 @@ const { slug, date, title, description, tags } = Astro.props
     <p class="text-xl md:text-2xl text-textColor-primary mb-1 md:mb-0">
       <a
         href={`/blog/${slug}`}
-        class="hover:underline hover:underline-offset-8"
+        class="block hover:underline hover:underline-offset-8"
       >
         <strong>{title}</strong>
       </a>
@@ -43,20 +43,18 @@ const { slug, date, title, description, tags } = Astro.props
         }
       </ul>
     </div>
-    <p>
-      <span class="text-textColor-accent group">
-        <a
-          href={`/blog/${slug}`}
-          class="group-hover:underline group-hover:underline-offset-4"
-        >
-          <strong> Continuar leyendo</strong>
-        </a>
+    <div class="text-textColor-accent">
+      <a
+        href={`/blog/${slug}`}
+        class="block group hover:underline hover:underline-offset-4"
+      >
+        <strong>Continuar leyendo</strong>
         <i>
           <RightArrowIcon
             class="ml-1 inline group-hover:translate-x-2 transition-transform"
           />
         </i>
-      </span>
-    </p>
+      </a>
+    </div>
   </article>
 </article>

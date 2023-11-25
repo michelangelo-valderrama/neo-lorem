@@ -1,0 +1,24 @@
+---
+import RightArrowIcon from "../ui/icons/RightArrowIcon.astro"
+import SharePost from "./SharePost.astro"
+
+interface Props {
+  postTitle: string
+}
+
+const { postTitle } = Astro.props
+---
+
+<div class="hidden xl:flex justify-between items-center opacity-40 hover:opacity-100 transition-opacity pt-4 pb-10">
+  <a href="/blog" class="group hover:text-textColor-accent font-semibold">
+    <RightArrowIcon
+      class="h-5 w-5 inline-block group-hover:translate-x-[-0.25rem] transition-transform rotate-180"
+    />
+     Blog
+  </a>
+  <div
+    class="text-sm text-white font-semibold"
+  >
+    <SharePost postTitle={postTitle} />
+  </div>
+</div>

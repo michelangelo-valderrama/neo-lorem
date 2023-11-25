@@ -3,10 +3,11 @@
 ---
 
 <button
-  class="w-10 h-10 flex items-center justify-center bg-button/80 hover:text-textColor-accent hover:border-[3px] border-borderColor-accent box-border rounded-lg hover:shadow-textColor-accent/40 hover:shadow-[0_2px_40px_-4px] focus:scale-90 transition-all"
+  class="w-10 h-10 flex items-center justify-center bg-button/80 hover:text-textColor-accent hover:border-[3px] border-borderColor-accent box-border rounded-lg hover:shadow-textColor-accent/40 hover:shadow-[0_2px_40px_-4px] active:scale-90 transition-all"
   type="button"
   id="fontToggle"
 >
+  <span class="sr-only">Cambiar fuente</span>
   <svg
     width="20"
     height="20"
@@ -31,6 +32,13 @@
   >
 </button>
 
+<div
+  id="popoverFont"
+  role="tooltip"
+  class="absolute z-10 inline-block invisible text-sm py-1 px-2 text-white bg-popover rounded-md font-semibold"
+>
+</div>
+
 <style>
   .sans {
     display: block;
@@ -48,6 +56,9 @@
 </style>
 
 <script is:inline>
+  const btnFont = document.getElementById("fontToggle")
+  const popFont = document.getElementById("popoverFont")
+
   const font = (() => {
     if (typeof localStorage !== "undefined" && localStorage.getItem("font")) {
       return localStorage.getItem("font")
@@ -57,8 +68,10 @@
 
   if (font === "sans") {
     document.documentElement.classList.remove("font-serif")
+    popFont.textContent = "Activar fuente serif"
   } else {
     document.documentElement.classList.add("font-serif")
+    popFont.textContent = "Activar fuente sans"
   }
 
   window.localStorage.setItem("font", font)
@@ -68,10 +81,29 @@
     element.classList.toggle("font-serif")
 
     const isSerif = element.classList.contains("font-serif")
+    popFont.textContent = isSerif
+      ? "Activar fuente sans"
+      : "Activar fuente serif"
     localStorage.setItem("font", isSerif ? "serif" : "sans")
   }
 
-  document
-    .getElementById("fontToggle")
-    .addEventListener("click", handleFontToggleClick)
+  btnFont.addEventListener("click", handleFontToggleClick)
+</script>
+
+<script>
+  import { Popover, type PopoverOptions } from "flowbite"
+
+  const $targetEl = document.getElementById("popoverFont")
+  const $triggerEl = document.getElementById("fontToggle")
+
+  const options: PopoverOptions = {
+    placement: "bottom",
+  }
+
+  const instanceOptions = {
+    id: "popoverFont",
+    override: true,
+  }
+
+  const popover = new Popover($targetEl, $triggerEl, options, instanceOptions)
 </script>

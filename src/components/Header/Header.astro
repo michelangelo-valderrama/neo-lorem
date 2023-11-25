@@ -5,7 +5,12 @@ import { URLS_MAP } from "../../consts"
 import ToggleTheme from "./ToggleTheme.astro"
 import FontToggle from "./FontToggle.astro"
 import FavIcon from "../ui/icons/FavIcon.astro"
-import CommandIcon from "../ui/icons/CommandIcon.astro"
+
+interface Props {
+  nav?: boolean
+}
+
+const { nav = true } = Astro.props
 ---
 
 <div class="mb-[108px]">
@@ -23,12 +28,6 @@ import CommandIcon from "../ui/icons/CommandIcon.astro"
       </a>
       <menu class="flex gap-x-4 items-center text-textColor-secondary">
         <li>
-          <!-- <button
-            type="button"
-            class="w-10 h-10 flex items-center justify-center bg-button/80 hover:text-textColor-accent hover:border-[3px] border-borderColor-accent box-border rounded-lg hover:shadow-textColor-accent/80 hover:shadow-[0_2px_40px_-4px] focus:scale-90 transition-all"
-          >
-            <CommandIcon class="w-5 h-5" />
-          </button> -->
           <FontToggle />
         </li>
         <li>
@@ -37,18 +36,20 @@ import CommandIcon from "../ui/icons/CommandIcon.astro"
       </menu>
     </div>
   </article>
-  <HeaderNav>
-    {
-      URLS_MAP.map(({ href, title }, index) => (
-        <>
-          <span class="text-textColor-secondary/80 hover:text-textColor-primary transition">
-            <HeaderLink href={href} title={title} class="px-6 py-2" />
-          </span>
-          {URLS_MAP.length !== index + 1 && (
-            <span class="select-none pb-2">|</span>
-          )}
-        </>
-      ))
-    }
-  </HeaderNav>
+  {
+    nav && (
+      <HeaderNav>
+        {URLS_MAP.map(({ href, title }, index) => (
+          <>
+            <span class="text-textColor-secondary/80 hover:text-textColor-primary transition">
+              <HeaderLink href={href} title={title} class="px-6 py-2" />
+            </span>
+            {URLS_MAP.length !== index + 1 && (
+              <span class="select-none pb-2">|</span>
+            )}
+          </>
+        ))}
+      </HeaderNav>
+    )
+  }
 </div>

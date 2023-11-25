@@ -1,4 +1,5 @@
 ---
+import { SITE } from "../../consts"
 import FacebookIcon from "../ui/icons/FacebookIcon.astro"
 import TelegramIcon from "../ui/icons/TelegramIcon.astro"
 import WhatsappIcon from "../ui/icons/WhatsappIcon.astro"
@@ -9,10 +10,13 @@ interface Props {
 }
 
 const { postTitle } = Astro.props
-const { href } = Astro.url
+const { /* href */ pathname } = Astro.url
+const href = SITE.URL + pathname
+
+const text = encodeURIComponent(`${SITE.TITLE} | ${postTitle}`)
 ---
 
-<div class="flex gap-x-2 items-center">
+<div class="flex flex-col xl:flex-row gap-3 items-center">
   <!--Facebook-->
   <article>
     <a
@@ -20,7 +24,7 @@ const { href } = Astro.url
         href
       )}&src=sdkpreparse`}
       target="openInNewWindow"
-      class="rounded-full bg-[#3e68c0] hover:bg-[#3e68c0]/80 text-white h-7 w-7 flex items-center justify-center focus:ring-4 focus:ring-[#3e68c0]/40 transition"
+      class="rounded-full bg-[#3e68c0] hover:bg-[#3e68c0]/60 text-white h-7 w-7 flex items-center justify-center focus:ring-4 focus:ring-[#3e68c0]/40 transition"
     >
       <FacebookIcon class="w-5 h-5" />
     </a>
@@ -28,10 +32,10 @@ const { href } = Astro.url
   <!--Twitter-->
   <article>
     <a
-      class="rounded-full bg-[#3e3e3e] hover:bg-[#3e3e3e]/80 text-white h-7 w-7 flex items-center justify-center focus:ring-4 focus:ring-[#3e3e3e]/40 transition"
+      class="rounded-full bg-[#3e3e3e] hover:bg-[#3e3e3e]/60 text-white h-7 w-7 flex items-center justify-center focus:ring-4 focus:ring-[#3e3e3e]/40 transition"
       target="openInNewWindow"
       rel="noopener noreferrer"
-      href={`https://twitter.com/share?url=${href}&text=${postTitle}`}
+      href={`https://twitter.com/share?url=${href}&text=${text}`}
     >
       <XIcon class="w-[14px] h-[14px]" />
     </a>
@@ -39,9 +43,9 @@ const { href } = Astro.url
   <!--Telegram-->
   <article>
     <a
-      href={`https://t.me/share/url?url=${href}&text=${postTitle}`}
+      href={`https://t.me/share/url?url=${href}&text=${text}`}
       target="openInNewWindow"
-      class="rounded-full bg-[#2ca5e0] hover:bg-[#2ca5e0]/80 text-white h-7 w-7 flex items-center justify-center focus:ring-4 focus:ring-[#2ca5e0]/40 transition"
+      class="rounded-full bg-[#2ca5e0] hover:bg-[#2ca5e0]/60 text-white h-7 w-7 flex items-center justify-center focus:ring-4 focus:ring-[#2ca5e0]/40 transition"
     >
       <TelegramIcon class="w-4 h-4" />
     </a>
@@ -49,9 +53,9 @@ const { href } = Astro.url
   <!--Whatsapp-->
   <article>
     <a
-      href={`https://wa.me/?text=${postTitle} ${href}`}
+      href={`https://wa.me/?text=${text} ${href}`}
       target="openInNewWindow"
-      class="rounded-full bg-[#13d25a] hover:bg-[#13d25a]/80 text-white h-7 w-7 flex items-center justify-center focus:ring-4 focus:ring-[#13d25a]/40 transition"
+      class="rounded-full bg-[#13d25a] hover:bg-[#13d25a]/60 text-white h-7 w-7 flex items-center justify-center focus:ring-4 focus:ring-[#13d25a]/40 transition"
     >
       <WhatsappIcon class="w-4 h-4" />
     </a>
