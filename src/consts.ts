@@ -1,4 +1,4 @@
-const ME = "Sîbka"
+const ME = "Michelangelo"
 
 export const SITE = {
   TITLE: "Neo Lorem",
