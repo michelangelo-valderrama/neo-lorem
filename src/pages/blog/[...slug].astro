@@ -2,9 +2,10 @@
 import type { GetStaticPaths } from "astro"
 import { getCollection, type CollectionEntry } from "astro:content"
 import PostLayout from "../../layouts/PostLayout.astro"
-import RightArrowIcon from "../../components/ui/icons/RightArrowIcon.astro"
 import Metadata from "../../components/Blog/Metadata.astro"
 import TopActions from "../../components/Blog/TopActions.astro"
+import BottomMenu from "../../components/Blog/BottomMenu.astro"
+import PostNavigation from "../../components/Blog/PostNavigation.astro"
 
 export const getStaticPaths = (async () => {
   const blog = await getCollection("blog")
@@ -19,14 +20,14 @@ interface Props {
 }
 
 const { post } = Astro.props
-const { Content } = await post.render()
+const { Content, headings } = await post.render()
 ---
 
 <PostLayout post={post}>
   <section class="max-w-screen-md mx-auto pb-10 md:pb-14">
     <TopActions postTitle={post.data.title} />
     <h1
-      class="text-4xl md:text-5xl font-semibold md:font-normal text-textColor-primary mb-2 md:mb-4"
+      class="text-4xl md:text-5xl font-semibold md:font-normal text-textColor-primary mb-2 pt-6 md:pt-0 md:mb-4"
     >
       {post.data.title}
     </h1>
@@ -53,9 +54,11 @@ const { Content } = await post.render()
   >
     <Content />
   </article>
+  <BottomMenu postTitle={post.data.title} headings={headings} />
+  <PostNavigation next={post.data.next} previus={post.data.previus} />
 </PostLayout>
 
-<script>
+<!-- <script>
   import createLinksInHeaders from "../../scripts/blogHeaders.ts"
   import { $ } from "../../utils"
   window.addEventListener("load", () => {
@@ -64,4 +67,4 @@ const { Content } = await post.render()
     const footnote = $("#footnote-label") as HTMLHeadingElement | null
     footnote?.classList.remove("sr-only")
   })
-</script>
+</script> -->

@@ -17,15 +17,14 @@ const blog = (await getCollection("blog")).sort(
   <meta slot="meta" name="robots" content="all" />
   <div class="max-w-screen-lorem mx-auto">
     <section class="pt-12 pb-14">
-      <div class="relative">
+      <div class="relative flex justify-between items-center">
         <h1 class="text-5xl md:text-6xl font-bold text-textColor-primary">
-          Blog <a href="/rss.xml" target="_blank"
-            ><i
-              ><RssIcon class="inline w-8 h-8" />
-              <span class="sr-only">RSS</span>
-            </i></a
-          >
+          Blog
         </h1>
+        <a href="/rss.xml" target="_blank" class="border border-borderColor-gray rounded-lg w-9 h-9 flex items-center justify-center">
+          <RssIcon class="inline w-5 h-5" />
+          <span class="sr-only">RSS</span>
+        </a>
       </div>
     </section>
 

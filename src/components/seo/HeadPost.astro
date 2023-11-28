@@ -27,18 +27,55 @@ const bannerUrl = new URL(post.data.mainImg ?? SITE.IMAGE, Astro.site)
   type="application/ld+json"
   set:html={JSON.stringify({
     "@context": "https://schema.org",
-    "@type": "Article",
+    "@type": "BlogPosting",
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": Astro.url,
+    },
     headline: title,
-    abstract: description,
+    description: description,
     image: [bannerUrl],
-    dateCreated: pubDate,
     datePublished: pubDate,
     dateModified: update,
     author: [
       {
-        "@type": "People",
+        "@type": "Person",
         name: "Michelangelo Valderrama",
-        url: Astro.site,
+        url: `${SITE.URL}/about`,
+      },
+    ],
+    publisher: {
+      "@type": "Organization",
+      name: "Neo Lorem",
+      logo: {
+        "@type": "ImageObject",
+        url: `${SITE.URL}${SITE.IMAGE}`,
+      },
+    },
+  })}
+/>
+
+<script
+  type="application/ld+json"
+  set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        item: {
+          "@id": `${SITE.URL}/blog`,
+          name: "Blog",
+        },
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        item: {
+          "@id": Astro.url,
+          name: title,
+        },
       },
     ],
   })}

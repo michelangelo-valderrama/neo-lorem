@@ -9,16 +9,19 @@ interface Props {
 const { postTitle } = Astro.props
 ---
 
-<div class="hidden xl:flex justify-between items-center opacity-40 hover:opacity-100 transition-opacity pt-4 pb-10">
-  <a href="/blog" class="group hover:text-textColor-accent font-semibold">
+<div
+  class="hidden xl:flex justify-between items-center transition-opacity pt-6 pb-10"
+>
+  <a
+    href="/blog"
+    class="group hover:text-textColor-accent font-bold text-lg flex items-center gap-x-2"
+  >
     <RightArrowIcon
       class="h-5 w-5 inline-block group-hover:translate-x-[-0.25rem] transition-transform rotate-180"
     />
      Blog
   </a>
-  <div
-    class="text-sm text-white font-semibold"
-  >
+  <div class="text-sm text-white font-semibold">
     <SharePost postTitle={postTitle} />
   </div>
 </div>

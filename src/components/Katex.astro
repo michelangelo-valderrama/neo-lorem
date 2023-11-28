@@ -13,13 +13,6 @@ const html = katex.renderToString(f, { throwOnError: false })
 
 <span class:list={[{ full: !inline }, customClasses]} set:html={html} />
 
-<link
-  rel="stylesheet"
-  href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.css"
-  integrity="sha384-WsHMgfkABRyG494OmuiNmkAOk8nhO1qE+Y6wns6v+EoNoTNxrWxYpl5ZYWFOLPCM"
-  crossorigin="anonymous"
-/>
-
 <style>
   .full {
     @apply block text-center my-4 text-textColor-primary overflow-x-scroll;

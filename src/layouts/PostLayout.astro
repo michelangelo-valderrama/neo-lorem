@@ -19,11 +19,10 @@ const { headings } = await post.render()
   class="scroll-p-28"
   image={post.data.mainImg}
   imageAlt={post.data.description}
-  nav={false}
 >
   <HeadPost slot="meta" post={post} slot="meta" />
   <div class="max-w-screen-sm mx-auto relative">
-    <DisplayTOC postTitle={post.data.title} headings={headings} />
+    <DisplayTOC headings={headings} />
     <slot />
   </div>
   <div class="mt-[30vh] md:mt-[50vh] text-center"></div>

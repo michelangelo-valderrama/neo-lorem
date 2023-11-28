@@ -2,12 +2,13 @@
 import HeaderLink from "../HeaderLink.astro"
 import { URLS_MAP } from "../../consts.ts"
 import GithubIcon from "../../components/ui/icons/GithubIcon.astro"
+import RssIcon from "../ui/icons/RssIcon.astro"
 ---
 
-<footer
-  class="border-t border-borderColor-gray mb-2 md:mb-12 mt-36"
->
-  <div class="p-6 mt-4 md:px-0 max-w-screen-lorem mx-auto flex justify-between items-center text-textColor-secondary">
+<footer class="border-t border-borderColor-gray mb-2 md:mb-16 mt-36">
+  <div
+    class="p-6 mt-4 md:px-0 max-w-screen-lorem mx-auto flex justify-between items-center text-textColor-secondary"
+  >
     <div class="w-28">
       {
         URLS_MAP.map(({ href, title }) => (
@@ -21,14 +22,26 @@ import GithubIcon from "../../components/ui/icons/GithubIcon.astro"
         ))
       }
     </div>
-    <div class="flex justify-center gap-2">
-      <a
-        class="hover:text-textColor-primary"
-        href="https://github.com/michelangelo-valderrama"
-        target="_blank">GitHub</a
-      >
-      <GithubIcon class="w-5 h-5 text-textColor-primary" />
-    </div>
+    <ul class="space-y-2 text-right">
+      <li>
+        <a
+          class="hover:text-textColor-primary flex items-center justify-end gap-x-2"
+          href="/rss.xml"
+          target="_blank"
+          >RSS
+          <RssIcon class="inline-block w-4 h-4" />
+        </a>
+      </li>
+      <li>
+        <a
+          class="hover:text-textColor-primary flex items-center justify-end gap-x-2"
+          href="https://github.com/michelangelo-valderrama"
+          target="_blank"
+          >GitHub
+          <GithubIcon class="inline-block w-4 h-4" />
+        </a>
+      </li>
+    </ul>
   </div>
 </footer>
 

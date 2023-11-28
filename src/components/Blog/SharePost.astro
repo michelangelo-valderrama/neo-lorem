@@ -4,6 +4,7 @@ import FacebookIcon from "../ui/icons/FacebookIcon.astro"
 import TelegramIcon from "../ui/icons/TelegramIcon.astro"
 import WhatsappIcon from "../ui/icons/WhatsappIcon.astro"
 import XIcon from "../ui/icons/XIcon.astro"
+import CopyUrlButton from "./CopyUrlButton.astro"
 
 interface Props {
   postTitle: string
@@ -24,7 +25,7 @@ const text = encodeURIComponent(`${SITE.TITLE} | ${postTitle}`)
         href
       )}&src=sdkpreparse`}
       target="openInNewWindow"
-      class="rounded-full bg-[#3e68c0] hover:bg-[#3e68c0]/60 text-white h-7 w-7 flex items-center justify-center focus:ring-4 focus:ring-[#3e68c0]/40 transition"
+      class="rounded-full bg-[#3e68c0] hover:bg-[#3e68c0]/60 text-white w-8 h-8 flex items-center justify-center focus:ring-4 focus:ring-[#3e68c0]/40 transition"
     >
       <FacebookIcon class="w-5 h-5" />
     </a>
@@ -32,10 +33,10 @@ const text = encodeURIComponent(`${SITE.TITLE} | ${postTitle}`)
   <!--Twitter-->
   <article>
     <a
-      class="rounded-full bg-[#3e3e3e] hover:bg-[#3e3e3e]/60 text-white h-7 w-7 flex items-center justify-center focus:ring-4 focus:ring-[#3e3e3e]/40 transition"
+      class="rounded-full bg-[#3e3e3e] hover:bg-[#3e3e3e]/60 text-white w-8 h-8 flex items-center justify-center focus:ring-4 focus:ring-[#3e3e3e]/40 transition"
       target="openInNewWindow"
       rel="noopener noreferrer"
-      href={`https://twitter.com/share?url=${href}&text=${text}`}
+      href={`https://twitter.com/intent/tweet?url=${href}&text=${text}&lang=es`}
     >
       <XIcon class="w-[14px] h-[14px]" />
     </a>
@@ -45,7 +46,7 @@ const text = encodeURIComponent(`${SITE.TITLE} | ${postTitle}`)
     <a
       href={`https://t.me/share/url?url=${href}&text=${text}`}
       target="openInNewWindow"
-      class="rounded-full bg-[#2ca5e0] hover:bg-[#2ca5e0]/60 text-white h-7 w-7 flex items-center justify-center focus:ring-4 focus:ring-[#2ca5e0]/40 transition"
+      class="rounded-full bg-[#2ca5e0] hover:bg-[#2ca5e0]/60 text-white w-8 h-8 flex items-center justify-center focus:ring-4 focus:ring-[#2ca5e0]/40 transition"
     >
       <TelegramIcon class="w-4 h-4" />
     </a>
@@ -55,10 +56,14 @@ const text = encodeURIComponent(`${SITE.TITLE} | ${postTitle}`)
     <a
       href={`https://wa.me/?text=${text} ${href}`}
       target="openInNewWindow"
-      class="rounded-full bg-[#13d25a] hover:bg-[#13d25a]/60 text-white h-7 w-7 flex items-center justify-center focus:ring-4 focus:ring-[#13d25a]/40 transition"
+      class="rounded-full bg-[#13d25a] hover:bg-[#13d25a]/60 text-white w-8 h-8 flex items-center justify-center focus:ring-4 focus:ring-[#13d25a]/40 transition"
     >
       <WhatsappIcon class="w-4 h-4" />
     </a>
+  </article>
+  <!--Copy Url-->
+  <article>
+    <CopyUrlButton />
   </article>
 </div>
 

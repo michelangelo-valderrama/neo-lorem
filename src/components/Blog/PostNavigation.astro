@@ -1,0 +1,25 @@
+---
+import PostNavButton from "./PostNavButton.astro"
+
+interface Props {
+  next?: {
+    link: string
+    text: string
+  }
+  previus?: {
+    link: string
+    text: string
+  }
+}
+
+const { next, previus } = Astro.props
+---
+
+{
+  (previus || next) && (
+    <aside class="mt-24 pt-12 border-t border-borderColor-gray grid gap-y-6">
+      {previus && <PostNavButton rel="previus" item={previus} />}
+      {next && <PostNavButton rel="next" item={next} />}
+    </aside>
+  )
+}

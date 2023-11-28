@@ -1,0 +1,38 @@
+---
+import { getEntry } from "astro:content"
+import RightArrowIcon from "../ui/icons/RightArrowIcon.astro"
+
+interface Props {
+  item: {
+    link: string
+    text: string
+  }
+  rel: "next" | "previus"
+}
+
+const { item, rel } = Astro.props
+
+const isNext = rel === "next"
+---
+
+<a
+  class:list={[
+    "text-xl opacity-90 hover:opacity-100 border border-borderColor-gray hover:border-borderColor-accent px-6 py-4 rounded-lg hover:text-textColor-primary flex items-center justify-between gap-x-4 transition-all",
+    ,
+    {
+      "text-right flex-row-reverse": isNext,
+    },
+  ]}
+  rel={rel}
+  href={`${Astro.site}blog/${item.link}`}
+>
+  <RightArrowIcon
+    class:list={[
+      "w-6 h-6",
+      {
+        "rotate-180": !isNext,
+      },
+    ]}
+  />
+  <p>{item.text}</p>
+</a>

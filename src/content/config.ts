@@ -15,6 +15,18 @@ const blog = defineCollection({
       .transform((str) => `/images/blog/${str}`)
       .optional(),
     tags: z.array(z.string()),
+    next: z
+      .object({
+        text: z.string(),
+        link: z.string(),
+      })
+      .optional(),
+    previus: z
+      .object({
+        text: z.string(),
+        link: z.string(),
+      })
+      .optional(),
   }),
 })
 

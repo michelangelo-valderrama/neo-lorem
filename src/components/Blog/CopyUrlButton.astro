@@ -1,0 +1,31 @@
+---
+import CheckIcon from "../ui/icons/CheckIcon.astro"
+import ClipboardIcon from "../ui/icons/ClipboardIcon.astro"
+---
+
+<button
+  type="button"
+  class="rounded-full w-8 h-8 bg-gray-600 hover:bg-gray-600/80 text-white flex items-center justify-center focus:ring-4 focus:ring-gray-600/40 transition"
+  id="copy-url"
+>
+  <ClipboardIcon id="clipboard-icon" class="w-4 h-4" />
+  <CheckIcon id="check-icon" class="hidden w-4 h-4" />
+</button>
+
+<script>
+  import { $ } from "../../utils"
+
+  const copyUrl = $("#copy-url") as HTMLButtonElement
+  const clipboardIcon = $("#clipboard-icon") as HTMLDivElement
+  const checkIcon = $("#check-icon") as HTMLDivElement
+  copyUrl.addEventListener("click", async () => {
+    const url = window.location.href
+    navigator.clipboard?.writeText(url)
+    clipboardIcon.classList.toggle("hidden")
+    checkIcon.classList.toggle("hidden")
+    setTimeout(() => {
+      clipboardIcon.classList.toggle("hidden")
+      checkIcon.classList.toggle("hidden")
+    }, 1000)
+  })
+</script>

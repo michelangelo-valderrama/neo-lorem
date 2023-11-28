@@ -1,0 +1,129 @@
+---
+import type { MarkdownHeading } from "astro"
+import ListIcon from "../ui/icons/ListIcon.astro"
+import RightArrowIcon from "../ui/icons/RightArrowIcon.astro"
+import TableOfContents from "./TableOfContents.astro"
+import ShareIcon from "../ui/icons/ShareIcon.astro"
+import SharePost from "./SharePost.astro"
+
+interface Props {
+  headings: MarkdownHeading[]
+  postTitle: string
+}
+
+const { headings, postTitle } = Astro.props
+---
+
+<aside
+  id="options-ctn"
+  class="xl:hidden fixed bottom-4 w-full left-0 px-6 z-20"
+>
+  <div
+    class="max-w-screen-sm mx-auto bg-background border-2 border-borderColor-gray rounded-lg transition relative flex items-center px-2 py-1.5 shadow-lg"
+  >
+    <!--Back-->
+    <a
+      href="/blog"
+      class="group w-9 h-9 hover:bg-button/80 hover:text-textColor-primary rounded-lg flex items-center justify-center transition"
+    >
+      <RightArrowIcon
+        class="w-5 h-5 group-focus:translate-x-[-0.25rem] transition-transform rotate-180"
+      />
+      <span class="sr-only">Blog</span>
+    </a>
+    <!--TOC-->
+    <button
+      class="flex hover:bg-button/80 rounded-lg items-center gap-x-2 mx-auto hover:text-textColor-primary transition px-4 py-1.5"
+      id="toc-btn"
+    >
+      <ListIcon id="list-icon" class="w-5 h-5" />
+      <!-- <Spinner id="spinner" class="w-5 h-5" /> -->
+      <span>Tabla de Contenidos</span>
+    </button>
+    <aside class="hidden absolute bottom-[48px] left-0 w-full px-2" id="toc">
+      <div
+        class="mx-auto border-2 border-borderColor-gray py-4 px-6 bg-background max-w-md max-h-[40vh] overflow-y-scroll rounded-top-lg"
+      >
+        <TableOfContents
+          headings={[
+            {
+              depth: 2,
+              slug: "",
+              text: "Inicio",
+            },
+            ...headings,
+          ]}
+        />
+      </div>
+    </aside>
+    <!--Share-->
+    <button
+      class="w-9 h-9 hover:bg-button/80 hover:text-textColor-primary rounded-lg flex items-center justify-center transition"
+      id="share-btn"
+    >
+      <ShareIcon class="w-5 h-5" />
+    </button>
+    <div
+      class="hidden absolute bottom-14 right-0 py-4 px-3 border-2 border-borderColor-gray bg-background rounded-lg"
+      id="share"
+    >
+      <SharePost postTitle={postTitle} />
+    </div>
+  </div>
+</aside>
+
+<script is:inline>
+  window.addEventListener("load", () => {
+    const btnToc = document.querySelector("#toc-btn")
+    const toc = document.querySelector("#toc")
+
+    btnToc.addEventListener("click", () => {
+      toc.classList.toggle("hidden")
+    })
+
+    const btnShare = document.querySelector("#share-btn")
+    const share = document.querySelector("#share")
+
+    btnShare.addEventListener("click", () => {
+      share.classList.toggle("hidden")
+    })
+  })
+</script>
+
+<script>
+  import { $ } from "../../utils"
+
+  const optCnt = $("#options-ctn") as HTMLDivElement
+
+  const cb: IntersectionObserverCallback = (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        optCnt.classList.add("hidden")
+      } else {
+        optCnt.classList.remove("hidden")
+      }
+    })
+  }
+
+  const options: IntersectionObserverInit = {
+    root: null,
+    rootMargin: "0px",
+    threshold: 0.1,
+  }
+
+  const observer = new IntersectionObserver(cb, options)
+
+  observer.observe($("footer") as HTMLDivElement)
+
+  // window.addEventListener("load", () => {
+  //   $("#list-icon")?.classList.remove("hidden")
+  //   $("#spinner")?.classList.add("hidden")
+  // })
+</script>
+
+<style>
+  .rounded-top-lg {
+    border-top-right-radius: 0.5rem;
+    border-top-left-radius: 0.5rem;
+  }
+</style>

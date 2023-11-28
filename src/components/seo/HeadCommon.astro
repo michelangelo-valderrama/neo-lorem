@@ -70,6 +70,14 @@ const canonical = url.href
 <meta name="description" content={description} />
 <link rel="canonical" href={canonical} />
 
+<!--Katex-->
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.css"
+  integrity="sha384-WsHMgfkABRyG494OmuiNmkAOk8nhO1qE+Y6wns6v+EoNoTNxrWxYpl5ZYWFOLPCM"
+  crossorigin="anonymous"
+/>
+
 <OpenGraphTags
   title={title}
   description={description}
@@ -84,3 +92,37 @@ const canonical = url.href
   image={image}
   imageAlt={imageAlt}
 />
+
+<!--Rich Results-->
+<!--Person-->
+<script
+  type="application/ld+json"
+  set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Person",
+    name: SITE.ME,
+    url: SITE.URL,
+  })}
+/>
+
+<!--Organization-->
+<script
+  type="application/ld+json"
+  set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    url: SITE.URL,
+    logo: `${SITE.URL}/${SITE.LOGO}`,
+  })}
+/>
+
+<!--PWA-->
+<meta name="mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-touch-fullscreen" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="white" />
+<meta name="apple-mobile-web-app-title" content="Neo Lorem" />
+<meta name="apple-touch-startup-image" content={`/${SITE.LOGO}`} />
+<link rel="apple-touch-icon" href={`/${SITE.LOGO}`} />
+<meta name="application-name" content="Neo Lorem" />
+<link rel="mask-icon" href={`/${SITE.LOGO}`} color="#000" />
