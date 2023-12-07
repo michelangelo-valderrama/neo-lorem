@@ -17,7 +17,7 @@ const isNext = rel === "next"
 
 <a
   class:list={[
-    "text-xl opacity-90 hover:opacity-100 border border-borderColor-gray hover:border-borderColor-accent px-6 py-4 rounded-lg hover:text-textColor-primary flex items-center justify-between gap-x-4 transition-all",
+    "opacity-90 hover:opacity-100 border border-borderColor-gray hover:border-borderColor-accent px-4 md:px-6 py-4 rounded-lg hover:text-textColor-primary flex items-center justify-between gap-x-4 transition-all",
     ,
     {
       "text-right flex-row-reverse": isNext,
@@ -34,5 +34,5 @@ const isNext = rel === "next"
       },
     ]}
   />
-  <p>{item.text}</p>
+  <p class="text-lg md:text-xl flex-1">{item.text}</p>
 </a>

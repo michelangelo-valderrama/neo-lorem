@@ -38,7 +38,7 @@ Si todo funciona, entonces pasamos a la siguiente face.
 
 Para crear el shortcut, básicamente hay que hacer lo mismo que en mi artículo anterior, [**Descargar y configurar Firefox Developer Edition para Ubuntu**](https://neolorem.dev/blog/firefox-developer-edition-para-ubuntu), pero cambiando alguna cosilla.
 
-Ejecuta el siguiente comando para empezar a escribir en el archivo de configuración para el shortcut:
+Ejecute el siguiente comando para empezar a escribir en el archivo de configuración del shortcut:
 
 ```
 vi ~/.local/share/applications/pico_8.desktop

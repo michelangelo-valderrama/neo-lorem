@@ -1,60 +1,84 @@
 ---
-import RightArrowIcon from "../../components/ui/icons/RightArrowIcon.astro"
-import FormattedDate from "../../components/FormattedDate.astro"
-import type { HTMLAttributes } from "astro/types"
+import FormattedDate from '../../components/FormattedDate.astro'
+import type { HTMLAttributes } from 'astro/types'
 
-interface Props extends HTMLAttributes<"a"> {
+interface Props extends HTMLAttributes<'a'> {
   slug: string
   date: Date
   title: string
   description: string
   tags: string[]
+  mainImg?: string
 }
 
-const { slug, date, title, description, tags } = Astro.props
+const { slug, date, title, description, tags, mainImg } =
+  Astro.props
 ---
 
-<article class="sm:flex sm:flex-row-reverse sm:gap-x-20 mb-10">
-  <article class="sm:text-right">
-    <p class="sm:font-bold md:text-lg text-sm">
-      <FormattedDate date={date} />
-    </p>
-  </article>
-  <article class="sm:flex-1">
-    <p class="text-xl md:text-2xl text-textColor-primary mb-1 md:mb-0">
-      <a
-        href={`/blog/${slug}`}
-        class="block hover:underline hover:underline-offset-8"
-      >
-        <strong>{title}</strong>
-      </a>
-    </p>
-    <p>{description}</p>
-    <div class="my-4">
-      <ul
-        class="hidden sm:flex w-full sm:flex-wrap justify-start sm:gap-x-2 sm:gap-y-4"
-      >
-        {
-          tags.map((tag) => (
+{
+  mainImg ? (
+    <a
+      href={`/blog/${slug}`}
+      class="overflow-hidden block rounded-xl border border-borderColor-gray hover:border-borderColor-accent transition"
+    >
+      <article class="relative w-full group transition">
+        <div class="sm:absolute bg-background/80 backdrop-blur-sm group-hover:bg-background/90 py-6 px-4 top-0 left-0 rounded-xl flex flex-col h-full gap-y-3 z-20 transition-all">
+          <div class="sm:flex sm:flex-row-reverse gap-x-8">
+            <p class="sm:text-right sm:font-bold text-sm md:text-base">
+              <FormattedDate date={date} />
+            </p>
+            <p class="text-xl md:text-2xl text-textColor-primary flex-1">
+              <strong>{title}</strong>
+            </p>
+          </div>
+          <p class="flex-1 md:text-lg">
+            {description}
+          </p>
+          <ul class="flex w-full flex-wrap justify-start gap-x-2 gap-y-4">
+            {tags.map((tag) => (
+              <li>
+                <span class="text-sm px-2 py-1 rounded-lg bg-hrColor">
+                  {tag}
+                </span>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <img
+          src={mainImg}
+          alt={description}
+          width="800"
+          height="400"
+          loading="lazy"
+          class="hidden sm:block w-full h-full object-cover rounded-xl object box-border duration-200 group-hover:scale-110 transition"
+        />
+      </article>
+    </a>
+  ) : (
+    <a
+      href={`/blog/${slug}`}
+      class="overflow-hidden rounded-xl border border-borderColor-gray hover:border-borderColor-accent transition block"
+    >
+      <article class="w-full group transition py-6 px-4 flex flex-col gap-y-3">
+        <div class="sm:flex sm:flex-row-reverse gap-x-8">
+          <p class="sm:text-right sm:font-bold text-sm md:text-base">
+            <FormattedDate date={date} />
+          </p>
+          <p class="text-xl md:text-2xl text-textColor-primary flex-1">
+            <strong>{title}</strong>
+          </p>
+        </div>
+        <p class="flex-1 md:text-lg">{description}</p>
+        <ul class="flex w-full flex-wrap justify-start gap-x-2 gap-y-4">
+          {tags.map((tag) => (
             <li>
-              <span class="text-sm px-2 py-1 rounded-lg bg-hrColor">{tag}</span>
+              <span class="text-sm px-2 py-1 rounded-lg bg-hrColor">
+                {tag}
+              </span>
             </li>
-          ))
-        }
-      </ul>
-    </div>
-    <div class="text-textColor-accent">
-      <a
-        href={`/blog/${slug}`}
-        class="block group hover:underline hover:underline-offset-4"
-      >
-        <strong>Continuar leyendo</strong>
-        <i>
-          <RightArrowIcon
-            class="ml-1 inline group-hover:translate-x-2 transition-transform"
-          />
-        </i>
-      </a>
-    </div>
-  </article>
-</article>
+          ))}
+        </ul>
+      </article>
+    </a>
+  )
+}
