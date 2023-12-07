@@ -1,16 +1,16 @@
 ---
-import HeaderNav from "./HeaderNav.astro"
-import HeaderLink from "../HeaderLink.astro"
-import { URLS_MAP } from "../../consts"
-import ToggleTheme from "./ToggleTheme.astro"
-import FontToggle from "./FontToggle.astro"
-import FavIcon from "../ui/icons/FavIcon.astro"
+import HeaderNav from "./HeaderNav.astro";
+import HeaderLink from "../HeaderLink.astro";
+import { URLS_MAP } from "../../consts";
+import ToggleTheme from "./ToggleTheme.astro";
+import FontToggle from "./FontToggle.astro";
+import FavIcon from "../ui/icons/FavIcon.astro";
 
 interface Props {
-  nav?: boolean
+  nav?: boolean;
 }
 
-const { nav = true } = Astro.props
+const { nav = true } = Astro.props;
 ---
 
 <div class="mb-[108px]">
@@ -25,6 +25,7 @@ const { nav = true } = Astro.props
         class="active:scale-90 transition-transform w-10 h-10 flex items-center justify-center"
       >
         <FavIcon class="pointer-events-none" />
+        <span class="sr-only">Home</span>
       </a>
       <menu class="flex gap-x-4 items-center text-textColor-secondary">
         <li>

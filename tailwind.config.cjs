@@ -1,5 +1,5 @@
-import { colors, fontFamily } from "./src/config/tailwind"
-const { createThemes } = require("tw-colors")
+import { colors, fontFamily } from "./src/config/tailwind";
+const { createThemes } = require("tw-colors");
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
@@ -8,6 +8,18 @@ module.exports = {
     "./node_modules/flowbite/**/*.js",
   ],
   darkMode: "class",
+  plugins: [
+    require("@tailwindcss/typography"),
+    require("flowbite/plugin"),
+    createThemes(
+      {
+        ...colors,
+      },
+      {
+        defaultTheme: "light",
+      }
+    ),
+  ],
   theme: {
     extend: {
       fontFamily,
@@ -88,16 +100,4 @@ module.exports = {
       }),
     },
   },
-  plugins: [
-    require("@tailwindcss/typography"),
-    require("flowbite/plugin"),
-    createThemes(
-      {
-        ...colors,
-      },
-      {
-        defaultTheme: "light",
-      }
-    ),
-  ],
-}
+};

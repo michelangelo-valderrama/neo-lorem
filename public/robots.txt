@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://neo-lorem.web.app/sitemap-index.xml
+Sitemap: https://neolorem.dev/sitemap-index.xml

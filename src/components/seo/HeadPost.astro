@@ -23,6 +23,15 @@ const bannerUrl = new URL(post.data.mainImg ?? SITE.IMAGE, Astro.site)
 <meta property="article:published_time" content={pubDate} />
 <meta property="article:modified_time" content={update} />
 
+<!--Katex-->
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.css"
+  integrity="sha384-WsHMgfkABRyG494OmuiNmkAOk8nhO1qE+Y6wns6v+EoNoTNxrWxYpl5ZYWFOLPCM"
+  crossorigin="anonymous"
+/>
+
+<!--Rich Results-->
 <script
   type="application/ld+json"
   set:html={JSON.stringify({

@@ -1,12 +1,22 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro"
-import LastPost from "../components/Index/LastPost.astro"
-import PostsByYear from "../components/Index/PostsByYear.astro"
-import { SITE } from "../consts"
+import BaseLayout from "../layouts/BaseLayout.astro";
+import LastPost from "../components/Index/LastPost.astro";
+import PostsByYear from "../components/Index/PostsByYear.astro";
+import { SITE } from "../consts";
 ---
 
 <BaseLayout>
   <meta slot="meta" name="robots" content="all" />
+  <script
+    type="application/ld+json"
+    set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      url: SITE.URL,
+      logo: `${SITE.URL}/${SITE.LOGO}`,
+    })}
+    slot="meta"
+  />
   <div class="max-w-screen-lorem mx-auto">
     <section
       class="text-textColor-primary text-center flex align-middle justify-center"
@@ -44,8 +54,8 @@ import { SITE } from "../consts"
 </BaseLayout>
 
 <script>
-  import { getAnalytics } from "firebase/analytics"
-  import { initializeApp } from "firebase/app"
+  import { getAnalytics } from "firebase/analytics";
+  import { initializeApp } from "firebase/app";
 
   const firebaseConfig = {
     apiKey: "AIzaSyCOTvBJIn-tu61sKs6KP9v1nFqUkGYpQl4",
@@ -55,10 +65,10 @@ import { SITE } from "../consts"
     messagingSenderId: "906925394003",
     appId: "1:906925394003:web:7de880e224529bba3a1ea6",
     measurementId: "G-HQDS5TXYLF",
-  }
+  };
 
-  const app = initializeApp(firebaseConfig)
-  const analytics = getAnalytics(app)
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
 </script>
 
 <style>

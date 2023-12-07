@@ -49,7 +49,7 @@ const { Content, headings } = await post.render()
     <Metadata post={post} />
   </section>
   <article
-    class="prose prose-purple dark:prose-invert prose-lg sm:prose-xl prose-code:before:content-[''] prose-code:after:content-[''] prose-h1:text-center md:prose-h2:mb-6 md:prose-h2:text-center prose-h3:text-lg md:prose-h3:text-xl prose-h3:italic prose-h3:mt-12 max-w-none"
+    class="prose prose-purple dark:prose-invert prose-lg prose-code:before:content-[''] prose-code:after:content-[''] prose-h1:text-center md:prose-h2:mb-6 md:prose-h2:text-center prose-h3:text-lg md:prose-h3:text-xl prose-h3:italic prose-h3:mt-12 max-w-none"
     id="content"
   >
     <Content />
@@ -58,7 +58,7 @@ const { Content, headings } = await post.render()
   <PostNavigation next={post.data.next} previus={post.data.previus} />
 </PostLayout>
 
-<!-- <script>
+<script>
   import createLinksInHeaders from "../../scripts/blogHeaders.ts"
   import { $ } from "../../utils"
   window.addEventListener("load", () => {
@@ -67,4 +67,4 @@ const { Content, headings } = await post.render()
     const footnote = $("#footnote-label") as HTMLHeadingElement | null
     footnote?.classList.remove("sr-only")
   })
-</script> -->
+</script>

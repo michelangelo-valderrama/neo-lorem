@@ -1,10 +1,11 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro"
-import Draws from "../components/about/Draws.astro"
-import Movies from "../components/about/Movies.astro"
-import Books from "../components/about/Books.astro"
-import { SITE } from "../consts.ts"
-import songs from "../data/songs.json"
+import BaseLayout from '../layouts/BaseLayout.astro'
+import Draws from '../components/about/Draws.astro'
+import Movies from '../components/about/Movies.astro'
+import Books from '../components/about/Books.astro'
+import { SITE } from '../consts.ts'
+import songs from '../data/songs.json'
+import { Image } from 'astro:assets'
 ---
 
 <BaseLayout
@@ -12,33 +13,68 @@ import songs from "../data/songs.json"
   description={`Llamadme ${SITE.ME}. Soy alguien con muchos intereses, y que a veces se obseciona con algún tema en particular durante días o semanas sin ningún motivo.`}
 >
   <meta slot="meta" name="robots" content="all" />
+  <script
+    type="application/ld+json"
+    set:html={JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'Person',
+      name: SITE.ME,
+      url: SITE.URL
+    })}
+    slot="meta"
+  />
   <div class="max-w-screen-lorem mx-auto">
     <section class="pt-12 pb-14">
       <div class="relative">
-        <h1 class="text-5xl md:text-6xl font-bold text-textColor-primary">
-          About <small set:html="<コ:彡" />
+        <h1
+          class="text-5xl md:text-6xl font-bold text-textColor-primary"
+        >
+          About
         </h1>
       </div>
     </section>
-    <article class="text-lg leading-relaxed max-w-screen-md">
-      <div>
-        <p class="book-line">
-          Llamadme {SITE.ME}. Soy alguien con muchos intereses, y que a veces se
-          obseciona con algún tema en particular durante días o semanas sin
-          ningún motivo. Para que estas divagaciones mías no solo se queden en
-          solo eso, <em>“mías”</em>, pensé en crear un blog para poder escribir
-          sobre estas y no queden en nada. Tal vez incluso le puedan servir a
-          alguien.
-        </p>
+    <article
+      class="prose prose-purple dark:prose-invert prose-lg prose-code:before:content-[''] prose-code:after:content-[''] prose-h1:text-center md:prose-h2:mb-6 md:prose-h2:mt-16 prose-h3:text-lg md:prose-h3:text-xl prose-h3:italic prose-h3:mt-12 max-w-screen-md"
+    >
+      <div class="md:grid md:grid-cols-4 md:gap-4">
+        <div class="col-span-3">
+          <p class="book-line">
+            Llamadme {SITE.ME}. Soy alguien con muchos
+            intereses, y que a veces se obseciona con algún
+            tema en particular durante días o semanas sin
+            ningún motivo. Para que estas divagaciones mías
+            no solo se queden en solo eso, <em>“mías”</em>,
+            pensé en crear un blog para poder escribir sobre
+            estas y no queden en nada. Tal vez incluso le
+            puedan servir a alguien.
+          </p>
+        </div>
+        <a class="no-underline" href="https://github.com/michelangelo-valderrama" target="_blank">
+          <picture
+            class="text-base text-center max-w-[12rem] mx-auto"
+          >
+            <Image
+              class="rounded-full"
+              src="https://github.com/michelangelo-valderrama.png"
+              alt="Mi foto de perfil de github"
+              width={460}
+              height={460}
+            />
+            <figcaption>
+              Mi foto de perfil de GitHub
+            </figcaption>
+          </picture>
+        </a>
       </div>
 
       <section>
         <h2>Dibujo</h2>
         <p>
-          Llevo dibujando desde que tengo uso de razón, pero hoy día solo hago
-          algún dibujo suelto en uno de mis sketchbooks cada cierto tiempo. Cada
-          vez me enfoco más en el diseño, pero hace unos años me centré bastante
-          en el dibujo anatómico.
+          Llevo dibujando desde que tengo uso de razón, pero
+          hoy día solo hago algún dibujo suelto en uno de
+          mis sketchbooks cada cierto tiempo. Cada vez me
+          enfoco más en el diseño, pero hace unos años me
+          centré bastante en el dibujo anatómico.
         </p>
         <Draws />
       </section>
@@ -46,14 +82,18 @@ import songs from "../data/songs.json"
       <section>
         <h2>Música</h2>
         <p>
-          Desde los 8 años que llevo tocando la guitarra española. También
-          aprendí a tocar la guitarra eléctrica, el ukelele, el piano y el bajo.
-          Nunca me enfoqué en dominar estos instrumentos, sobre todo lo que
-          quería era hacer música en <strong>GarageBand</strong> y <strong
-            >FLStudio</strong
-          >.
+          Desde los 8 años que llevo tocando la guitarra
+          española. También aprendí a tocar la guitarra
+          eléctrica, el ukelele, el piano y el bajo. Nunca
+          me enfoqué en dominar estos instrumentos, sobre
+          todo lo que quería era hacer música en <strong
+            >GarageBand</strong
+          > y <strong>FLStudio</strong>.
         </p>
-        <div role="list" class="grid sm:grid-cols-2 gap-y-8">
+        <div
+          role="list"
+          class="grid sm:grid-cols-2 gap-y-8"
+        >
           {
             songs.map(({ title, src }) => (
               <article role="listitem">
@@ -74,22 +114,28 @@ import songs from "../data/songs.json"
         <section>
           <h3>Cine</h3>
           <p>
-            Hace pocos años me adentré con fuerza en el cine, sobre todo me
-            gustó la dirección cinematográfica con directores como <strong
+            Hace pocos años me adentré con fuerza en el
+            cine, sobre todo me gustó la dirección
+            cinematográfica con directores como <strong
               >Stanley Kubrick</strong
-            > o <strong>Bong Joon-ho</strong>. Disfruto mucho ver películas de
-            todo tipo y también ver vídeos analizándolas.
+            > o <strong>Bong Joon-ho</strong>. Disfruto
+            mucho ver películas de todo tipo y también ver
+            vídeos analizándolas.
           </p>
           <Movies />
         </section>
         <section>
           <h3>Libros</h3>
           <p>
-            Empezar a leer fue una decisión muy consiente pues consideraba que
-            sería un buen hábito. Comencé con la ciencia ficción, después me dio
-            por leer mucho sobre divulgación científica y matemática; sobre todo
-            leía a <strong>Issac Asimov</strong>. Aunque no soy mucho de
-            fantasía, disfruto mucho leyendo a <strong>Brandon Sanderson</strong
+            Empezar a leer fue una decisión muy consiente
+            pues consideraba que sería un buen hábito.
+            Comencé con la ciencia ficción, después me dio
+            por leer mucho sobre divulgación científica y
+            matemática; sobre todo leía a <strong
+              >Issac Asimov</strong
+            >. Aunque no soy mucho de fantasía, disfruto
+            mucho leyendo a <strong
+              >Brandon Sanderson</strong
             > y
             <strong>Michael Ende</strong>.
           </p>
@@ -100,35 +146,45 @@ import songs from "../data/songs.json"
       <section>
         <h2>Programación</h2>
         <p>
-          Empezé a programar a los 14 años, pero no fue hastas los 17 que me lo
-          tomé en serio. He programado en C, Python, Lua, PHP, C# y Rust; pero
-          los lenguajes que más uso actualmente son <strong>JavaScript</strong>
-           y <strong>TypeScript</strong>. Trabajo en su mayoria con <strong
-            >Angular</strong
-          >, <strong>Bootstrap</strong>,
-          <strong>NodeJs</strong>, <strong>Express</strong>, <strong
-            >MongoDB</strong
-          > y <strong>Mongoose</strong>; pero también he visto (un poco más o un
-          poco menos) de Deno, Bun, Astro, TailwindCSS, Fresh, React, Flask,
-          Nestjs, MySQL y Prisma. No solo quise aprender desarrollo web, así que
-          aprendí otras cosas como
-          <strong>Docker</strong> y Rust para tocar más ramas.
+          Empezé a programar a los 14 años, pero no fue
+          hastas los 17 que me lo tomé en serio. He
+          programado en C, Python, Lua, PHP, C# y Rust; pero
+          los lenguajes que más uso actualmente son <strong
+            >JavaScript</strong
+          >
+           y <strong>TypeScript</strong>. Trabajo en su
+          mayoria con <strong>Angular</strong>, <strong
+            >Bootstrap</strong
+          >,
+          <strong>NodeJs</strong>, <strong>Express</strong>,
+
+
+          <strong>MongoDB</strong> y <strong
+            >Mongoose</strong
+          >; pero también he visto (un poco más o un poco
+          menos) de Deno, Bun, Astro, TailwindCSS, Fresh,
+          React, Flask, Nestjs, MySQL y Prisma. No solo
+          quise aprender desarrollo web, así que aprendí
+          otras cosas como
+          <strong>Docker</strong> y Rust para tocar más
+          ramas.
         </p>
-        <ul class="my-6 space-y-4 list-disc list-inside pl-4">
+        <ul class="my-6 space-y-4 list-disc list-inside">
           <li>
             <a
               class="prog"
               href="https://github.com/michelangelo-valderrama/game-of-life"
               >[Conway's Game of Life]</a
-            > ~ El juego de la vida de Conway con Bun y TypeScript.
+            > ~ El juego de la vida de Conway con Bun y
+            TypeScript.
           </li>
           <li>
             <a
               class="prog"
               href="https://github.com/michelangelo-valderrama/python-mini-projects"
               >[Python Mini Projects]</a
-            > ~ Algunos proyectos con Python sobre matemáticas y animaciones
-            matemáticas con <a
+            > ~ Algunos proyectos con Python sobre
+            matemáticas y animaciones matemáticas con <a
               href="https://www.manim.community/"
               target="_blank">Manim</a
             >.
@@ -138,7 +194,8 @@ import songs from "../data/songs.json"
               class="prog"
               href="https://github.com/michelangelo-valderrama/neoTodoList"
               >[Full Stack Todo List]</a
-            > ~ Un TODO list con Angular, Nestjs, MongoDB y Docker.
+            > ~ Un TODO list con Angular, Nestjs, MongoDB y
+            Docker.
           </li>
         </ul>
       </section>
@@ -147,34 +204,9 @@ import songs from "../data/songs.json"
 </BaseLayout>
 
 <style>
-  h2 {
-    @apply mt-14 mb-4 pb-0.5 text-2xl md:text-3xl font-bold text-textColor-primary border-b border-borderColor-gray;
-  }
-
-  h3 {
-    @apply mt-4 text-textColor-primary font-bold;
-  }
-
-  em {
-    @apply text-textColor-teriary;
-  }
-
-  strong {
-    @apply text-textColor-primary;
-  }
-
-  p {
-    @apply mb-4 text-textColor-secondary;
-  }
-
-  a {
-    @apply underline underline-offset-4 text-textColor-accent;
-  }
-
   .prog {
     @apply no-underline text-textColor-accent-indigo hover:bg-textColor-accent-indigo/20;
   }
-
   img {
     aspect-ratio: calc(attr(width) / attr(height));
   }

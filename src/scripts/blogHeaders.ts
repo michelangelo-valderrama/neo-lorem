@@ -5,8 +5,8 @@ import { $ } from "../utils"
  * @param query - Selector para el elemento en el que aplicar la función.
  */
 export default function createLinksInHeaders(query: string) {
-  const htmlElement = $(query) as HTMLDivElement
-  const newHtml = htmlElement.innerHTML.replace(
+  const htmlElement = $(query) as HTMLDivElement | null
+  const newHtml = htmlElement?.innerHTML.replace(
     /<h([1-6])(.*?)id="(.*?)">(.*?)<\/h[1-6]>/g,
     (_, number, others, id, text) => {
       return `
@@ -16,5 +16,7 @@ export default function createLinksInHeaders(query: string) {
         `
     }
   )
-  htmlElement.innerHTML = newHtml
+  if (htmlElement && newHtml) {
+    htmlElement.innerHTML = newHtml
+  }
 }

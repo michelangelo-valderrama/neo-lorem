@@ -1,10 +1,10 @@
 ---
-import type { MarkdownHeading } from "astro"
-import ListIcon from "../ui/icons/ListIcon.astro"
-import RightArrowIcon from "../ui/icons/RightArrowIcon.astro"
-import TableOfContents from "./TableOfContents.astro"
-import ShareIcon from "../ui/icons/ShareIcon.astro"
-import SharePost from "./SharePost.astro"
+import type { MarkdownHeading } from 'astro'
+import ListIcon from '../ui/icons/ListIcon.astro'
+import RightArrowIcon from '../ui/icons/RightArrowIcon.astro'
+import TableOfContents from './TableOfContents.astro'
+import ShareIcon from '../ui/icons/ShareIcon.astro'
+import SharePost from './SharePost.astro'
 
 interface Props {
   headings: MarkdownHeading[]
@@ -48,10 +48,10 @@ const { headings, postTitle } = Astro.props
           headings={[
             {
               depth: 2,
-              slug: "",
-              text: "Inicio",
+              slug: '',
+              text: 'Inicio'
             },
-            ...headings,
+            ...headings
           ]}
         />
       </div>
@@ -73,52 +73,42 @@ const { headings, postTitle } = Astro.props
 </aside>
 
 <script is:inline>
-  window.addEventListener("load", () => {
-    const btnToc = document.querySelector("#toc-btn")
-    const toc = document.querySelector("#toc")
+  window.addEventListener('load', () => {
+    const btnToc = document.querySelector('#toc-btn')
+    const toc = document.querySelector('#toc')
 
-    btnToc.addEventListener("click", () => {
-      toc.classList.toggle("hidden")
+    btnToc.addEventListener('click', () => {
+      toc.classList?.toggle('hidden')
     })
 
-    const btnShare = document.querySelector("#share-btn")
-    const share = document.querySelector("#share")
+    const btnShare = document.querySelector('#share-btn')
+    const share = document.querySelector('#share')
 
-    btnShare.addEventListener("click", () => {
-      share.classList.toggle("hidden")
+    btnShare.addEventListener('click', () => {
+      share.classList?.toggle('hidden')
     })
   })
 </script>
 
 <script>
-  import { $ } from "../../utils"
-
-  const optCnt = $("#options-ctn") as HTMLDivElement
-
+  import { $ } from '../../utils'
+  const optCnt = $('#options-ctn') as HTMLDivElement | null
   const cb: IntersectionObserverCallback = (entries) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
-        optCnt.classList.add("hidden")
+        optCnt?.classList.add('hidden')
       } else {
-        optCnt.classList.remove("hidden")
+        optCnt?.classList.remove('hidden')
       }
     })
   }
-
   const options: IntersectionObserverInit = {
     root: null,
-    rootMargin: "0px",
-    threshold: 0.1,
+    rootMargin: '0px',
+    threshold: 0.1
   }
-
   const observer = new IntersectionObserver(cb, options)
-
-  observer.observe($("footer") as HTMLDivElement)
-
-  // window.addEventListener("load", () => {
-  //   $("#list-icon")?.classList.remove("hidden")
-  //   $("#spinner")?.classList.add("hidden")
-  // })
+  observer.observe($('footer') as HTMLDivElement)
 </script>
 
 <style>

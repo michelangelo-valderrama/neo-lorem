@@ -16,7 +16,7 @@ const lastPost = blog[0]
   <p class="sm:text-center sm:mb-2">
     <FormattedDate date={lastPost.data.pubDate} />
   </p>
-  <div class="sm:grid sm:grid-cols-2 sm:gap-4">
+  <div class="sm:grid sm:grid-cols-2 sm:gap-4 items-center">
     <a href={`/blog/${lastPost.slug}`} class="block sm:text-right group">
       <h2
         class="font-semibold text-4xl text-textColor-primary group-hover:text-textColor-accent transition"

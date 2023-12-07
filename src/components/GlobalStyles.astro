@@ -1,11 +1,7 @@
 <style is:global>
-  /* @tailwind base;
+  @tailwind base;
   @tailwind components;
-  @tailwind utilities; */
-
-  .blog-post {
-    @apply prose prose-lorem dark:prose-invert prose-img:rounded-lg prose-code:before:content-[''] prose-code:after:content-[''] prose-code:p-1 prose-code:rounded-md prose-h1:text-4xl prose-h1:text-center prose-h2:border-b prose-h2:pb-1 prose-h2:border-borderColor-gray prose-h2:text-3xl prose-h3:italic max-w-none;
-  }
+  @tailwind utilities;
 
   .book-line {
     @apply first-line:uppercase first-line:tracking-widest first-letter:text-7xl first-letter:font-bold first-letter:text-textColor-primary first-letter:mr-3 first-letter:float-left;
@@ -15,29 +11,8 @@
     @apply first-line:uppercase first-line:tracking-widest first-letter:text-7xl first-letter:font-bold first-letter:text-textColor-primary first-letter:mr-3 first-letter:float-left;
   }
 
-  .background-gradient-effect {
-    background-size: 300%;
-    animation:
-      contentShowUp 300ms ease,
-      backgroundGradientAnim 5s ease-in-out infinite;
-  }
-
-  .blur-background-effect {
-    background-size: 300%;
-    animation:
-      backgroundGradientAnim 5s ease-in-out infinite,
-      blurBackgroundAnim 5s ease-in-out infinite;
-  }
-
   cite {
     @apply not-italic before:content-["—"];
-  }
-
-  @media screen and (max-width: theme(screens.sm)) {
-    .blur-background-effect {
-      background-size: 300%;
-      animation: backgroundGradientAnim 5s ease-in-out infinite;
-    }
   }
 
   @keyframes contentShowUp {
@@ -46,30 +21,6 @@
     }
     to {
       @apply blur-0 opacity-100 translate-y-0;
-    }
-  }
-
-  @keyframes backgroundGradientAnim {
-    0% {
-      background-position: 0%;
-    }
-    50% {
-      background-position: 100%;
-    }
-    100% {
-      background-position: 0%;
-    }
-  }
-
-  @keyframes blurBackgroundAnim {
-    0% {
-      scale: 1;
-    }
-    50% {
-      scale: 1.4;
-    }
-    100% {
-      scale: 1;
     }
   }
 
