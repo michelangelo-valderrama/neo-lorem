@@ -9,7 +9,8 @@
     "build": "astro build",
     "preview": "astro preview",
     "preview:host": "astro preview --host",
-    "deploy": "bunx firebase deploy --only hosting:neo-lorem",
+    "deploy:firebase": "bunx firebase deploy --only hosting:neo-lorem",
+    "deploy": "bun run build && bun run deploy:firebase",
     "astro": "astro"
   },
   "dependencies": {
