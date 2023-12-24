@@ -16,15 +16,15 @@ const { headings, postTitle } = Astro.props
 
 <aside
   id="options-ctn"
-  class="xl:hidden fixed bottom-4 w-full left-0 px-6 z-20"
+  class="fixed bottom-4 w-full left-0 px-6 z-20"
 >
   <div
-    class="max-w-screen-sm mx-auto bg-background border-2 border-borderColor-gray rounded-lg transition relative flex items-center px-2 py-1.5 shadow-lg"
+    class="max-w-screen-sm mx-auto bg-background-secondary border border-borderColor-light rounded-full transition relative flex items-center px-4 py-1.5"
   >
     <!--Back-->
     <a
       href="/blog"
-      class="group w-9 h-9 hover:bg-button/80 hover:text-textColor-primary rounded-lg flex items-center justify-center transition"
+      class="group w-9 h-9 hover:bg-button-light/60 hover:text-textColor-primary rounded-lg flex items-center justify-center transition"
     >
       <RightArrowIcon
         class="w-5 h-5 group-focus:translate-x-[-0.25rem] transition-transform rotate-180"
@@ -33,16 +33,18 @@ const { headings, postTitle } = Astro.props
     </a>
     <!--TOC-->
     <button
-      class="flex hover:bg-button/80 rounded-lg items-center gap-x-2 mx-auto hover:text-textColor-primary transition px-4 py-1.5"
+      class="flex hover:bg-button-light/60 rounded-lg items-center gap-x-2 mx-auto hover:text-textColor-primary transition px-4 py-1.5"
       id="toc-btn"
     >
       <ListIcon id="list-icon" class="w-5 h-5" />
-      <!-- <Spinner id="spinner" class="w-5 h-5" /> -->
       <span>Tabla de Contenidos</span>
     </button>
-    <aside class="hidden absolute bottom-[48px] left-0 w-full px-2" id="toc">
+    <aside
+      class="hidden absolute bottom-[48px] left-0 w-full px-2"
+      id="toc"
+    >
       <div
-        class="mx-auto border-2 border-borderColor-gray py-4 px-6 bg-background max-w-md max-h-[40vh] overflow-y-scroll rounded-top-lg"
+        class="mx-auto border border-borderColor-light py-4 px-6 bg-background-secondary max-w-md max-h-[40vh] overflow-y-scroll rounded-top-lg"
       >
         <TableOfContents
           headings={[
@@ -58,7 +60,7 @@ const { headings, postTitle } = Astro.props
     </aside>
     <!--Share-->
     <button
-      class="w-9 h-9 hover:bg-button/80 hover:text-textColor-primary rounded-lg flex items-center justify-center transition"
+      class="w-9 h-9 hover:bg-button-light/60 hover:text-textColor-primary rounded-lg flex items-center justify-center transition"
       id="share-btn"
     >
       <ShareIcon class="w-5 h-5" />

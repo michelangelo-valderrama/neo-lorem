@@ -1,37 +1,37 @@
 ---
-import { getEntry } from "astro:content"
-import RightArrowIcon from "../ui/icons/RightArrowIcon.astro"
+import { getEntry } from 'astro:content'
+import RightArrowIcon from '../ui/icons/RightArrowIcon.astro'
 
 interface Props {
   item: {
     link: string
     text: string
   }
-  rel: "next" | "previus"
+  rel: 'next' | 'previus'
 }
 
 const { item, rel } = Astro.props
 
-const isNext = rel === "next"
+const isNext = rel === 'next'
 ---
 
 <a
   class:list={[
-    "opacity-90 hover:opacity-100 border border-borderColor-gray hover:border-borderColor-accent px-4 md:px-6 py-4 rounded-lg hover:text-textColor-primary flex items-center justify-between gap-x-4 transition-all",
+    'opacity-90 hover:opacity-100 border border-borderColor-gray hover:border-borderColor-accent px-4 md:px-6 py-4 rounded-lg hover:text-textColor-primary flex items-center justify-between gap-x-4 transition-all',
     ,
     {
-      "text-right flex-row-reverse": isNext,
-    },
+      'text-right flex-row-reverse': isNext
+    }
   ]}
   rel={rel}
-  href={`${Astro.site}blog/${item.link}`}
+  href={`${Astro.url.origin}/blog/${item.link}`}
 >
   <RightArrowIcon
     class:list={[
-      "w-6 h-6",
+      'w-6 h-6',
       {
-        "rotate-180": !isNext,
-      },
+        'rotate-180': !isNext
+      }
     ]}
   />
   <p class="text-lg md:text-xl flex-1">{item.text}</p>

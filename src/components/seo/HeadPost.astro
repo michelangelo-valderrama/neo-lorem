@@ -1,9 +1,9 @@
 ---
-import type { CollectionEntry } from "astro:content"
-import { SITE } from "../../consts"
+import type { CollectionEntry } from 'astro:content'
+import { SITE } from '../../consts'
 
 interface Props {
-  post: CollectionEntry<"blog">
+  post: CollectionEntry<'blog'>
 }
 
 const { post } = Astro.props
@@ -11,15 +11,25 @@ const pubDate = post.data.pubDate.toDateString()
 const update = post.data.update?.toDateString() ?? pubDate
 const title = post.data.title
 const description = post.data.description
-const bannerUrl = new URL(post.data.mainImg ?? SITE.IMAGE, Astro.site)
+const bannerUrl = new URL(
+  post.data.mainImg ?? SITE.IMAGE,
+  Astro.site
+)
 ---
 
 <meta slot="meta" name="robots" content="all" />
 
 <!--Article Tags-->
 <meta property="article:publisher" content={Astro.site} />
-<meta property="article:author" content={Astro.site} />
-{post.data.tags.map((tag) => <meta property="article:tag" content={tag} />)}
+<meta
+  property="article:author"
+  content="Michelangelo Valderrama Vivanco"
+/>
+{
+  post.data.tags.map((tag) => (
+    <meta property="article:tag" content={tag} />
+  ))
+}
 <meta property="article:published_time" content={pubDate} />
 <meta property="article:modified_time" content={update} />
 
@@ -35,11 +45,11 @@ const bannerUrl = new URL(post.data.mainImg ?? SITE.IMAGE, Astro.site)
 <script
   type="application/ld+json"
   set:html={JSON.stringify({
-    "@context": "https://schema.org",
-    "@type": "BlogPosting",
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
     mainEntityOfPage: {
-      "@type": "WebPage",
-      "@id": Astro.url,
+      '@type': 'WebPage',
+      '@id': Astro.url
     },
     headline: title,
     description: description,
@@ -48,44 +58,44 @@ const bannerUrl = new URL(post.data.mainImg ?? SITE.IMAGE, Astro.site)
     dateModified: update,
     author: [
       {
-        "@type": "Person",
-        name: "Michelangelo Valderrama",
-        url: `${SITE.URL}/about`,
-      },
+        '@type': 'Person',
+        name: 'Michelangelo Valderrama',
+        url: `${SITE.URL}/about`
+      }
     ],
     publisher: {
-      "@type": "Organization",
-      name: "Neo Lorem",
+      '@type': 'Organization',
+      name: 'Neo Lorem',
       logo: {
-        "@type": "ImageObject",
-        url: `${SITE.URL}${SITE.IMAGE}`,
-      },
-    },
+        '@type': 'ImageObject',
+        url: `${SITE.URL}${SITE.IMAGE}`
+      }
+    }
   })}
 />
 
 <script
   type="application/ld+json"
   set:html={JSON.stringify({
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
     itemListElement: [
       {
-        "@type": "ListItem",
+        '@type': 'ListItem',
         position: 1,
         item: {
-          "@id": `${SITE.URL}/blog`,
-          name: "Blog",
-        },
+          '@id': `${SITE.URL}/blog`,
+          name: 'Blog'
+        }
       },
       {
-        "@type": "ListItem",
+        '@type': 'ListItem',
         position: 2,
         item: {
-          "@id": Astro.url,
-          name: title,
-        },
-      },
-    ],
+          '@id': Astro.url,
+          name: title
+        }
+      }
+    ]
   })}
 />

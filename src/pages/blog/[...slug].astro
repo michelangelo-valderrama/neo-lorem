@@ -1,22 +1,24 @@
 ---
-import type { GetStaticPaths } from "astro"
-import { getCollection, type CollectionEntry } from "astro:content"
-import PostLayout from "../../layouts/PostLayout.astro"
-import Metadata from "../../components/Blog/Metadata.astro"
-import TopActions from "../../components/Blog/TopActions.astro"
-import BottomMenu from "../../components/Blog/BottomMenu.astro"
-import PostNavigation from "../../components/Blog/PostNavigation.astro"
+import type { GetStaticPaths } from 'astro'
+import {
+  getCollection,
+  type CollectionEntry
+} from 'astro:content'
+import PostLayout from '../../layouts/PostLayout.astro'
+import Metadata from '../../components/Blog/Metadata.astro'
+import BottomMenu from '../../components/Blog/BottomMenu.astro'
+import PostNavigation from '../../components/Blog/PostNavigation.astro'
 
 export const getStaticPaths = (async () => {
-  const blog = await getCollection("blog")
+  const blog = await getCollection('blog')
   return blog.map((post) => ({
     params: { slug: post.slug },
-    props: { post },
+    props: { post }
   }))
 }) satisfies GetStaticPaths
 
 interface Props {
-  post: CollectionEntry<"blog">
+  post: CollectionEntry<'blog'>
 }
 
 const { post } = Astro.props
@@ -24,47 +26,63 @@ const { Content, headings } = await post.render()
 ---
 
 <PostLayout post={post}>
-  <section class="max-w-screen-md mx-auto pb-10 md:pb-14">
-    <TopActions postTitle={post.data.title} />
-    <h1
-      class="text-4xl md:text-5xl font-semibold md:font-normal text-textColor-primary mb-2 pt-6 md:pt-0 md:mb-4"
+  <div class="relative max-w-screen-sm mx-auto">
+    <section
+      class="mx-auto pb-10 md:pb-14 md:pt-10"
     >
-      {post.data.title}
-    </h1>
-    <p class="text-lg md:text-xl text-textColor-secondary">
-      <em>{post.data.description}</em>
-    </p>
-    <div class="bg-borderColor-light h-[1px] mt-8 mb-4 md:mb-6"></div>
-    {
-      post.data.mainImg && (
-        <img
-          src={post.data.mainImg}
-          alt={post.data.description}
-          width="800"
-          height="400"
-          class="mx-auto max-w-screen-md w-full object-cover mb-4 md:mb-6"
-        />
-      )
-    }
-    <Metadata post={post} />
-  </section>
-  <article
-    class="prose prose-purple dark:prose-invert prose-lg prose-code:before:content-[''] prose-code:after:content-[''] prose-h1:text-center md:prose-h2:mb-6 md:prose-h2:text-center prose-h3:text-lg md:prose-h3:text-xl prose-h3:italic prose-h3:mt-12 max-w-none"
-    id="content"
-  >
-    <Content />
-  </article>
-  <BottomMenu postTitle={post.data.title} headings={headings} />
-  <PostNavigation next={post.data.next} previus={post.data.previus} />
+      <h1
+        class="text-4xl md:text-5xl font-semibold md:font-normal text-textColor-primary mb-2 pt-6 md:pt-0 md:mb-4"
+      >
+        {post.data.title}
+      </h1>
+      <p
+        class="text-lg md:text-xl text-textColor-secondary"
+      >
+        <em>{post.data.description}</em>
+      </p>
+      <div
+        class="bg-borderColor-gray h-[1px] mt-8 mb-4 md:mb-6"
+      >
+      </div>
+      {
+        post.data.mainImg && (
+          <img
+            src={post.data.mainImg}
+            alt={post.data.description}
+            width="800"
+            height="400"
+            class="mx-auto w-full object-cover mb-4 md:mb-6"
+          />
+        )
+      }
+      <Metadata post={post} />
+    </section>
+    <article
+      class="prose prose-lorem prose-purple dark:prose-invert prose-code:before:content-[''] prose-code:after:content-[''] prose-h1:text-center prose-h2:pb-2 prose-h2:border-b prose-h2:border-b-borderColor-light md:prose-h2:text-center prose-h3:italic max-w-none"
+      id="content"
+    >
+      <Content />
+    </article>
+    <BottomMenu
+      postTitle={post.data.title}
+      headings={headings}
+    />
+    <PostNavigation
+      next={post.data.next}
+      previus={post.data.previus}
+    />
+  </div>
 </PostLayout>
 
 <script>
-  import createLinksInHeaders from "../../scripts/blogHeaders.ts"
-  import { $ } from "../../utils"
-  window.addEventListener("load", () => {
-    createLinksInHeaders("#content")
+  import createLinksInHeaders from '../../scripts/blogHeaders.ts'
+  import { $ } from '../../utils'
+  window.addEventListener('load', () => {
+    createLinksInHeaders('#content')
 
-    const footnote = $("#footnote-label") as HTMLHeadingElement | null
-    footnote?.classList.remove("sr-only")
+    const footnote = $(
+      '#footnote-label'
+    ) as HTMLHeadingElement | null
+    footnote?.classList.remove('sr-only')
   })
 </script>

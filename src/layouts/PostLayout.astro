@@ -1,16 +1,13 @@
 ---
-import type { CollectionEntry } from "astro:content"
-import BaseLayout from "./BaseLayout.astro"
-import HeadPost from "../components/seo/HeadPost.astro"
-import DisplayTOC from "../components/Blog/DisplayTOC.astro"
+import type { CollectionEntry } from 'astro:content'
+import BaseLayout from './BaseLayout.astro'
+import HeadPost from '../components/seo/HeadPost.astro'
 
 interface Props {
-  post: CollectionEntry<"blog">
+  post: CollectionEntry<'blog'>
 }
 
 const { post } = Astro.props
-
-const { headings } = await post.render()
 ---
 
 <BaseLayout
@@ -21,9 +18,6 @@ const { headings } = await post.render()
   imageAlt={post.data.description}
 >
   <HeadPost slot="meta" post={post} slot="meta" />
-  <div class="max-w-screen-sm mx-auto relative">
-    <DisplayTOC headings={headings} />
-    <slot />
-  </div>
+  <slot />
   <div class="mt-[30vh] md:mt-[50vh] text-center"></div>
 </BaseLayout>

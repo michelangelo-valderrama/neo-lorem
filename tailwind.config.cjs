@@ -37,7 +37,7 @@ module.exports = {
             "--tw-prose-counters": theme("colors.textColor.primary"),
             "--tw-prose-bullets": theme("colors.textColor.primary"),
             "--tw-prose-hr": theme("colors.hrColor"),
-            "--tw-prose-quotes": theme("colors.quotesColor.DEFAULT"),
+            "--tw-prose-quotes": theme("colors.borderColor.gray"),
             "--tw-prose-quote-borders": theme("colors.borderColor.gray"),
             "--tw-prose-captions": theme("colors.textColor.primary"),
             "--tw-prose-code": theme("colors.textColor.primary"),
@@ -52,7 +52,7 @@ module.exports = {
             "--tw-prose-invert-counters": theme("colors.textColor.primary"),
             "--tw-prose-invert-bullets": theme("colors.textColor.primary"),
             "--tw-prose-invert-hr": theme("colors.hrColor"),
-            "--tw-prose-invert-quotes": theme("colors.quotesColor.DEFAULT"),
+            "--tw-prose-invert-quotes": theme("colors.borderColor.gray"),
             "--tw-prose-invert-quote-borders": theme("colors.borderColor.gray"),
             "--tw-prose-invert-captions": theme("colors.textColor.primary"),
             "--tw-prose-invert-code": theme("colors.textColor.primary"),
@@ -76,6 +76,12 @@ module.exports = {
               code: {
                 "@apply bg-transparent p-0 !important": "",
               },
+            },
+            blockquote: {
+              "@apply border-l-4 border-borderColor-light": "",
+            },
+            'blockquote p': {
+              "@apply before:content-[] after:content-[]": "",
             },
             a: {
               "@apply underline-offset-4": "",
