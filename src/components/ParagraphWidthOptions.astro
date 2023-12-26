@@ -1,0 +1,60 @@
+---
+import IncreaseParagraphWidthIcon from './ui/icons/IncreaseParagraphWidthIcon.astro'
+import ReduceParagraphWidthIcon from './ui/icons/ReduceParagraphWidthIcon.astro'
+---
+
+<div class="flex items-center justify-center gap-x-8">
+  <button
+    class="option-btn"
+    id="reduce-paragraph-width-btn"
+  >
+    <ReduceParagraphWidthIcon class="w-6 h-6" />
+    <span class="sr-only">Reducir ancho de párrafo</span>
+  </button>
+  <span
+    class="select-none w-5 text-center"
+    id="current-paragraph-width"
+  >
+  </span>
+  <button
+    class="option-btn"
+    id="increase-paragraph-width-btn"
+  >
+    <IncreaseParagraphWidthIcon class="w-6 h-6" />
+    <span class="sr-only">Aumentar ancho de párrafo</span>
+  </button>
+</div>
+
+<script>
+  import { setupOptions } from '../scripts/setupOptions'
+
+  const paragraphWidthArr = [
+    {
+      className: 'max-w-screen-sm',
+      name: '0'
+    },
+    {
+      className: 'max-w-screen-md',
+      name: '1'
+    },
+    {
+      className: 'max-w-screen-lg',
+      name: '2'
+    },
+    {
+      className: 'max-w-screen-xl',
+      name: '3'
+    }
+  ]
+
+  setupOptions({
+    counterStart: 0,
+    elementsSelector: {
+      reduce: '#reduce-paragraph-width-btn',
+      increase: '#increase-paragraph-width-btn',
+      current: '#current-paragraph-width',
+      content: '#content-cnt'
+    },
+    optionsArray: paragraphWidthArr
+  })
+</script>

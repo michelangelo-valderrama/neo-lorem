@@ -1,0 +1,82 @@
+---
+import CommandIcon from '../ui/icons/CommandIcon.astro'
+---
+
+<button
+  class="w-10 h-10 flex items-center justify-center bg-button/80 hover:text-textColor-accent hover:border-[3px] border-borderColor-accent box-border rounded-lg hover:shadow-textColor-accent/40 hover:shadow-[0_2px_40px_-4px] active:scale-90 transition-all"
+  type="button"
+  id="openOptionsMenu"
+>
+  <CommandIcon class="w-5 h-5" />
+  <span class="sr-only">Opciones de tipografía</span>
+</button>
+
+<!-- Popover -->
+<div
+  id="popoverOptionsMenu"
+  role="tooltip"
+  class="absolute z-10 inline-block invisible text-sm py-1 px-2 text-white bg-popover rounded-md font-semibold"
+>
+  Opciones de tipografía
+</div>
+
+<script>
+  import { $ } from '../../utils'
+  import { Modal, type ModalOptions } from 'flowbite'
+
+  const btn = $(
+    '#openOptionsMenu'
+  ) as HTMLButtonElement | null
+  const $targetEl = $(
+    '#typography-menu'
+  ) as HTMLDivElement
+
+  const options: ModalOptions = {
+    backdrop: 'dynamic',
+    backdropClasses:
+      'bg-zinc-900/50 fixed inset-0 z-40 backdrop-blur-sm transition',
+    closable: true
+  }
+
+  const instanceOptions = {
+    id: 'typography-menu',
+    override: true
+  }
+
+  const modal = new Modal(
+    $targetEl,
+    options,
+    instanceOptions
+  )
+
+  btn?.addEventListener('click', () => {
+    modal.toggle()
+  })
+</script>
+
+<script>
+  import { Popover, type PopoverOptions } from 'flowbite'
+
+  const $targetEl = document.getElementById(
+    'popoverOptionsMenu'
+  )
+  const $triggerEl = document.getElementById(
+    'openOptionsMenu'
+  )
+
+  const options: PopoverOptions = {
+    placement: 'bottom-start'
+  }
+
+  const instanceOptions = {
+    id: 'popoverOptions',
+    override: true
+  }
+
+  const popover = new Popover(
+    $targetEl,
+    $triggerEl,
+    options,
+    instanceOptions
+  )
+</script>

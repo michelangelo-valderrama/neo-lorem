@@ -1,0 +1,50 @@
+---
+import IncreaseLineSpacingIcon from './ui/icons/IncreaseLineSpacingIcon.astro'
+import ReduceLineSpacingIcon from './ui/icons/ReduceLineSpacingIcon.astro'
+---
+
+<div class="flex items-center justify-center gap-x-8">
+  <button class="option-btn" id="reduce-line-spacing-btn">
+    <ReduceLineSpacingIcon class="w-6 h-6" />
+    <span class="sr-only">Reducir ancho de párrafo</span>
+  </button>
+  <span
+    class="select-none w-5 text-center"
+    id="current-line-spacing"
+  >
+  </span>
+  <button class="option-btn" id="increase-line-spacing-btn">
+    <IncreaseLineSpacingIcon class="w-6 h-6" />
+    <span class="sr-only">Aumentar ancho de párrafo</span>
+  </button>
+</div>
+
+<script>
+  import { setupOptions } from '../scripts/setupOptions'
+
+  const lineSpacingArr = [
+    {
+      className: 'leading-none',
+      name: '0'
+    },
+    {
+      className: 'leading-normal',
+      name: '1'
+    },
+    {
+      className: 'leading-10',
+      name: '2'
+    }
+  ]
+
+  setupOptions({
+    counterStart: 1,
+    elementsSelector: {
+      reduce: '#reduce-line-spacing-btn',
+      increase: '#increase-line-spacing-btn',
+      current: '#current-line-spacing',
+      content: '.prose'
+    },
+    optionsArray: lineSpacingArr
+  })
+</script>

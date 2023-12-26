@@ -24,10 +24,10 @@ const { headings, postTitle } = Astro.props
     <!--Back-->
     <a
       href="/blog"
-      class="group w-9 h-9 hover:bg-button-light/60 hover:text-textColor-primary rounded-lg flex items-center justify-center transition"
+      class="group w-8 h-8 sm:w-9 sm:h-9 hover:bg-button-light/60 hover:text-textColor-primary rounded-lg flex items-center justify-center transition"
     >
       <RightArrowIcon
-        class="w-5 h-5 group-focus:translate-x-[-0.25rem] transition-transform rotate-180"
+        class="w-4 h-4 sm:w-5 sm:h-5 group-focus:translate-x-[-0.25rem] transition-transform rotate-180"
       />
       <span class="sr-only">Blog</span>
     </a>
@@ -36,15 +36,15 @@ const { headings, postTitle } = Astro.props
       class="flex hover:bg-button-light/60 rounded-lg items-center gap-x-2 mx-auto hover:text-textColor-primary transition px-4 py-1.5"
       id="toc-btn"
     >
-      <ListIcon id="list-icon" class="w-5 h-5" />
-      <span>Tabla de Contenidos</span>
+      <ListIcon id="list-icon" class="w-4 h-4 sm:w-5 sm:h-5" />
+      <span class="text-sm sm:text-base">Tabla de Contenidos</span>
     </button>
     <aside
-      class="hidden absolute bottom-[48px] left-0 w-full px-2"
+      class="hidden absolute bottom-14 left-0 w-full px-2"
       id="toc"
     >
       <div
-        class="mx-auto border border-borderColor-light py-4 px-6 bg-background-secondary max-w-md max-h-[40vh] overflow-y-scroll rounded-top-lg"
+        class="mx-auto border border-borderColor-light py-4 px-6 bg-background-secondary max-w-[300px] md:max-w-sm max-h-[40vh] overflow-y-scroll rounded-lg"
       >
         <TableOfContents
           headings={[
@@ -60,13 +60,13 @@ const { headings, postTitle } = Astro.props
     </aside>
     <!--Share-->
     <button
-      class="w-9 h-9 hover:bg-button-light/60 hover:text-textColor-primary rounded-lg flex items-center justify-center transition"
+      class="w-8 h-8 sm:w-9 sm:h-9 hover:bg-button-light/60 hover:text-textColor-primary rounded-lg flex items-center justify-center transition"
       id="share-btn"
     >
-      <ShareIcon class="w-5 h-5" />
+      <ShareIcon class="w-4 h-4 sm:w-5 sm:h-5" />
     </button>
     <div
-      class="hidden absolute bottom-14 right-0 py-4 px-3 border-2 border-borderColor-gray bg-background rounded-lg"
+      class="hidden absolute bottom-14 right-0 py-4 px-3 border border-borderColor-light bg-background-secondary rounded-lg"
       id="share"
     >
       <SharePost postTitle={postTitle} />
@@ -112,10 +112,3 @@ const { headings, postTitle } = Astro.props
   const observer = new IntersectionObserver(cb, options)
   observer.observe($('footer') as HTMLDivElement)
 </script>
-
-<style>
-  .rounded-top-lg {
-    border-top-right-radius: 0.5rem;
-    border-top-left-radius: 0.5rem;
-  }
-</style>

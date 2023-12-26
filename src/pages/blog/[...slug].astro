@@ -26,10 +26,11 @@ const { Content, headings } = await post.render()
 ---
 
 <PostLayout post={post}>
-  <div class="relative max-w-screen-sm mx-auto">
-    <section
-      class="mx-auto pb-10 md:pb-14 md:pt-10"
-    >
+  <div
+    id="content-cnt"
+    class="relative max-w-screen-sm mx-auto"
+  >
+    <section class="mx-auto pb-10 md:pb-14 md:pt-10">
       <h1
         class="text-4xl md:text-5xl font-semibold md:font-normal text-textColor-primary mb-2 pt-6 md:pt-0 md:mb-4"
       >

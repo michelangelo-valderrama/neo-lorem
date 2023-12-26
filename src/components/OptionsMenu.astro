@@ -1,0 +1,23 @@
+---
+import FontSizeOptions from './FontSizeOptions.astro'
+import ParagraphWidthOptions from './ParagraphWidthOptions.astro'
+import LineSpacingOptions from './LineSpacingOption.astro'
+---
+
+<!-- Modal -->
+<div
+  id="typography-menu"
+  tabindex="-1"
+  class="fixed hidden left-0 right-0 top-0 z-50 h-[calc(100svh-1rem)] max-h-full w-full overflow-y-auto overflow-x-hidden p-4 md:inset-0"
+>
+  <div class="relative w-full max-w-xs max-h-full">
+    <!-- Modal content -->
+    <div
+      class="relative px-4 py-8 bg-background-secondary border border-borderColor-light rounded-lg shadow-black/40 shadow-2xl space-y-6 text-textColor-secondary"
+    >
+      <FontSizeOptions />
+      <ParagraphWidthOptions />
+      <LineSpacingOptions />
+    </div>
+  </div>
+</div>

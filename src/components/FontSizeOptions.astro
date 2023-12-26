@@ -1,0 +1,48 @@
+---
+import IncreaseFontSizeIcon from './ui/icons/IncreaseFontSizeIcon.astro'
+import ReduceFontSizeIcon from './ui/icons/ReduceFontSizeIcon.astro'
+---
+
+<div class="flex items-center justify-center gap-x-8">
+  <button class="option-btn" id="reduce-font-size-btn">
+    <ReduceFontSizeIcon class="w-6 h-6" />
+    <span class="sr-only">Reducir tamaño de fuente</span>
+  </button>
+  <span
+    class="select-none w-5 text-center"
+    id="current-font-size"></span>
+  <button class="option-btn" id="increase-font-size-btn">
+    <IncreaseFontSizeIcon class="w-6 h-6" />
+    <span class="sr-only">Aumentar tamaño de fuente</span>
+  </button>
+</div>
+
+<script>
+  import { setupOptions } from '../scripts/setupOptions'
+
+  const fontSizeArr = [
+    {
+      className: 'prose-base',
+      name: '0'
+    },
+    {
+      className: 'prose-lg',
+      name: '1'
+    },
+    {
+      className: 'prose-xl',
+      name: '2'
+    }
+  ]
+
+  setupOptions({
+    counterStart: 1,
+    elementsSelector: {
+      reduce: '#reduce-font-size-btn',
+      increase: '#increase-font-size-btn',
+      current: '#current-font-size',
+      content: '.prose'
+    },
+    optionsArray: fontSizeArr
+  })
+</script>

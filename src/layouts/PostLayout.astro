@@ -1,23 +1,49 @@
 ---
 import type { CollectionEntry } from 'astro:content'
-import BaseLayout from './BaseLayout.astro'
 import HeadPost from '../components/seo/HeadPost.astro'
+import HeadCommon from '../components/seo/HeadCommon.astro'
+import Header from '../components/Header/Header.astro'
+import Footer from '../components/Footer/Footer.astro'
+import BaseStyles from '../components/GlobalStyles.astro'
+import ButtonOptionsMenu from '../components/Header/ButtonOptionsMenu.astro'
+import OptionsMenu from '../components/OptionsMenu.astro'
 
-interface Props {
+type Props = {
   post: CollectionEntry<'blog'>
 }
 
 const { post } = Astro.props
 ---
 
-<BaseLayout
-  title={post.data.title}
-  description={post.data.description}
-  class="scroll-p-28"
-  image={post.data.mainImg}
-  imageAlt={post.data.description}
+<!doctype html>
+<html
+  lang="es"
+  class="selection:bg-textColor-primary selection:text-background scroll-p-28"
 >
-  <HeadPost slot="meta" post={post} slot="meta" />
-  <slot />
-  <div class="mt-[30vh] md:mt-[50vh] text-center"></div>
-</BaseLayout>
+  <head>
+    <HeadCommon
+      title={post.data.title}
+      description={post.data.description}
+      image={post.data.mainImg}
+      imageAlt={post.data.description}
+    />
+    <HeadPost post={post} slot="meta" />
+    <BaseStyles />
+  </head>
+  <body
+    class="bg-background text-textColor-secondary break-words overflow-x-hidden min-h-[40svh]"
+  >
+    <OptionsMenu />
+    <Header>
+      <li slot="buttons">
+        <ButtonOptionsMenu />
+      </li>
+    </Header>
+    <slot name="header" />
+    <main class="px-6 mx-auto">
+      <slot />
+      <div class="mt-[30vh] md:mt-[50vh] text-center"></div>
+    </main>
+    <Footer />
+  </body>
+</html>

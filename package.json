@@ -15,7 +15,7 @@
   },
   "dependencies": {
     "@astrojs/mdx": "2.0.2",
-    "@astrojs/react": "3.0.8",
+    "@astrojs/preact": "^3.0.1",
     "@astrojs/rss": "4.0.1",
     "@astrojs/sitemap": "3.0.3",
     "@astrojs/tailwind": "5.0.4",
@@ -23,7 +23,7 @@
     "firebase": "^10.5.0",
     "flowbite": "^2.2.0",
     "katex": "^0.16.8",
-    "preact": "^10.6.5",
+    "preact": "^10.19.3",
     "tailwindcss": "^3.0.24"
   },
   "devDependencies": {
