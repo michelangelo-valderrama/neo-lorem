@@ -32,7 +32,9 @@ const { slug, date, title, description, tags, mainImg } =
             </p>
           </div>
           <div class="flex-1">
-            <p class="md:text-lg max-w-screen-sm">{description}</p>
+            <p class="md:text-lg max-w-screen-sm">
+              {description}
+            </p>
           </div>
           <ul class="flex w-full flex-wrap justify-start gap-x-2 gap-y-4">
             {tags.map((tag) => (
@@ -64,11 +66,15 @@ const { slug, date, title, description, tags, mainImg } =
           <p class="sm:text-right sm:font-bold text-sm md:text-base">
             <FormattedDate date={date} />
           </p>
-          <p class="text-xl md:text-2xl text-textColor-primary flex-1">
-            <strong>{title}</strong>
-          </p>
+          <div class="flex-1">
+            <p class="text-xl md:text-2xl text-textColor-primary flex-1 max-w-screen-sm">
+              <strong>{title}</strong>
+            </p>
+          </div>
         </div>
-        <p class="flex-1 md:text-lg max-w-screen-sm">{description}</p>
+        <p class="flex-1 md:text-lg max-w-screen-sm">
+          {description}
+        </p>
         <ul class="flex w-full flex-wrap justify-start gap-x-2 gap-y-4">
           {tags.map((tag) => (
             <li>

@@ -14,6 +14,7 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@astrojs/check": "^0.3.4",
     "@astrojs/mdx": "2.0.2",
     "@astrojs/preact": "^3.0.1",
     "@astrojs/rss": "4.0.1",
@@ -24,10 +25,14 @@
     "flowbite": "^2.2.0",
     "katex": "^0.16.8",
     "preact": "^10.19.3",
-    "tailwindcss": "^3.0.24"
+    "tailwindcss": "latest",
+    "typescript": "^5.3.3"
   },
   "devDependencies": {
-    "@tailwindcss/typography": "^0.5.10",
+    "@tailwindcss/typography": "latest",
+    "@types/katex": "^0.16.7",
+    "autoprefixer": "latest",
+    "postcss": "latest",
     "tw-colors": "^3.3.1"
   }
 }

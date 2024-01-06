@@ -37,7 +37,7 @@ const blog = (await getCollection('blog')).sort(
       </div>
     </section>
 
-    <article class="max-w-screen-md space-y-6">
+    <article class="space-y-6">
       {
         blog.map((post) => (
           <BlogPost

@@ -8,10 +8,11 @@ tags:
   - pico 8
   - tutorial
 previus:
-  {
-    'link': 'firefox-developer-edition-para-ubuntu',
-    'text': 'Descargar y configurar Firefox Developer Edition para Ubuntu'
-  }
+  link: firefox-developer-edition-para-ubuntu
+  text: Descargar y configurar Firefox Developer Edition para Ubuntu
+next:
+  link: i18n-en-astro.md
+  text: Implementando i18n en Astro
 ---
 
 De Pico 8 ya hablé en mi artículo [**Introducción al Desarrollo de Videojuegos con PICO-8**](https://neolorem.dev/blog/introduccion-al-desarrollo-de-videojuegos-con-pico8), pero hoy vengo a escribir un muy breve, brevísimo, artículo sobre como crear un shortcut de Pico 8 en Ubuntu.
